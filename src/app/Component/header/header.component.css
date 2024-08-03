@@ -1,0 +1,26 @@
+.main{
+  background-color: #eddde2;
+}
+
+.navbar .btn-outline-success {
+  --bs-btn-color: #894d59;
+  --bs-btn-border-color: #894d59;
+  --bs-btn-hover-bg: #894d59;
+  --bs-btn-hover-border-color: #894d59;
+  --bs-btn-active-bg: #894d59;
+  --bs-btn-active-border-color: #894d59;
+
+}
+.navbar .btn-success {
+  --bs-btn-bg: #894d59;
+  --bs-btn-border-color: #894d59;
+  --bs-btn-hover-bg: #72424a;
+  --bs-btn-hover-border-color: #613a41;
+  --bs-btn-active-bg: #613a41;
+  --bs-btn-active-border-color: #391e23;
+  --bs-nav-link-color: #eddde2;
+  --bs-nav-link-hover-color: #eddde2
+}
+
+li.icon,li.icon a.btn{padding: 0;}
+i{font-size: 27px; padding-top: 5px;}

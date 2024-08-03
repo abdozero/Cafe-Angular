@@ -1,5 +1,65 @@
 <div class="main">
-    <div class="nav nav-dark">
-        Mohammed Adel
-    </div>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">Brand Name</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    @if(userType == "none")
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Products</a>
+                        </li>
+                    }
+                    @else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Products</a>
+                        </li>
+                    }
+                    @if(userType == "admin")
+                    {
+                      <li class="nav-item">
+                          <a class="nav-link" href="#">Orders</a>
+                      </li>
+                    }
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    @if(userType == "none")
+                    {
+                        <button class="nav-item  btn btn-outline-success">
+                            <a class="nav-link d-inline" href="#">Login</a>
+                        </button>
+                        <button class="nav-item btn btn-success">
+                            <a class="nav-link d-inline" href="#">Sign Up</a>
+                        </button>
+                    }
+                    @else if(userType == "user")
+                    {
+                        <li class="nav-item btn icon">
+                            <a class="nav-link d-inline" href="#"><img src="Images/user-avatar.png" width="36" height="36"/></a>
+                        </li>
+                        <li class="nav-item btn icon">
+                            <a class="nav-link d-inline" href="#"><i class="fa fa-shopping-cart"></i></a>
+                        </li>
+                    }
+                    @if(userType == "admin" || userType == "user")
+                    {
+                        <button class="nav-item btn btn-success">
+                            <a class="nav-link d-inline" href="#">Sign Out</a>
+                        </button>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
 </div>
