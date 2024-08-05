@@ -16,8 +16,15 @@
     padding-block: 0;
 }
 
-.btn-outline-rose-taupe, .btn-rose-taupe{
-    margin-left: 0.75rem;
+@media (min-width: 992px) {
+    .btn-outline-rose-taupe, .btn-rose-taupe{
+        margin-left: 0.75rem;
+    }
+}
+@media (max-width: 991px) {
+    .btn-outline-rose-taupe, .btn-rose-taupe{
+        margin-bottom: 0.75rem;
+    }
 }
 
 .btn-outline-rose-taupe {
