@@ -1,7 +1,7 @@
 <div class="main">
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="#">Brand Name</a>
+            <a class="navbar-brand" routerLink="/">Brand Name</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -9,59 +9,59 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" routerLink="/">Home</a>
                     </li>
                     @if(userType == "none")
                     {
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Products</a>
+                            <a class="nav-link" routerLink="/login">Products</a>
                         </li>
                     }
                     @else
                     {
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Products</a>
+                            <a class="nav-link" routerLink="/products">Products</a>
                         </li>
                     }
                     @if(userType == "admin")
                     {
-                      <li class="nav-item">
-                          <a class="nav-link" href="#">Orders</a>
-                      </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/orders">Orders</a>
+                        </li>
                     }
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" routerLink="/about">About</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     @if(userType == "none")
                     {
                         <button class="nav-item  btn btn-outline-success">
-                            <a class="nav-link d-inline" href="#">Login</a>
+                            <a class="nav-link d-inline" routerLink="/login">Login</a>
                         </button>
                         <button class="nav-item btn btn-success">
-                            <a class="nav-link d-inline" href="#">Sign Up</a>
+                            <a class="nav-link d-inline" routerLink="/sign-up">Sign Up</a>
                         </button>
                     }
                     @else
                     {
                         <li class="nav-item">
-                            <a class="nav-link">{{userName}}</a>
+                            <a class="nav-link" routerLink="/profile">{{userName}}</a>
                         </li>
                     }
                     @if(userType == "user")
                     {
                         <li class="nav-item btn avatar">
-                            <a class="nav-link d-inline" href="#"><img src="Images/user-avatar.png" width="36" height="36"/></a>
+                            <a class="nav-link d-inline" routerLink="/profile"><img src="Images/user-avatar.png" width="36" height="36"/></a>
                         </li>
                         <li class="nav-item btn cart">
-                            <a class="nav-link d-inline" href="#"><i class="fa fa-shopping-cart"></i></a>
+                            <a class="nav-link d-inline" routerLink="/cart"><i class="fa fa-shopping-cart"></i></a>
                         </li>
                     }
                     @if(userType == "admin" || userType == "user")
                     {
                         <button class="nav-item btn btn-success">
-                            <a class="nav-link d-inline" href="#">Sign Out</a>
+                            <a class="nav-link d-inline" routerLink="/">Sign Out</a>
                         </button>
                     }
                 </ul>
