@@ -17,7 +17,7 @@
                             <a class="nav-link" routerLink="/login">Products</a>
                         </li>
                     }
-                    @else
+                    @else if(userType == "user")
                     {
                         <li class="nav-item">
                             <a class="nav-link" routerLink="/products">Products</a>
@@ -25,8 +25,11 @@
                     }
                     @if(userType == "admin")
                     {
+                      <li class="nav-item">
+                          <a class="nav-link" routerLink="/admin-products">Products</a>
+                      </li>
                         <li class="nav-item">
-                            <a class="nav-link" routerLink="/orders">Orders</a>
+                            <a class="nav-link" routerLink="/admin-orders">Orders</a>
                         </li>
                     }
                     <li class="nav-item">
@@ -36,21 +39,18 @@
                 <ul class="navbar-nav ms-auto">
                     @if(userType == "none")
                     {
-                        <button class="nav-item  btn btn-outline-success">
-                            <a class="nav-link d-inline" routerLink="/login">Login</a>
+                        <button class="nav-item btn btn-outline-rose-taupe">
+                            <a class="nav-link" routerLink="/login">Login</a>
                         </button>
-                        <button class="nav-item btn btn-success">
-                            <a class="nav-link d-inline" routerLink="/sign-up">Sign Up</a>
+                        <button class="nav-item btn btn-rose-taupe">
+                            <a class="nav-link" routerLink="/register">Sign Up</a>
                         </button>
                     }
-                    @else
+                    @else if(userType == "user")
                     {
                         <li class="nav-item">
                             <a class="nav-link" routerLink="/profile">{{userName}}</a>
                         </li>
-                    }
-                    @if(userType == "user")
-                    {
                         <li class="nav-item btn avatar">
                             <a class="nav-link d-inline" routerLink="/profile"><img src="Images/user-avatar.png" width="36" height="36"/></a>
                         </li>
@@ -58,10 +58,16 @@
                             <a class="nav-link d-inline" routerLink="/cart"><i class="fa fa-shopping-cart"></i></a>
                         </li>
                     }
+                    @else if (userType == "admin")
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link">{{userName}}</a>
+                        </li>
+                    }
                     @if(userType == "admin" || userType == "user")
                     {
-                        <button class="nav-item btn btn-success">
-                            <a class="nav-link d-inline" routerLink="/">Sign Out</a>
+                        <button class="nav-item btn btn-rose-taupe">
+                            <a class="nav-link" routerLink="/" (click)="signout()">Sign Out</a>
                         </button>
                     }
                 </ul>
