@@ -9,7 +9,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" routerLink="/">Home</a>
+                        <a class="nav-link" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" routerLink="/">Home</a>
                     </li>
                     @if(userType == "none")
                     {
@@ -20,20 +20,20 @@
                     @else if(userType == "user")
                     {
                         <li class="nav-item">
-                            <a class="nav-link" routerLink="/products">Products</a>
+                            <a class="nav-link" routerLinkActive="active" routerLink="/products">Products</a>
                         </li>
                     }
                     @if(userType == "admin")
                     {
                       <li class="nav-item">
-                          <a class="nav-link" routerLink="/admin-products">Products</a>
+                          <a class="nav-link" routerLinkActive="active" routerLink="/admin-products">Products</a>
                       </li>
                         <li class="nav-item">
-                            <a class="nav-link" routerLink="/admin-orders">Orders</a>
+                            <a class="nav-link" routerLinkActive="active" routerLink="/admin-orders">Orders</a>
                         </li>
                     }
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="/about">About</a>
+                        <a class="nav-link" routerLinkActive="active" routerLink="/about">About</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
@@ -43,19 +43,19 @@
                             <a class="nav-link" routerLink="/login">Login</a>
                         </button>
                         <button class="nav-item btn btn-rose-taupe">
-                            <a class="nav-link" routerLink="/register">Sign Up</a>
+                            <a class="nav-link"  routerLink="/register">Sign Up</a>
                         </button>
                     }
                     @else if(userType == "user")
                     {
                         <li class="nav-item">
-                            <a class="nav-link" routerLink="/profile">{{userName}}</a>
+                            <a class="nav-link" routerLinkActive="active" routerLink="/profile">{{userName}}</a>
                         </li>
                         <li class="nav-item btn avatar">
                             <a class="nav-link d-inline" routerLink="/profile"><img src="Images/user-avatar.png" width="36" height="36"/></a>
                         </li>
                         <li class="nav-item btn cart">
-                            <a class="nav-link d-inline" routerLink="/cart"><i class="fa fa-shopping-cart"></i></a>
+                            <a class="nav-link d-inline" routerLinkActive="active" routerLink="/cart"><i class="fa fa-shopping-cart"></i></a>
                         </li>
                     }
                     @else if (userType == "admin")
