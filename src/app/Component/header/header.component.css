@@ -1,8 +1,12 @@
 .main{
   background-color: #eddde2;
 }
+.btn
+{
+  --bs-btn-padding-y: 0;
+}
 
-.navbar .btn-outline-success {
+.btn-outline-success {
   --bs-btn-color: #894d59;
   --bs-btn-border-color: #894d59;
   --bs-btn-hover-bg: #894d59;
@@ -11,7 +15,7 @@
   --bs-btn-active-border-color: #894d59;
 
 }
-.navbar .btn-success {
+.btn-success {
   --bs-btn-bg: #894d59;
   --bs-btn-border-color: #894d59;
   --bs-btn-hover-bg: #72424a;
@@ -22,5 +26,8 @@
   --bs-nav-link-hover-color: #eddde2
 }
 
-li.icon,li.icon a.btn{padding: 0;}
+.avatar, .user-name{
+  --bs-btn-padding-x: 0;
+}
+/* li.icon,li.icon a.btn{padding: 0;} */
 i{font-size: 27px; padding-top: 5px;}

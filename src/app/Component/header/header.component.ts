@@ -9,5 +9,6 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  userType = "admin";
+  userType = "user";
+  userName = "User Name";
 }

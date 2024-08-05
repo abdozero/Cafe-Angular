@@ -43,12 +43,18 @@
                             <a class="nav-link d-inline" href="#">Sign Up</a>
                         </button>
                     }
-                    @else if(userType == "user")
+                    @else
                     {
-                        <li class="nav-item btn icon">
+                        <li class="nav-item">
+                            <a class="nav-link">{{userName}}</a>
+                        </li>
+                    }
+                    @if(userType == "user")
+                    {
+                        <li class="nav-item btn avatar">
                             <a class="nav-link d-inline" href="#"><img src="Images/user-avatar.png" width="36" height="36"/></a>
                         </li>
-                        <li class="nav-item btn icon">
+                        <li class="nav-item btn cart">
                             <a class="nav-link d-inline" href="#"><i class="fa fa-shopping-cart"></i></a>
                         </li>
                     }
