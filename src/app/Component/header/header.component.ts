@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 export class HeaderComponent {
   userType = "admin";
   userName = "User Name";
+  @Input() BrandName: string = "Brand Name";
   signout(){
     this.userType = "none";
   }
