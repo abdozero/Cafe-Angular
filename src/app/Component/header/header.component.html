@@ -14,53 +14,53 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" routerLink="/">Home</a>
+                            <a class="nav-link" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" routerLink="/" data-bs-dismiss="offcanvas">Home</a>
                         </li>
                         @if(userType == "none")
                         {
                             <li class="nav-item">
-                                <a class="nav-link" routerLink="/login">Products</a>
+                                <a class="nav-link" routerLink="/login" data-bs-dismiss="offcanvas">Products</a>
                             </li>
                         }
                         @else if(userType == "user")
                         {
                             <li class="nav-item">
-                                <a class="nav-link" routerLinkActive="active" routerLink="/products">Products</a>
+                                <a class="nav-link" routerLinkActive="active" routerLink="/products" data-bs-dismiss="offcanvas">Products</a>
                             </li>
                         }
                         @if(userType == "admin")
                         {
                             <li class="nav-item">
-                                <a class="nav-link" routerLinkActive="active" routerLink="/admin-products">Products</a>
+                                <a class="nav-link" routerLinkActive="active" routerLink="/admin-products" data-bs-dismiss="offcanvas">Products</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" routerLinkActive="active" routerLink="/admin-orders">Orders</a>
+                                <a class="nav-link" routerLinkActive="active" routerLink="/admin-orders" data-bs-dismiss="offcanvas">Orders</a>
                             </li>
                         }
                         <li class="nav-item">
-                            <a class="nav-link" routerLinkActive="active" routerLink="/about">About</a>
+                            <a class="nav-link" routerLinkActive="active" routerLink="/about" data-bs-dismiss="offcanvas">About</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav ms-auto">
                         @if(userType == "none")
                         {
                             <button class="nav-item btn btn-outline-rose-taupe">
-                                <a class="nav-link" routerLink="/login">Login</a>
+                                <a class="nav-link" routerLink="/login" data-bs-dismiss="offcanvas">Login</a>
                             </button>
                             <button class="nav-item btn btn-rose-taupe">
-                                <a class="nav-link"  routerLink="/register">Sign Up</a>
+                                <a class="nav-link"  routerLink="/register" data-bs-dismiss="offcanvas">Sign Up</a>
                             </button>
                         }
                         @else if(userType == "user")
                         {
                             <li class="nav-item">
-                                <a class="nav-link" routerLinkActive="active" routerLink="/profile">{{userName}}</a>
+                                <a class="nav-link" routerLinkActive="active" routerLink="/profile" data-bs-dismiss="offcanvas">{{userName}}</a>
                             </li>
                             <li class="nav-item btn avatar">
-                                <a class="nav-link d-inline" routerLink="/profile"><img src="Images/user-avatar.png" width="36" height="36"/></a>
+                                <a class="nav-link d-inline" routerLink="/profile" data-bs-dismiss="offcanvas"><img src="Images/user-avatar.png" width="36" height="36"/></a>
                             </li>
                             <li class="nav-item btn cart">
-                                <a class="nav-link d-inline" routerLinkActive="active" routerLink="/cart"><i class="fa fa-shopping-cart"></i></a>
+                                <a class="nav-link d-inline" routerLinkActive="active" routerLink="/cart" data-bs-dismiss="offcanvas"><i class="fa fa-shopping-cart"></i></a>
                             </li>
                         }
                         @else if (userType == "admin")
@@ -72,7 +72,7 @@
                         @if(userType == "admin" || userType == "user")
                         {
                             <button class="nav-item btn btn-rose-taupe">
-                                <a class="nav-link" routerLink="/" (click)="signout()">Sign Out</a>
+                                <a class="nav-link" routerLink="/" (click)="signout()" data-bs-dismiss="offcanvas">Sign Out</a>
                             </button>
                         }
                     </ul>
