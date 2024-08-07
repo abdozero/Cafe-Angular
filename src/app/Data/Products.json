@@ -1,0 +1,22 @@
+{
+  "Products": [
+    {
+      "title": "Product 1",
+      "image": "/Products/1.jpeg",
+      "price": 29.99,
+      "details": "Details about product 1."
+    },
+    {
+      "title": "Product 2",
+      "image": "/Products/2.jpeg",
+      "price": 39.99,
+      "details": "Details about product 2."
+    },
+    {
+      "title": "Product 3",
+      "image": "/Products/3.jpeg",
+      "price": 49.99,
+      "details": "Details about product 3."
+    }
+  ]
+}
