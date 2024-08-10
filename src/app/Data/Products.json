@@ -1,19 +1,73 @@
 {
   "Products": [
     {
+      "id": "1",
+      "name": "adding",
       "title": "Product 1",
       "image": "/Products/1.jpeg",
       "price": 29.99,
       "details": "Details about product 1."
     },
     {
+      "id": "2",
+      "name": "meat",
       "title": "Product 2",
       "image": "/Products/2.jpeg",
       "price": 39.99,
       "details": "Details about product 2."
     },
     {
+      "id": "3",
+      "name": "rice",
       "title": "Product 3",
+      "image": "/Products/3.jpeg",
+      "price": 49.99,
+      "details": "Details about product 3."
+    },
+    {
+      "id": "4",
+      "name": "adding",
+      "title": "Product 4",
+      "image": "/Products/1.jpeg",
+      "price": 29.99,
+      "details": "Details about product 1."
+    },
+    {
+      "id": "5",
+      "name": "meat",
+      "title": "Product 5",
+      "image": "/Products/2.jpeg",
+      "price": 39.99,
+      "details": "Details about product 2."
+    },
+    {
+      "id": "6",
+      "name": "rice",
+      "title": "Product 6",
+      "image": "/Products/3.jpeg",
+      "price": 49.99,
+      "details": "Details about product 3."
+    },
+    {
+      "id": "7",
+      "name": "adding",
+      "title": "Product 7",
+      "image": "/Products/1.jpeg",
+      "price": 29.99,
+      "details": "Details about product 1."
+    },
+    {
+      "id": "8",
+      "name": "meat",
+      "title": "Product 8",
+      "image": "/Products/2.jpeg",
+      "price": 39.99,
+      "details": "Details about product 2."
+    },
+    {
+      "id": "9",
+      "name": "rice",
+      "title": "Product 9",
       "image": "/Products/3.jpeg",
       "price": 49.99,
       "details": "Details about product 3."

@@ -1,1 +1,10 @@
-<p>cart works!</p>
+<!-- src/app/components/cart/cart.component.html -->
+<h2>Shopping Cart</h2>
+<div *ngIf="cartItems.length === 0">Your cart is empty.</div>
+<ul *ngIf="cartItems.length > 0">
+  <li *ngFor="let item of cartItems">
+    <h3>{{ item.title }}</h3>
+    <p>{{ item.details }}</p>
+    <!-- <p>Price: {{ item.price | currency }}</p> -->
+  </li>
+</ul>

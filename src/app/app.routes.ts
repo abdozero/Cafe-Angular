@@ -10,13 +10,13 @@ import { ProfileComponent } from './Component/profile/profile.component';
 import { CartComponent } from './Component/cart/cart.component';
 
 export const routes: Routes = [
-  { path: "", component: HomeComponent },
-  { path: "products", component: ProductsComponent },
-  { path: "admin-products", component: AdminProductsComponent },
-  { path: "admin-orders", component: AdminOrdersComponent },
-  { path: "about", component: AboutComponent },
-  { path: "login", component: LoginComponent },
-  { path: "register", component: RegisterComponent },
-  { path: "profile", component: ProfileComponent },
-  { path: "cart", component: CartComponent }
+  { path: '', component: HomeComponent },
+  { path: 'products', component: ProductsComponent },
+  { path: 'admin-products', component: AdminProductsComponent },
+  { path: 'admin-orders', component: AdminOrdersComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'cart', component: CartComponent },
 ];
