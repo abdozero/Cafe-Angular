@@ -26,6 +26,8 @@
     }
 }
 
+.avatar, .cart{border: none;}
+
 .avatar, .user-name{
     --bs-btn-padding-x: 0;
 }
