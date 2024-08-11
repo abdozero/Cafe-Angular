@@ -1,0 +1,11 @@
+@media (min-width: 768px)
+{
+  .orders{
+    max-height: 600px;
+    overflow-y: auto;
+  }
+}
+
+.order{background-color: #f9f6f7;}
+.order:hover{background-color: #f5eef0;}
+.order-header:hover{cursor: pointer;}
