@@ -1,0 +1,82 @@
+<div class="main alert text-center mt-3">
+  <form [formGroup]="userForm">
+    <div class="dropdown dropend">
+      <img class="img mt-3" [src]="tempProfilePicture" width="144" height="144" data-bs-toggle="dropdown"/>
+      <ul class="dropdown-menu">
+        <li><label for="profilePicture" class="dropdown-item">Change</label></li>
+        <li><button class="dropdown-item" (click)="removeProfilePicture()">Remove</button></li>
+      </ul>
+      <input formControlName="profilePicture" accept="image/jpeg" type="file" id="profilePicture" (change)="onFileSelected($event)"/>
+    </div>
+    <div class="input-group mt-3">
+      <span class="input-group-text col-6">User Name</span>
+      <input type="text" class="form-control" value="{{userName}}" readonly>
+    </div>
+    <div class="input-group mt-3">
+      <span class="input-group-text col-6">Email</span>
+      <input formControlName="email" type="email" class="form-control" required/>
+      @if(!isValidEmail)
+      {
+        <span class="input-group-text col-1"><i class="fa-solid fa-triangle-exclamation"></i></span>
+      }
+    </div>
+    @if(!isValidEmail)
+    {
+      <div class="text-danger text-start">text-danger Email!!</div>
+    }
+    <div class="input-group mt-3">
+      <span class="input-group-text col-6">Old Password</span>
+      <input formControlName="password" type="password" class="form-control"/>
+      @if(userForm.controls.password.value == "")
+      {
+        <span class="input-group-text col-1"><i class="fa-solid fa-triangle-exclamation"></i></span>
+      }
+    </div>
+    @if(userForm.controls.password.value == "")
+    {
+      <div class="text-danger text-start">Enter The Password!!</div>
+    }
+    <div class="input-group mt-3">
+      <span class="input-group-text col-6">New Password</span>
+      <input formControlName="newPassword" type="password" class="form-control"/>
+    </div>
+    <div class="input-group mt-3">
+      <span class="input-group-text col-6">Confirm New Password</span>
+      <input formControlName="confirmNewPassword" type="password" class="form-control"/>
+      @if(!isValidConfermNewPassword)
+      {
+        <span class="input-group-text col-1"><i class="fa-solid fa-triangle-exclamation"></i></span>
+      }
+    </div>
+    @if(!isValidConfermNewPassword)
+    {
+      <div class="text-danger text-start">Does not match the new password!!</div>
+    }
+    <div class="input-group mt-3">
+      <span class="input-group-text col-6">Gender</span>
+      <select formControlName="gender" class="form-select">
+        @for(g of genders; track g)
+        {
+          <option [ngValue]="g">{{g}}</option>
+        }
+      </select>
+    </div>
+    <div class="input-group mt-3">
+      <span class="input-group-text col-6" id="basic-addon1">Address</span>
+      <input formControlName="address" type="text" class="form-control" required>
+    </div>
+    <div class="btns mt-3">
+      <button class="btn btn-outline-rose-taupe col-6" (click)="reset()">Reset</button>
+      <button type="submit" class="btn btn-rose-taupe col-6" (click)="save(userForm.controls.password.value)">Save</button>
+    </div>
+    @if(saveDone === true)
+    {
+      <div class="text-success text-start">Done!!</div>
+    }
+    @else if(saveDone === false)
+    {
+      <div class="text-danger text-start">Wrong Password!!</div>
+    }
+  </form>
+</div>
+

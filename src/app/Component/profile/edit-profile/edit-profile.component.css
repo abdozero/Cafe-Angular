@@ -1,0 +1,51 @@
+.main{
+  height: fit-content;
+}
+@media(min-width: 768px){
+  .main{
+    border-right: 1px solid #391e23;
+    border-radius: 0;
+  }
+}
+
+.main img{
+  border-radius: 10px;
+  border: 1px solid #391e23;
+}
+.main img:hover{
+  cursor: pointer;
+  border-width: 2px;
+}
+
+.main input[type="file"]{
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.input-group-text{
+  background-color:#613a41;
+  border-color: #391e23;
+  color: #f9f6f7;
+}
+
+.btn-rose-taupe{
+  color: #f9f6f7;
+  background-color: #613a41;
+}
+
+.btn-rose-taupe:hover{
+  color: #eddde2;
+  background-color: #391e23;
+}
+
+.btn-outline-rose-taupe{
+  color: #613a41;
+  border-color: #613a41;
+}
+
+.btn-outline-rose-taupe:hover{
+  color: #eddde2;
+  border-color: #391e23;
+  background-color: #391e23;
+}
