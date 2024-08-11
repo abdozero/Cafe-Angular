@@ -1,5 +1,5 @@
 .main{
-    background-color: #eddde2;
+    background-color: var(--color-3);
 }
 
 .navbar{
@@ -7,7 +7,7 @@
 }
 
 .container{
-    border-bottom: 1px solid #391e23;
+    border-bottom: 1px solid var(--color-11);
     padding-bottom: 0.5rem;
 }
 

@@ -1,22 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+:root{
+  --color-1: #F9F6F7;
+  --color-2: #F5EEF0;
+  --color-3: #EDDDE2;
+  --color-4: #DFC2CC;
+  --color-5: #CA9CAA;
+  --color-6: #B87C8D;
+  --color-7: #9A5B69;
+  --color-8: #894D59;
+  --color-9: #72424A;
+  --color-10: #613A41;
+  --color-11: #391E23;
+}
+
 .container{max-width: 1080px;}
 
 .btn-outline-rose-taupe {
-  --bs-btn-color: #894d59;
-  --bs-btn-border-color: #894d59;
-  --bs-btn-hover-bg: #894d59;
-  --bs-btn-hover-border-color: #894d59;
-  --bs-btn-active-bg: #894d59;
-  --bs-btn-active-border-color: #894d59;
+  --bs-btn-color: var(--color-8);
+  --bs-btn-border-color: var(--color-8);
+  --bs-btn-hover-bg: var(--color-8);
+  --bs-btn-hover-border-color: var(--color-8);
+  --bs-btn-active-bg: var(--color-8);
+  --bs-btn-active-border-color: var(--color-8);
 }
 
 .btn-rose-taupe {
-  --bs-btn-bg: #894d59;
-  --bs-btn-border-color: #894d59;
-  --bs-btn-hover-bg: #72424a;
-  --bs-btn-hover-border-color: #613a41;
-  --bs-btn-active-bg: #613a41;
-  --bs-btn-active-border-color: #391e23;
-  --bs-nav-link-color: #eddde2;
-  --bs-nav-link-hover-color: #eddde2;
+  --bs-btn-bg: var(--color-8);
+  --bs-btn-border-color: var(--color-8);
+  --bs-btn-hover-bg: var(--color-9);
+  --bs-btn-hover-border-color: var(--color-10);
+  --bs-btn-active-bg: var(--color-10);
+  --bs-btn-active-border-color: var(--color-11);
+  --bs-nav-link-color: var(--color-3);
+  --bs-nav-link-hover-color: var(--color-3);
 }

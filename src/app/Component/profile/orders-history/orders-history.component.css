@@ -6,6 +6,6 @@
   }
 }
 
-.order{background-color: #f9f6f7;}
-.order:hover{background-color: #f5eef0;}
+.order{background-color: var(--color-1);}
+.order:hover{background-color: var(--color-2);}
 .order-header:hover{cursor: pointer;}
