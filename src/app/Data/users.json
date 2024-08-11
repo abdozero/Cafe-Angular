@@ -1,0 +1,42 @@
+{
+  "users": [
+    {
+      "id": "mohammed-adel",
+      "profilePicture": "Images/profile-picture.jpg",
+      "userType": "user",
+      "userName": "Mohammed Adel",
+      "email": "mohammedadel@gmail.com",
+      "password": "1234",
+      "gender": "Male",
+      "address": "Somewhere St.",
+      "orders": [
+        {
+          "id": "3519",
+          "datetime": "2024-02-22 16:31:56",
+          "products": [
+            {
+              "id": "235",
+              "name": "Product1",
+              "price": 5,
+              "quantity": 2
+            },
+            {
+              "id": "756",
+              "name": "Product2",
+              "price": 7,
+              "quantity": 4
+            }
+          ],
+          "total": 38
+        }
+      ]
+    },
+    {
+      "id": "mohammed-adel-admin",
+      "userType": "admin",
+      "userName": "Mohammed Adel Admin",
+      "email": "mohammedadeladmin@gmail.com",
+      "password": "1234"
+    }
+  ]
+}
