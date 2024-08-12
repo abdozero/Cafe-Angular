@@ -50,13 +50,13 @@ export class EditProfileComponent {
     gender: new FormControl(this.gender),
     address: new FormControl(this.address)
   });
-  get isValidEmail(){return this.userForm.controls.email.valid;}
-  get isValidConfermNewPassword(){
-    return this.userForm.controls.newPassword.value === this.userForm.controls.confirmNewPassword.value;
+  get emailIsNotValid(){return !this.userForm.controls.email.valid;}
+  get confermNewPasswordIsNotMatchNewPassword(){
+    return this.userForm.controls.newPassword.value !== this.userForm.controls.confirmNewPassword.value;
   }
 
   save(password: string | null){
-    if(this.userForm.valid && this.isValidConfermNewPassword)
+    if(this.userForm.valid && this.confermNewPasswordIsNotMatchNewPassword)
     {
       let update: any = {
         "profilePicture": this.tempProfilePicture,
