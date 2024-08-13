@@ -43,12 +43,12 @@
     <div class="input-group mt-3">
       <span class="input-group-text col-6">Confirm New Password</span>
       <input formControlName="confirmNewPassword" type="password" class="form-control"/>
-      @if(confermNewPasswordIsNotMatchNewPassword)
+      @if(confermNewPasswordDoesNotMatchNewPassword)
       {
         <span class="input-group-text col-1"><i class="fa-solid fa-triangle-exclamation"></i></span>
       }
     </div>
-    @if(confermNewPasswordIsNotMatchNewPassword)
+    @if(confermNewPasswordDoesNotMatchNewPassword)
     {
       <div class="text-danger text-start">Does not match the new password!!</div>
     }

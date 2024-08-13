@@ -51,12 +51,12 @@ export class EditProfileComponent {
     address: new FormControl(this.address)
   });
   get emailIsNotValid(){return !this.userForm.controls.email.valid;}
-  get confermNewPasswordIsNotMatchNewPassword(){
+  get confermNewPasswordDoesNotMatchNewPassword(){
     return this.userForm.controls.newPassword.value !== this.userForm.controls.confirmNewPassword.value;
   }
 
   save(password: string | null){
-    if(this.userForm.valid && this.confermNewPasswordIsNotMatchNewPassword)
+    if(this.userForm.valid && this.confermNewPasswordDoesNotMatchNewPassword)
     {
       let update: any = {
         "profilePicture": this.tempProfilePicture,
