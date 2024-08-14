@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+/*Copper Rose*/
 :root{
   --color-1: #F9F6F7;
   --color-2: #F5EEF0;
@@ -13,9 +13,39 @@
   --color-11: #391E23;
 }
 
+/*Royal Blue*/
+/* :root{
+  --color-1: #F0F4FE;
+  --color-2: #DEE7F9;
+  --color-3: #C4D6F9;
+  --color-4: #9CBBF4;
+  --color-5: #6C97EE;
+  --color-6: #446FE6;
+  --color-7: #3556DB;
+  --color-8: #2C43C9;
+  --color-9: #2A38A3;
+  --color-10: #273481;
+  --color-11: #1C224F;
+} */
+
+/*Violet Eggplant*/
+/* :root{
+  --color-1: #FBF4FF;
+  --color-2: #F7E7FF;
+  --color-3: #EFCFFF;
+  --color-4: #E5A9FE;
+  --color-5: #D776FC;
+  --color-6: #C342F3;
+  --color-7: #A922F7;
+  --color-8: #9019B4;
+  --color-9: #761692;
+  --color-10: #641877;
+  --color-11: #400250;
+} */
+
 .container{max-width: 1080px;}
 
-.btn-outline-rose-taupe {
+.btn.btn-outline-rose-taupe {
   --bs-btn-color: var(--color-8);
   --bs-btn-border-color: var(--color-8);
   --bs-btn-hover-bg: var(--color-8);
@@ -24,7 +54,8 @@
   --bs-btn-active-border-color: var(--color-8);
 }
 
-.btn-rose-taupe {
+.btn.btn-rose-taupe {
+  --bs-btn-color: var(--color-2);
   --bs-btn-bg: var(--color-8);
   --bs-btn-border-color: var(--color-8);
   --bs-btn-hover-bg: var(--color-9);
@@ -33,4 +64,8 @@
   --bs-btn-active-border-color: var(--color-11);
   --bs-nav-link-color: var(--color-3);
   --bs-nav-link-hover-color: var(--color-3);
+}
+
+.btn.btn-rose-taupe:hover{
+  color: var(--color-1);
 }
