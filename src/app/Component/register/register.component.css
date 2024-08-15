@@ -36,7 +36,7 @@ img:hover{
   border-width: 2px;
 }
 .dropdown-menu{
-  --bs-dropdown-min-width: 7rem;
+  --bs-dropdown-min-width: 6rem;
 }
 
 input[type="file"]{
