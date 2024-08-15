@@ -8,7 +8,6 @@ import { AppComponent } from "../../app.component";
   standalone: true,
   imports: [EditProfileComponent, OrdersHistoryComponent, AppComponent],
   templateUrl: './profile.component.html',
-  styleUrl: './profile.component.css'
 })
 export class ProfileComponent {
 

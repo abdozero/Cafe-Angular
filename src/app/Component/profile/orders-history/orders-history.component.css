@@ -1,3 +1,4 @@
+.orders{overflow-x: hidden;}
 @media (min-width: 768px)
 {
   .orders{
@@ -5,7 +6,7 @@
     overflow-y: auto;
   }
 }
-
-.order{background-color: var(--color-1);}
-.order:hover{background-color: var(--color-2);}
+.order span{ font-weight: bold;}
+.order:hover{background-color: var(--color-1);}
 .order-header:hover{cursor: pointer;}
+.h1{font-size: calc(2.375rem + 1.5vw)}
