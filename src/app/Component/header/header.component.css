@@ -15,6 +15,12 @@
     padding-block: 0;
 }
 
+.btn-outline-rose-taupe:hover{
+  border-color: var(--color-11);
+  background-color: var(--color-11);
+}
+.btn-outline-rose-taupe:hover .nav-link{color: var(--color-3);}
+
 @media (min-width: 992px) {
     .btn-outline-rose-taupe, .btn-rose-taupe{
         margin-left: 0.75rem;
