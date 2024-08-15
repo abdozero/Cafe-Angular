@@ -15,6 +15,7 @@ interface Order{
   datetime: string;
   products: Product[];
   total: number;
+  status: string;
 }
 
 interface Product{
