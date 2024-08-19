@@ -1,0 +1,84 @@
+{
+  "Products": [
+    {
+      "id": "1",
+      "name": "adding",
+      "title": "meal salad",
+      "image": "/Products/1.jpeg",
+      "price": 29.99,
+      "details": "adds."
+    },
+    {
+      "id": "2",
+      "name": "meal ",
+      "title": "meal meat",
+      "image": "/Products/2.jpeg",
+      "price": 39.99,
+      "details": "meat meal."
+    },
+    {
+      "id": "3",
+      "name": "meal meatrice",
+      "title": "Product 3",
+      "image": "/Products/3.jpeg",
+      "price": 49.99,
+      "details": " meat-rice."
+    },
+    {
+      "id": "4",
+      "name": "cappuccino-coffe",
+      "title": "cappuccino-coffe",
+      "image": "Products/cappuccino.PNG",
+      "price": 20.99,
+      "details": "cappuccino-coffe."
+    },
+    {
+      "id": "5",
+      "name": "cafelatte-coffe",
+      "title": "Product 5",
+      "image": "Products/cafelatte.PNG",
+      "price": 30.99,
+      "details": "Details about product 5."
+    },
+    {
+      "id": "6",
+      "name": "espressocoffe-coffe",
+      "title": "Product 6",
+      "image": "Products/espressocoffe.PNG",
+      "price": 49.99,
+      "details": "espressocoffe."
+    },
+    {
+      "id": "7",
+      "name": "meatproduct",
+      "title": "Product 7",
+      "image": "Products/meatproduct.PNG",
+      "price": 29.99,
+      "details": "Details about product 1."
+    },
+    {
+      "id": "8",
+      "name": "italyancoffe ",
+      "title": "Product 8",
+      "image": "Products/italyancoffe.PNG",
+      "price": 39.99,
+      "details": "italyancoffe."
+    },
+    {
+      "id": "9",
+      "name": "chicken",
+      "title": "Product 9",
+      "image": "Products/chicken.PNG",
+      "price": 49.99,
+      "details": "cooked chicken."
+    },
+    {
+      "id": "9",
+      "name": "friedchicken",
+      "title": "Product 9",
+      "image": "Products/friedchicken.PNG",
+      "price": 49.99,
+      "details": "friedchicken."
+    }
+  ]
+}

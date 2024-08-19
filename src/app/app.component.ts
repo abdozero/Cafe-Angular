@@ -1,13 +1,26 @@
-import { Component } from '@angular/core';
+import { HeaderComponent } from './Component/header/header.component';
+import { FooterComponent } from "./Component/footer/footer.component";
+import { HomeComponent } from './Component/home/home.component';
+import { AboutComponent } from "./Component/about/about.component";
 import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { ProductsComponent } from './Component/products/products.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [
+    RouterOutlet,
+    ProductsComponent,
+    HomeComponent,
+    AboutComponent,
+    HeaderComponent,
+    FooterComponent
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'Restaurant';
+  BrandName: string = "Brand Name";
 }
