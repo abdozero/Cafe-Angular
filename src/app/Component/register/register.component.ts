@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from '../../Services/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { User } from '../../model/user.model';
-import { Conditional } from '@angular/compiler';
 import { Router } from '@angular/router';
 
 @Component({
@@ -71,23 +70,9 @@ export class RegisterComponent {
     this.profilePicture = "Images/profile-picture.jpg";
   }
 
-
-  // checkUserExist(): ValidatorFn{
-  //   return (control: AbstractControl): ValidationErrors | null=>
-  //   {
-  //     return this.UService.CheckUserExist(control.value).subscribe(
-  //       exists=>{
-  //         return exists? {userExist: true}:null;
-  //       },
-  //       error=> console.log(error)
-  //     )
-  //   }
-  // }
-
   registerForm = new FormGroup({
     name: new FormControl("", [Validators.required,
                               Validators.pattern(/^[\s\t]*[a-zA-Z0-9]+([\s][a-zA-Z0-9]+)*[\s\t]*$/),
-                              // this.checkUserExist()
                             ]),
     email: new FormControl("", [Validators.email, Validators.required]),
     gender: new FormControl("", Validators.required),
