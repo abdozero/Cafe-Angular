@@ -10,9 +10,9 @@ import { RouterModule } from '@angular/router';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  userType = "user";
-  userName = "User Name";
-  @Input() BrandName: string = "Brand Name";
+  userType = "none";
+  userName = "";
+  @Input() BrandName: string = "";
   signout(){
     this.userType = "none";
   }

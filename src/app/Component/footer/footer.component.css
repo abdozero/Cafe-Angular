@@ -1,6 +1,6 @@
 .main{
-  background-color: #391e23;
-  color: #f9f6f7;
+  background-color: var(--color-11);
+  color: var(--color-1);
   padding-top: 35px;
   padding-bottom: 10px;
 }
@@ -10,7 +10,7 @@ p{
 }
 
 a{
-  color: #f9f6f7;
+  color: var(--color-1);
   font-style: none;
 }
 .contact-us a{

@@ -15,14 +15,14 @@
     <div class="input-group mt-3">
       <span class="input-group-text col-6">Email</span>
       <input formControlName="email" type="email" class="form-control" required/>
-      @if(!isValidEmail)
+      @if(emailIsNotValid)
       {
         <span class="input-group-text col-1"><i class="fa-solid fa-triangle-exclamation"></i></span>
       }
     </div>
-    @if(!isValidEmail)
+    @if(emailIsNotValid)
     {
-      <div class="text-danger text-start">text-danger Email!!</div>
+      <div class="text-danger text-start">Invalid Email!!</div>
     }
     <div class="input-group mt-3">
       <span class="input-group-text col-6">Old Password</span>
@@ -43,12 +43,12 @@
     <div class="input-group mt-3">
       <span class="input-group-text col-6">Confirm New Password</span>
       <input formControlName="confirmNewPassword" type="password" class="form-control"/>
-      @if(!isValidConfermNewPassword)
+      @if(confermNewPasswordDoesNotMatchNewPassword)
       {
         <span class="input-group-text col-1"><i class="fa-solid fa-triangle-exclamation"></i></span>
       }
     </div>
-    @if(!isValidConfermNewPassword)
+    @if(confermNewPasswordDoesNotMatchNewPassword)
     {
       <div class="text-danger text-start">Does not match the new password!!</div>
     }

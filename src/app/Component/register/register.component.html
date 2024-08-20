@@ -1,1 +1,112 @@
-<p>register works!</p>
+<div class="main just d-flex align-items-center">
+  <div class="container">
+    <div class="row">
+      <form [formGroup]="registerForm" class="col-lg-5 col-md-6 col-sm-9">
+        <h1>Register</h1>
+            <div id="register-carousel" class="carousel slide" data-bs-touch="false">
+              <div class="carousel-inner">
+                <div class="register carousel-item active">
+                  <h3>User Info</h3>
+                  <div class="input-group mt-4">
+                    <span class="input-group-text col-4">User Name</span>
+                    <input type="text" class="form-control" formControlName="name" (change)="inputChange()"/>
+                    @if(userNameIsNotValid || usedName)
+                    {
+                      <span class="input-group-text col-1"><i class="fa-solid fa-triangle-exclamation"></i></span>
+                    }
+                  </div>
+                  @if(userNameIsNotValid && userName !== "" )
+                  {
+                    <div class="text-danger text-start">User name have to be contains letters (a-z or A-Z) or numbers and white spaces!!</div>
+                  }
+
+                  @if(usedName === true)
+                  {
+                    <div class="text-danger text-start">User name allready taken</div>
+                  }
+                  <div class="input-group mt-4">
+                    <span class="input-group-text col-4">Email</span>
+                    <input formControlName="email" type="email" class="form-control" (change)="inputChange()" required/>
+                    @if(emailIsNotValid)
+                    {
+                      <span class="input-group-text col-1"><i class="fa-solid fa-triangle-exclamation"></i></span>
+                    }
+                  </div>
+                  @if(emailIsNotValid && email !== "")
+                  {
+                    <div class="text-danger text-start">Invalid Email!!</div>
+                  }
+                  <div class="input-group mt-4">
+                    <span class="input-group-text col-4">Gender</span>
+                    <select formControlName="gender" class="form-select" (change)="blur($event)">
+                        <option value="" disabled selected>Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                    @if(genderIsNotSelected)
+                    {
+                      <span class="input-group-text col-1"><i class="fa-solid fa-triangle-exclamation"></i></span>
+                    }
+                  </div>
+                  <div class="input-group mt-4">
+                    <span class="input-group-text col-4" id="basic-addon1">Address</span>
+                    <input formControlName="address" type="text" class="form-control" required>
+                  </div>
+                </div>
+                <div class="register carousel-item">
+                  <h3>Account Password</h3>
+                  <div class="input-group slide-2">
+                    <span class="input-group-text col-md-5 col-6" >Password</span>
+                    <input formControlName="password" type="password" class="form-control" (change)="inputChange()"/>
+                  </div>
+                  <div class="input-group slide-2">
+                    <span class="input-group-text col-md-5 col-6">Confirm Password</span>
+                    <input formControlName="confirmPassword" type="password" class="form-control" (change)="inputChange()"/>
+                    @if(confermPasswordDoesNotMatchPassword)
+                    {
+                      <span class="input-group-text col-1"><i class="fa-solid fa-triangle-exclamation"></i></span>
+                    }
+                  </div>
+                  @if(confermPasswordDoesNotMatchPassword)
+                  {
+                    <div class="text-danger text-start">Does not match the password!!</div>
+                  }
+                </div>
+                <div class="register carousel-item">
+                  <h3>Profile Picture</h3>
+                  <div class="dropdown dropend text-center">
+                    <img class="img mt-3" [src]="profilePicture" width="144" height="144" data-bs-toggle="dropdown"/>
+                    <ul class="dropdown-menu">
+                      <li><label for="profilePicture" class="dropdown-item">Select</label></li>
+                      <li><button class="dropdown-item" (click)="removeProfilePicture()">Remove</button></li>
+                    </ul>
+                    <input formControlName="profilePicture" accept="image/jpeg" type="file" id="profilePicture" (change)="onFileSelected($event)"/>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="d-flex justify-content-end">
+                  @if(slide > 1)
+                  {
+                    <button class="carousel-control-prev" data-bs-target="#register-carousel" data-bs-slide="prev" (click)="prev()">
+                      <span class="btn btn-outline-rose-taupe">Back</span>
+                    </button>
+                  }
+                  @if(slide < 3)
+                  {
+                    <button class="carousel-control-next" data-bs-target="#register-carousel" data-bs-slide="next" (click)="next()" [disabled]="!validSlide">
+                      <span class=" btn btn-rose-taupe">Next</span>
+                    </button>
+                  }
+                  @if(slide == 3)
+                  {
+                    <button class="carousel-control-next" type="click" (click)="createAccount()">
+                      <span class=" btn btn-rose-taupe">Create Account</span>
+                    </button>
+                  }
+                </div>
+              </div>
+            </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -4,12 +4,14 @@ import { HomeComponent } from './Component/home/home.component';
 import { AboutComponent } from "./Component/about/about.component";
 import { RouterOutlet } from '@angular/router';
 import { Component } from '@angular/core';
+import { ProductsComponent } from './Component/products/products.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     RouterOutlet,
+    ProductsComponent,
     HomeComponent,
     AboutComponent,
     HeaderComponent,

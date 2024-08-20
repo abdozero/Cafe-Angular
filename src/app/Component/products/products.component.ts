@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Product } from '../../model/product.model'; // Adjust path accordingly
 import { CartService } from '../../Services/cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -21,7 +22,8 @@ export class ProductsComponent implements OnInit {
 
   constructor(
     public prodserve: ProductService,
-    public cartService: CartService
+    public cartService: CartService,
+    public router: Router // Inject Router
   ) {}
 
   ngOnInit(): void {
@@ -40,11 +42,15 @@ export class ProductsComponent implements OnInit {
       return this.Products;
     }
     return this.Products.filter((product) =>
-      product.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+      product.name.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
+  
   addToCart(product: Product) {
     this.cartService.addToCart(product);
     alert(`${product.title} added to cart!`);
+  }
+  viewCart() {
+    this.router.navigate(['/cart']); // Navigate to cart route
   }
 }

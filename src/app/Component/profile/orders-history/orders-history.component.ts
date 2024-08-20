@@ -9,6 +9,7 @@ import { Component } from '@angular/core';
 })
 export class OrdersHistoryComponent {
   constructor(){this.fillOrder();}
+  status: string[] = ["Pending", "Accepted", "Rejected"];
   orders: any = [];
   fillOrder(){
     for(let i = 1; i < 100; i++)
@@ -32,6 +33,7 @@ export class OrdersHistoryComponent {
           }
         ],
         total: i*i*10 + (i+1)*(i+1)*10,
+        status: this.status[i%3]
       })
   }
 }
