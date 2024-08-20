@@ -16,6 +16,9 @@
 <div class="products">
   <h2>Featured Products</h2>
   <div class="product-list">
+    <button (click)="viewCart()">View Cart</button>
+    <!-- View Cart button -->
+
     <div
       *ngFor="let product of filteredProducts()"
       class="product-card border-copper-rose-200 shadow-copper-rose-300"
