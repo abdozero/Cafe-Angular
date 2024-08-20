@@ -8,15 +8,21 @@ import { LoginComponent } from './Component/login/login.component';
 import { RegisterComponent } from './Component/register/register.component';
 import { ProfileComponent } from './Component/profile/profile.component';
 import { CartComponent } from './Component/cart/cart.component';
+import { ErrorComponent } from './Component/error/error.component';
+import { UserAuthService } from './Services/user-auth.service';
+import { AdminAuthService } from './Services/admin-auth.service';
+import { NoneAuthService } from './Services/none-auth.service';
 
 export const routes: Routes = [
   { path: "", component: HomeComponent },
-  { path: "products", component: ProductsComponent },
-  { path: "admin-products", component: AdminProductsComponent },
-  { path: "admin-orders", component: AdminOrdersComponent },
+  { path: "products", component: ProductsComponent, canActivate:[UserAuthService] },
+  { path: "admin-products", component: AdminProductsComponent, canActivate: [AdminAuthService] },
+  { path: "admin-orders", component: AdminOrdersComponent, canActivate: [AdminAuthService] },
   { path: "about", component: AboutComponent },
-  { path: "login", component: LoginComponent },
-  { path: "register", component: RegisterComponent },
-  { path: "profile", component: ProfileComponent },
-  { path: "cart", component: CartComponent }
+  { path: "login", component: LoginComponent, canActivate: [NoneAuthService] },
+  { path: "register", component: RegisterComponent, canActivate: [NoneAuthService] },
+  { path: "profile", component: ProfileComponent, canActivate: [UserAuthService] },
+  { path: "cart", component: CartComponent, canActivate: [UserAuthService] },
+  { path: "error", component: ErrorComponent},
+  { path: "**", component: ErrorComponent}
 ];
