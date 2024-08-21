@@ -42,9 +42,10 @@ export class ProductsComponent implements OnInit {
       return this.Products;
     }
     return this.Products.filter((product) =>
-      product.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+      product.name.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
+  
   addToCart(product: Product) {
     this.cartService.addToCart(product);
     alert(`${product.title} added to cart!`);

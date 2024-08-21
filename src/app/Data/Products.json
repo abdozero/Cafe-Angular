@@ -3,74 +3,82 @@
     {
       "id": "1",
       "name": "adding",
-      "title": "Product 1",
+      "title": "meal salad",
       "image": "/Products/1.jpeg",
       "price": 29.99,
-      "details": "Details about product 1."
+      "details": "adds."
     },
     {
       "id": "2",
-      "name": "meat",
-      "title": "Product 2",
+      "name": "meal ",
+      "title": "meal meat",
       "image": "/Products/2.jpeg",
       "price": 39.99,
-      "details": "Details about product 2."
+      "details": "meat meal."
     },
     {
       "id": "3",
-      "name": "rice",
+      "name": "meal meatrice",
       "title": "Product 3",
       "image": "/Products/3.jpeg",
       "price": 49.99,
-      "details": "Details about product 3."
+      "details": " meat-rice."
     },
     {
       "id": "4",
-      "name": "adding",
-      "title": "Product 4",
-      "image": "/Products/1.jpeg",
-      "price": 29.99,
-      "details": "Details about product 1."
+      "name": "cappuccino-coffe",
+      "title": "cappuccino-coffe",
+      "image": "Products/cappuccino.PNG",
+      "price": 20.99,
+      "details": "cappuccino-coffe."
     },
     {
       "id": "5",
-      "name": "meat",
+      "name": "cafelatte-coffe",
       "title": "Product 5",
-      "image": "/Products/2.jpeg",
-      "price": 39.99,
-      "details": "Details about product 2."
+      "image": "Products/cafelatte.PNG",
+      "price": 30.99,
+      "details": "Details about product 5."
     },
     {
       "id": "6",
-      "name": "rice",
+      "name": "espressocoffe-coffe",
       "title": "Product 6",
-      "image": "/Products/3.jpeg",
+      "image": "Products/espressocoffe.PNG",
       "price": 49.99,
-      "details": "Details about product 3."
+      "details": "espressocoffe."
     },
     {
       "id": "7",
-      "name": "adding",
+      "name": "meatproduct",
       "title": "Product 7",
-      "image": "/Products/1.jpeg",
+      "image": "Products/meatproduct.PNG",
       "price": 29.99,
       "details": "Details about product 1."
     },
     {
       "id": "8",
-      "name": "meat",
+      "name": "italyancoffe ",
       "title": "Product 8",
-      "image": "/Products/2.jpeg",
+      "image": "Products/italyancoffe.PNG",
       "price": 39.99,
-      "details": "Details about product 2."
+      "details": "italyancoffe."
     },
     {
       "id": "9",
-      "name": "rice",
+      "name": "chicken",
       "title": "Product 9",
-      "image": "/Products/3.jpeg",
+      "image": "Products/chicken.PNG",
       "price": 49.99,
-      "details": "Details about product 3."
+      "details": "cooked chicken."
+    },
+    {
+      "id": "9",
+      "name": "friedchicken",
+      "title": "Product 9",
+      "image": "Products/friedchicken.PNG",
+      "price": 49.99,
+      "details": "friedchicken."
     }
   ]
 }

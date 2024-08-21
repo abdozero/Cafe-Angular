@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, map, Observable, of, switchMap, throwError } from 'rxjs';
+import { catchError, map, Observable, of, Subject, switchMap, throwError } from 'rxjs';
 import { User } from '../model/user.model';
 
 @Injectable({
@@ -8,6 +8,8 @@ import { User } from '../model/user.model';
 })
 export class UserService {
   DB_URL = "http://localhost:3000/users";
+  private loggedIn = false;
+  private userType = "none";
 
   constructor(public myHttp: HttpClient) { }
 
@@ -18,7 +20,7 @@ export class UserService {
         if (error.status === 404) {
           return of(false);
         }
-        else {return throwError(error);}
+        else {return throwError(() => error);}
       })
     );
   }
@@ -33,33 +35,46 @@ export class UserService {
     );
   }
 
-  GetUserByName(name:string, password:string){
-    let id = name.toLowerCase().trim().replace(/[\s\t]+/g, "-");
-    return this.VerifyPassword(id, password).pipe(
-      switchMap(isVerified => {
-        if (isVerified)
-        {
-          return this.myHttp.get(this.DB_URL+"/"+id);
-        }
-        else
-        {
-          return of({ error: 'Password verification failed' });
-        }
-      })
-    );
+  Login(name:string, password:string){
+    const id = "user-" + name.toLowerCase().trim().replace(/[\s\t]+/g, "-");
+    return this.GetUserById(id, password);
   }
 
-  GetUserById(id: string, password:string){
+  Signout(){
+    this.loggedIn = false;
+    this.userType = "none";
+  }
+
+  IsAuthenticated(){
+    return this.loggedIn;
+  }
+
+  get UserType(){return this.userType;}
+
+  private sendUser = new Subject<User>();
+  sendUser$ = this.sendUser.asObservable();
+  GetUserById(id: string, password:string): Observable<User | {error: string, password?: string | null}>{
     return this.VerifyPassword(id, password).pipe(
       switchMap(isVerified => {
         if (isVerified)
         {
-          return this.myHttp.get(this.DB_URL+"/"+id);
+
+          const user = this.myHttp.get<User>(this.DB_URL+"/"+id);
+          user.subscribe((user: User)=>{
+            this.userType = user.userType;
+            this.sendUser.next(user);
+          });
+          this.loggedIn = true;
+          return user;
         }
         else
         {
-          return of({ error: 'Password verification failed' });
+          return of({ error: 'Password verification failed', password: "" });
         }
+      }),
+      catchError(err => {
+        console.error('Error occurred:', err);
+        return of({ error: 'An error occurred', password: "" });
       })
     );
   }

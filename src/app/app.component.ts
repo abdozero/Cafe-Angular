@@ -1,26 +1,35 @@
 import { HeaderComponent } from './Component/header/header.component';
 import { FooterComponent } from './Component/footer/footer.component';
-import { HomeComponent } from './Component/home/home.component';
-import { AboutComponent } from './Component/about/about.component';
 import { RouterOutlet } from '@angular/router';
-import { Component } from '@angular/core';
-import { ProductsComponent } from './Component/products/products.component';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from './Services/user.service';
+import { User } from './model/user.model';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    RouterOutlet,
-    HomeComponent,
-    ProductsComponent,
-    AboutComponent,
-    HeaderComponent,
-    FooterComponent,
-  ],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  constructor(private userService: UserService) {}
   title = 'Restaurant';
   BrandName: string = 'Brand Name';
+  user: User = {
+    id: '',
+    userType: '',
+    profilePicture: '',
+    userName: '',
+    email: '',
+    gender: '',
+    address: '',
+    orders: [],
+  };
+  ngOnInit() {
+    this.userService.sendUser$.subscribe((user: User) => {
+      this.user = user;
+      delete this.user.password;
+    });
+  }
 }
