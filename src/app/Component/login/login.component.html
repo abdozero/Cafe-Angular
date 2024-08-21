@@ -1,22 +1,23 @@
-  <div>
-<div class="form-group">
-  <label for="email">Email:</label>
-  <input
-    type="email"
-    id="email"
-    formControlName="email"
-    placeholder="Enter your email"/>
+<div class="container">
+  <form [formGroup]="loginForm">
+    <div class="form-group">
+      <label for="username">username:</label>
+      <input
+        type="text"
+        formControlName="username"
+        placeholder="Enter your username"/>
     </div>
 
     <div class="form-group">
       <label for="password">Password:</label>
       <input
         type="password"
-        id="password"
         formControlName="password"
         placeholder="Enter your password"
-        required></div>
+        required>
+    </div>
 
-          <!-- <h4>Login</h4> -->
-          <input type="button" value="Login" (click)="Fire()">
-        </div>
+            <!-- <h4>Login</h4> -->
+    <input type="button" value="Login" (click)="login()">
+  </form>
+</div>
