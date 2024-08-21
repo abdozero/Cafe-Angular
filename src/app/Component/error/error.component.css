@@ -1,0 +1,12 @@
+.main{
+  color: var(--color-11);
+}
+.very-big{
+  font-size: 20rem;
+  font-weight: bold;
+}
+
+.big{
+  font-size: 2rem;
+  font-weight: bold;
+}
