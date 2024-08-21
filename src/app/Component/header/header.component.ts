@@ -9,19 +9,21 @@ import { HttpClientModule } from '@angular/common/http';
   standalone: true,
   imports: [FormsModule, RouterModule, HttpClientModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  userType = "user";
-  userName = "";
-  @Input() BrandName: string = "";
+  userType = 'user';
+  userName = '';
+  @Input() BrandName: string = '';
 
+  constructor(
+    private UService: UserService,
+    private myHttp: HttpClientModule
+  ) {}
 
-  constructor(private UService: UserService, private myHttp: HttpClientModule){}
-
-  signout(){
-    this.userType = "none";
-    this.userName = "";
+  signout() {
+    this.userType = 'user';
+    this.userName = '';
     this.UService.Signout();
   }
 }
