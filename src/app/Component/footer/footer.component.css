@@ -1,0 +1,18 @@
+.main{
+  background-color: var(--color-11);
+  color: var(--color-1);
+  padding-top: 35px;
+  padding-bottom: 10px;
+}
+p{
+  margin-bottom: 0;
+  font-size: small;
+}
+
+a{
+  color: var(--color-1);
+  font-style: none;
+}
+.contact-us a{
+  font-size: 24px;
+}

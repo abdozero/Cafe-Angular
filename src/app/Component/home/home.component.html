@@ -1,1 +1,17 @@
-<p>home works!</p>
+<div class="home-container bg-light">
+  <h1 class="text-primary">Welcome to Our Store</h1>
+  <div class="promotion bg-copper-rose-100">
+    <h2>Current Promotions</h2>
+  </div>
+  <div class="products">
+    <h2>Featured Products</h2>
+    <div class="product-list">
+      <div *ngFor="let product of Products" class="product-card border-copper-rose-200 shadow-copper-rose-300">
+        <img [src]="product.image" alt="{{product.title}}" />
+        <h3 class="text-copper-rose-700">{{product.title}}</h3>
+        <p>{{product.details}}</p>
+        <p>Price: ${{product.price}}</p>
+      </div>
+    </div>
+  </div>
+</div>

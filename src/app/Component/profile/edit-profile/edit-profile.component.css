@@ -1,0 +1,51 @@
+.main{
+  height: fit-content;
+}
+@media(min-width: 768px){
+  .main{
+    border-right: 1px solid var(--color-11);
+    border-radius: 0;
+  }
+}
+
+.main img{
+  border-radius: 10px;
+  border: 1px solid var(--color-11);
+}
+.main img:hover{
+  cursor: pointer;
+  border-width: 2px;
+}
+
+.main input[type="file"]{
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.input-group-text{
+  background-color:var(--color-10);
+  border-color: var(--color-11);
+  color: var(--color-1);
+}
+
+.btn-rose-taupe{
+  color: var(--color-1);
+  background-color: var(--color-10);
+}
+
+.btn-rose-taupe:hover{
+  color: var(--color-3);
+  background-color: var(--color-11);
+}
+
+.btn-outline-rose-taupe{
+  color: var(--color-10);
+  border-color: var(--color-10);
+}
+
+.btn-outline-rose-taupe:hover{
+  color: var(--color-3);
+  border-color: var(--color-11);
+  background-color: var(--color-11);
+}

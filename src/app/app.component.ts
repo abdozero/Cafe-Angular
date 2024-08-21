@@ -1,25 +1,39 @@
-import { Component } from '@angular/core';
-import { RouterModule, RouterOutlet } from '@angular/router'; // Import RouterOutlet for routing
-import { LoginComponent } from './Component/login/login.component';
+import { HeaderComponent } from './Component/header/header.component';
+import { FooterComponent } from "./Component/footer/footer.component";
+import { RouterOutlet } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from './Services/user.service';
+import { User } from './model/user.model';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,
-    LoginComponent,
-  RouterModule], // Import LoginComponent here
+  imports: [
+    RouterOutlet,
+    HeaderComponent,
+    FooterComponent
+  ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'Restaurant'; // Title for the application
-
-  // Property to store data from LoginComponent
-  loginDataFromChild: string = '';
-
-  // Method to handle event emitted by LoginComponent
-  handleLoginData(data: string) {
-    console.log("Data received from LoginComponent:", data);
-    this.loginDataFromChild = data; // Update the property with received data
+export class AppComponent implements OnInit {
+  constructor(private userService: UserService){}
+  title = 'Restaurant';
+  BrandName: string = "Brand Name";
+  user: User = {
+    id: "",
+    userType: "",
+    profilePicture: "",
+    userName: "",
+    email: "",
+    gender: "",
+    address: "",
+    orders: []
+  }
+  ngOnInit(){
+    this.userService.sendUser$.subscribe((user: User)=>{
+      this.user = user;
+      delete this.user.password;
+    });
   }
 }

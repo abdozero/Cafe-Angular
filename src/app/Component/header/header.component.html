@@ -1,3 +1,105 @@
-<p>header works!</p>
-<h1>idguidglsigiu;ush</h1>
-<h2>hi eslam</h2>
+<div class="main sticky-top">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" routerLink="/">{{BrandName}}</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="offcanvas offcanvas-end" id="offcanvasNavbar">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">{{BrandName}}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav mr-auto d-block d-lg-none">
+                        @if(userType == "user")
+                        {
+                            <li class="nav-item btn avatar">
+                                <a class="nav-link d-inline-block" routerLink="/profile" data-bs-dismiss="offcanvas"><img src="Images/profile-picture.jpg" width="36" height="36"/></a>
+                            </li>
+                            <li class="nav-item d-inline">
+                                <a class="nav-link d-inline-block" routerLinkActive="active" routerLink="/profile" data-bs-dismiss="offcanvas">{{userName}}</a>
+                            </li>
+                            <li class="nav-item btn cart">
+                                <a class="nav-link d-inline-block" routerLinkActive="active" routerLink="/cart" data-bs-dismiss="offcanvas"><i class="fa fa-shopping-cart"></i></a>
+                            </li>
+                        }
+                        @else if (userType == "admin")
+                        {
+                          <li class="nav-item">
+                              <a class="nav-link">{{userName}}</a>
+                          </li>
+                        }
+                    </ul>
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" routerLink="/" data-bs-dismiss="offcanvas">Home</a>
+                        </li>
+
+                        @if(userType == "none")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" routerLink="/login" data-bs-dismiss="offcanvas">Products</a>
+                            </li>
+                        }
+                        @else if(userType == "user")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" routerLinkActive="active" routerLink="/products" data-bs-dismiss="offcanvas">Products</a>
+                            </li>
+                        }
+                        @if(userType == "admin")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" routerLinkActive="active" routerLink="/admin-products" data-bs-dismiss="offcanvas">Products</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" routerLinkActive="active" routerLink="/admin-orders" data-bs-dismiss="offcanvas">Orders</a>
+                            </li>
+                        }
+                        <li class="nav-item">
+                            <a class="nav-link" routerLinkActive="active" routerLink="/about" data-bs-dismiss="offcanvas">About</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto">
+                        @if(userType == "none")
+                        {
+                            <button class="nav-item btn btn-outline-rose-taupe">
+                                <a class="nav-link" routerLink="/login" data-bs-dismiss="offcanvas">Login</a>
+                            </button>
+                            <button class="nav-item btn btn-rose-taupe">
+                                <a class="nav-link"  routerLink="/register" data-bs-dismiss="offcanvas">Sign Up</a>
+                            </button>
+                        }
+                        @else if(userType == "user")
+                        {
+                            <li class="nav-item d-none d-lg-block">
+                                <a class="nav-link" routerLinkActive="active" routerLink="/profile" data-bs-dismiss="offcanvas">{{userName}}</a>
+                            </li>
+                            <li class="nav-item btn avatar d-none d-lg-block">
+                                <a class="nav-link d-inline" routerLink="/profile" data-bs-dismiss="offcanvas"><img src="Images/profile-picture.jpg" width="36" height="36"/></a>
+                            </li>
+                            <li class="nav-item btn cart d-none d-lg-block">
+                                <a class="nav-link d-inline" routerLinkActive="active" routerLink="/cart" data-bs-dismiss="offcanvas"><i class="fa fa-shopping-cart"></i></a>
+                            </li>
+                        }
+                        @else if (userType == "admin")
+                        {
+                            <li class="nav-item d-none d-lg-block">
+                                <a class="nav-link">{{userName}}</a>
+                            </li>
+                        }
+                        @if(userType == "admin" || userType == "user")
+                        {
+                            <button class="nav-item btn btn-rose-taupe">
+                                <a class="nav-link" routerLink="/" (click)="signout()" data-bs-dismiss="offcanvas">Sign Out</a>
+                            </button>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
