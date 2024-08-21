@@ -8,12 +8,11 @@ import { HttpClientModule } from '@angular/common/http';
   selector: 'app-header',
   standalone: true,
   imports: [FormsModule, RouterModule, HttpClientModule],
-  providers: [UserService],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  userType = "none";
+  userType = "user";
   userName = "";
   @Input() BrandName: string = "";
 
@@ -22,6 +21,7 @@ export class HeaderComponent {
 
   signout(){
     this.userType = "none";
+    this.userName = "";
     this.UService.Signout();
   }
 }

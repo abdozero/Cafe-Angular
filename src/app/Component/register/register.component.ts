@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
   selector: 'app-register',
   standalone: true,
   imports: [FormsModule, ReactiveFormsModule, HttpClientModule],
-  providers: [UserService],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })

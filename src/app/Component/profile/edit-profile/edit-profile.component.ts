@@ -8,7 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
   standalone: true,
   imports: [FormsModule, ReactiveFormsModule, HttpClientModule],
   templateUrl: './edit-profile.component.html',
-  providers: [UserService],
   styleUrl: './edit-profile.component.css'
 })
 export class EditProfileComponent {
