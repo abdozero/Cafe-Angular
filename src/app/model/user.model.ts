@@ -4,7 +4,7 @@ export interface User {
   profilePicture: string | ArrayBuffer | null;
   userName: string | null;
   email: string | null;
-  password: string | null;
+  password?: string | null;
   gender: string | null;
   address: string | null;
   orders: Order[];
