@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { UserService } from '../../Services/user.service';
 import { HttpClientModule } from '@angular/common/http';
+import { User } from '../../model/user.model';
 
 @Component({
   selector: 'app-header',
@@ -12,16 +13,39 @@ import { HttpClientModule } from '@angular/common/http';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  userType = "user";
-  userName = "";
+  user: User = {
+    id: "",
+    userType: "none",
+    profilePicture: "",
+    userName: "",
+    email: "",
+    gender: "",
+    address: "",
+    orders: []
+  }
   @Input() BrandName: string = "";
 
 
-  constructor(private UService: UserService, private myHttp: HttpClientModule){}
+  constructor(private userService: UserService, private myHttp: HttpClientModule){}
+
+  ngOnInit(){
+    this.userService.sendUser$.subscribe((user: User)=>{
+      this.user = user;
+      delete this.user.password;
+    });
+  }
 
   signout(){
-    this.userType = "none";
-    this.userName = "";
-    this.UService.Signout();
+    this.user = {
+      id: "",
+      userType: "none",
+      profilePicture: "",
+      userName: "",
+      email: "",
+      gender: "",
+      address: "",
+      orders: []
+    }
+    this.userService.Signout();
   }
 }
