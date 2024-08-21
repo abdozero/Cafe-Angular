@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, map, Observable, of, switchMap, throwError } from 'rxjs';
+import { catchError, map, Observable, of, Subject, switchMap, throwError } from 'rxjs';
 import { User } from '../model/user.model';
 
 @Injectable({
@@ -51,25 +51,30 @@ export class UserService {
 
   get UserType(){return this.userType;}
 
-  GetUserById(id: string, password:string){
+  private sendUser = new Subject<User>();
+  sendUser$ = this.sendUser.asObservable();
+  GetUserById(id: string, password:string): Observable<User | {error: string, password?: string | null}>{
     return this.VerifyPassword(id, password).pipe(
       switchMap(isVerified => {
         if (isVerified)
         {
 
-          const user = this.myHttp.get(this.DB_URL+"/"+id);
-          user.subscribe(user=> this.userType = (user as User).userType);
+          const user = this.myHttp.get<User>(this.DB_URL+"/"+id);
+          user.subscribe((user: User)=>{
+            this.userType = user.userType;
+            this.sendUser.next(user);
+          });
           this.loggedIn = true;
           return user;
         }
         else
         {
-          return of({ error: 'Password verification failed' });
+          return of({ error: 'Password verification failed', password: "" });
         }
       }),
       catchError(err => {
         console.error('Error occurred:', err);
-        return of({ error: 'An error occurred' });
+        return of({ error: 'An error occurred', password: "" });
       })
     );
   }
