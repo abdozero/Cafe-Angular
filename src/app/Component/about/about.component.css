@@ -1,50 +1,24 @@
-
-.about-container {
-  padding: 20px;
-  max-width: 1600px;
-  margin: 0 auto;
-  background-color: #eddde2;
-  background-image: url('../../../../public/Images/OIP.jpeg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+h1 {
+  color: var(--color-10);
+  font-weight: bold;
 }
 
-.text-primary {
-  color: #b87c8d;
+section {
+  border: 1px solid var(--color-11);
+  background-color: var(--color-1);
+}
+/* @media (min-width: 992px)
+{
+  .mission, .vision{
+    max-width: 530px;
+  }
+} */
+
+h2 {
+  color: var(--color-9);
 }
 
-.about-content {
-  margin-top: 20px;
+p {
+  color: var(--color-10);
 }
 
-
-.about-description,
-.about-mission,
-.about-vision {
-  background-color: rgba(237, 221, 226, 0.8);
-  border: 1px solid #ca9caa;
-  border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 20px;
-}
-
-
-.about-description h2,
-.about-mission h2,
-.about-vision h2 {
-  color: #72424a;
-}
-
-.about-description p,
-.about-mission p,
-.about-vision p {
-  color: #613a41;
-}
-
-
-.about-description,
-.about-mission,
-.about-vision {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
