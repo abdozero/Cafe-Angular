@@ -10,42 +10,44 @@ import { User } from '../../model/user.model';
   standalone: true,
   imports: [FormsModule, RouterModule, HttpClientModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrl: './header.component.css',
 })
 export class HeaderComponent {
   user: User = {
-    id: "",
-    userType: "none",
-    profilePicture: "",
-    userName: "",
-    email: "",
-    gender: "",
-    address: "",
-    orders: []
-  }
-  @Input() BrandName: string = "";
+    id: '',
+    userType: 'none',
+    profilePicture: '',
+    userName: '',
+    email: '',
+    gender: '',
+    address: '',
+    orders: [],
+  };
+  @Input() BrandName: string = '';
 
+  constructor(
+    private userService: UserService,
+    private myHttp: HttpClientModule
+  ) {}
 
-  constructor(private userService: UserService, private myHttp: HttpClientModule){}
-
-  ngOnInit(){
-    this.userService.sendUser$.subscribe((user: User)=>{
+  ngOnInit() {
+    this.userService.sendUser$.subscribe((user: User) => {
       this.user = user;
       delete this.user.password;
     });
   }
 
-  signout(){
+  signout() {
     this.user = {
-      id: "",
-      userType: "none",
-      profilePicture: "",
-      userName: "",
-      email: "",
-      gender: "",
-      address: "",
-      orders: []
-    }
+      id: '',
+      userType: 'none',
+      profilePicture: '',
+      userName: '',
+      email: '',
+      gender: '',
+      address: '',
+      orders: [],
+    };
     this.userService.Signout();
   }
 }
