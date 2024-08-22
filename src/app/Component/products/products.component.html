@@ -5,6 +5,8 @@
   </div>
 
    Search Bar -->
+<!-- src/app/components/products/products.component.html -->
+
 <div class="search-bar">
   <input
     type="text"
@@ -14,21 +16,26 @@
 </div>
 
 <div class="products">
-  <h2>Featured Products</h2>
+  <h2 class="hed">Products</h2>
+
+  <button
+    (click)="viewCart()"
+    class="but"
+    onmouseover="this.style.background='linear-gradient(135deg, #8a4d59, #7a3c49)'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 12px rgba(0, 0, 0, 0.3)';"
+    onmouseout="this.style.background='linear-gradient(135deg, #9a5b69, #8a4d59)'; this.style.transform='scale(1)'; this.style.boxShadow='0 4px 8px rgba(0, 0, 0, 0.2)';"
+  >
+    View Cart
+  </button>
+
   <div class="product-list">
-    <button (click)="viewCart()">View Cart</button>
     <!-- View Cart button -->
 
-    <div
-      *ngFor="let product of filteredProducts()"
-      class="product-card border-copper-rose-200 shadow-copper-rose-300"
-    >
+    <div *ngFor="let product of filteredProducts()" class="product-card">
       <img [src]="product.image" alt="{{ product.title }}" />
-      <h3 class="text-copper-rose-700">{{ product.title }}</h3>
+      <h3>{{ product.title }}</h3>
       <p>{{ product.details }}</p>
       <p>Price: ${{ product.price }}</p>
       <button (click)="addToCart(product)">Add to Cart</button>
     </div>
   </div>
 </div>
-<!-- src/app/components/products/products.component.html -->

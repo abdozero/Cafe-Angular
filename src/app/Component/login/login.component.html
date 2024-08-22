@@ -6,7 +6,8 @@
         <input
           type="text"
           formControlName="username"
-          placeholder="Enter your username"/>
+          placeholder="Enter your username"
+        />
       </div>
 
       <div class="form-group password">
@@ -15,11 +16,17 @@
           type="password"
           formControlName="password"
           placeholder="Enter your password"
-          required>
+          required
+        />
       </div>
 
-              <!-- <h4>Login</h4> -->
-      <input class=" btn btn-rose-taupe" type="button" value="Login" (click)="login()">
+      <!-- <h4>Login</h4> -->
+      <input
+        class="btn btn-rose-taupe"
+        type="button"
+        value="Login"
+        (click)="login()"
+      />
     </form>
   </div>
 </div>
