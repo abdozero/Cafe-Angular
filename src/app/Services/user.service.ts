@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, map, Observable, of, Subject, switchMap, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, of, switchMap, throwError } from 'rxjs';
 import { User } from '../model/user.model';
 
 @Injectable({
@@ -51,7 +51,16 @@ export class UserService {
 
   get UserType(){return this.userType;}
 
-  private sendUser = new Subject<User>();
+  private sendUser = new BehaviorSubject<User>({
+    id: '',
+    userType: 'none',
+    profilePicture: '',
+    userName: '',
+    email: '',
+    gender: '',
+    address: '',
+    orders: [],
+  });
   sendUser$ = this.sendUser.asObservable();
   GetUserById(id: string, password:string| null): Observable<User | {error: string, password?: string | null}>{
     return this.VerifyPassword(id, password).pipe(
