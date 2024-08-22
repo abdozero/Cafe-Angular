@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Product } from '../../model/product.model'; // Adjust path accordingly
 import { CartService } from '../../Services/cart.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -19,38 +19,57 @@ import { Router } from '@angular/router';
 export class ProductsComponent implements OnInit {
   searchTerm: string = '';
   Products: Product[] = [];
+  filteredProducts: Product[] = [];
+  category: string = '';
 
   constructor(
     public prodserve: ProductService,
     public cartService: CartService,
-    public router: Router // Inject Router
+    public router: Router,
+    public route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.prodserve.getProducts().subscribe({
       next: (data: Product[]) => {
         this.Products = data;
+        this.route.queryParams.subscribe(params => {
+          this.category = params['category'] || '';
+          this.filterProducts();
+        });
       },
       error: (error) => {
         console.error('Error fetching products:', error);
-      },
+      }
     });
   }
 
-  filteredProducts() {
-    if (!this.searchTerm) {
-      return this.Products;
+  filterProducts() {
+    let filtered = this.Products;
+
+    if (this.category) {
+      filtered = filtered.filter(product =>
+        product.category &&
+        product.category.toLowerCase() === this.category.toLowerCase()
+      );
     }
-    return this.Products.filter((product) =>
-      product.name.toLowerCase().includes(this.searchTerm.toLowerCase())
-    );
+
+    if (this.searchTerm) {
+      filtered = filtered.filter(product =>
+        product.title &&
+        product.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    }
+
+    this.filteredProducts = filtered;
   }
-  
+
   addToCart(product: Product) {
     this.cartService.addToCart(product);
     alert(`${product.title} added to cart!`);
   }
+
   viewCart() {
-    this.router.navigate(['/cart']); // Navigate to cart route
+    this.router.navigate(['/cart']);
   }
 }
