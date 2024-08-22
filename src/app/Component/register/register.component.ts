@@ -159,7 +159,7 @@ export class RegisterComponent {
         password: this.registerForm.controls.password.value,
         profilePicture: this.profilePicture,
         orders: [],
-        carts: [],
+        cart: [],
       };
       this.UService.AddUser(account).subscribe(
         (response) => {
