@@ -35,8 +35,8 @@ export class UserService {
     );
   }
 
-  Login(name:string, password:string){
-    const id = "user-" + name.toLowerCase().trim().replace(/[\s\t]+/g, "-");
+  Login(name:string| null, password:string| null){
+    const id = "user-" + name?.toLowerCase().trim().replace(/[\s\t]+/g, "-");
     return this.GetUserById(id, password);
   }
 
@@ -53,7 +53,7 @@ export class UserService {
 
   private sendUser = new Subject<User>();
   sendUser$ = this.sendUser.asObservable();
-  GetUserById(id: string, password:string): Observable<User | {error: string, password?: string | null}>{
+  GetUserById(id: string, password:string| null): Observable<User | {error: string, password?: string | null}>{
     return this.VerifyPassword(id, password).pipe(
       switchMap(isVerified => {
         if (isVerified)
