@@ -77,4 +77,5 @@
 }
 .brand-name::after{
   content: " ";
+  letter-spacing: 0.2rem;
 }
