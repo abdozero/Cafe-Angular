@@ -47,6 +47,7 @@ export class ProductsComponent implements OnInit {
   filterProducts() {
     let filtered = this.Products;
 
+    // Filter by category
     if (this.category) {
       filtered = filtered.filter(product =>
         product.category &&
@@ -54,6 +55,7 @@ export class ProductsComponent implements OnInit {
       );
     }
 
+    // Filter by search term
     if (this.searchTerm) {
       filtered = filtered.filter(product =>
         product.title &&
