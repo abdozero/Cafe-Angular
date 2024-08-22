@@ -45,7 +45,7 @@ export class ProductsComponent implements OnInit {
       product.name.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
-  
+
   addToCart(product: Product) {
     this.cartService.addToCart(product);
     alert(`${product.title} added to cart!`);

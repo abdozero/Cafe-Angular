@@ -8,9 +8,12 @@ export interface User {
   gender: string | null;
   address: string | null;
   orders: Order[];
+  carts: cart[];
 }
-
-interface Order{
+interface cart {
+  products: Product[];
+}
+interface Order {
   id: string;
   datetime: string;
   products: Product[];
@@ -18,9 +21,9 @@ interface Order{
   status: string;
 }
 
-interface Product{
+interface Product {
   id: string;
-  name:  string;
+  name: string;
   price: number;
   quantity: number;
 }

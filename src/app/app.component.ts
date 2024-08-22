@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
     gender: '',
     address: '',
     orders: [],
+    carts: [],
   };
   ngOnInit() {
     this.userService.sendUser$.subscribe((user: User) => {

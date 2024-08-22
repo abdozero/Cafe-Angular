@@ -22,6 +22,7 @@ export class HeaderComponent {
     gender: '',
     address: '',
     orders: [],
+    carts: [],
   };
   @Input() BrandName: string = '';
 
@@ -47,6 +48,7 @@ export class HeaderComponent {
       gender: '',
       address: '',
       orders: [],
+      carts: [],
     };
     this.userService.Signout();
   }

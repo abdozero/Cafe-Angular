@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { UserService } from '../../Services/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { User } from '../../model/user.model';
@@ -10,16 +16,16 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [FormsModule, ReactiveFormsModule, HttpClientModule],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+  styleUrl: './register.component.css',
 })
 export class RegisterComponent {
-  genders = ["Male", "Female"];
+  genders = ['Male', 'Female'];
   slide = 1;
   validSlide = false;
   usedName: boolean | null = null;
-  profilePicture: string | ArrayBuffer | null = "Images/profile-picture.jpg";
+  profilePicture: string | ArrayBuffer | null = 'Images/profile-picture.jpg';
 
-  constructor(private UService: UserService, private router: Router){}
+  constructor(private UService: UserService, private router: Router) {}
 
   onFileSelected(event: Event): void {
     const file = (event.target as HTMLInputElement)?.files?.[0];
@@ -36,23 +42,39 @@ export class RegisterComponent {
     }
   }
 
-  blur(event: Event)
-  {
+  blur(event: Event) {
     const selectElement = event.target as HTMLSelectElement;
     selectElement.blur();
     this.inputChange();
   }
 
-  next(){this.slide++; this.inputChange();}
-  prev(){this.slide--; this.inputChange();}
+  next() {
+    this.slide++;
+    this.inputChange();
+  }
+  prev() {
+    this.slide--;
+    this.inputChange();
+  }
 
-  get slide1Valid(){return !this.userNameIsNotValid && !this.emailIsNotValid && !this.genderIsNotSelected;}
-  get slide2Valid(){return this.registerForm.controls.password.valid && !this.confermPasswordDoesNotMatchPassword;}
-  inputChange(){
-    switch(this.slide){
+  get slide1Valid() {
+    return (
+      !this.userNameIsNotValid &&
+      !this.emailIsNotValid &&
+      !this.genderIsNotSelected
+    );
+  }
+  get slide2Valid() {
+    return (
+      this.registerForm.controls.password.valid &&
+      !this.confermPasswordDoesNotMatchPassword
+    );
+  }
+  inputChange() {
+    switch (this.slide) {
       case 1:
         this.UService.CheckUserExist(this.userId).subscribe(
-          exist=> this.usedName = exist,
+          (exist) => (this.usedName = exist)
         );
         this.validSlide = this.slide1Valid && !this.usedName;
         break;
@@ -64,60 +86,90 @@ export class RegisterComponent {
     }
   }
 
-  removeProfilePicture()
-  {
-    this.profilePicture = "Images/profile-picture.jpg";
+  removeProfilePicture() {
+    this.profilePicture = 'Images/profile-picture.jpg';
   }
 
   registerForm = new FormGroup({
-    name: new FormControl("", [Validators.required,
-                              Validators.pattern(/^[\s\t]*[a-zA-Z0-9]+([\s][a-zA-Z0-9]+)*[\s\t]*$/),
-                            ]),
-    email: new FormControl("", [Validators.email, Validators.required]),
-    gender: new FormControl("", Validators.required),
-    address: new FormControl("", Validators.required),
-    password: new FormControl("", Validators.required),
-    confirmPassword: new FormControl("", Validators.required),
-    profilePicture: new FormControl("")
+    name: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^[\s\t]*[a-zA-Z0-9]+([\s][a-zA-Z0-9]+)*[\s\t]*$/),
+    ]),
+    email: new FormControl('', [Validators.email, Validators.required]),
+    gender: new FormControl('', Validators.required),
+    address: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
+    confirmPassword: new FormControl('', Validators.required),
+    profilePicture: new FormControl(''),
   });
-  get userNameIsNotValid(){return this.registerForm.controls.name.invalid;}
-  get emailIsNotValid(){return this.registerForm.controls.email.invalid;}
-  get genderIsNotSelected(){return this.registerForm.controls.gender.invalid && !this.registerForm.controls.gender.touched;}
-
-  get userId(){return "user-"+this.registerForm.controls.name.value?.trim().toLocaleLowerCase().replaceAll(/[\s\t]+/g, "-")}
-  get userName(){return this.registerForm.controls.name.value;}
-  get email(){return this.registerForm.controls.email.value;}
-  get address(){return this.registerForm.controls.address.value;}
-  get gender(){return this.registerForm.controls.gender.value;}
-
-  get confermPasswordDoesNotMatchPassword(){
-    return this.registerForm.controls.password.value !== this.registerForm.controls.confirmPassword.value;
+  get userNameIsNotValid() {
+    return this.registerForm.controls.name.invalid;
+  }
+  get emailIsNotValid() {
+    return this.registerForm.controls.email.invalid;
+  }
+  get genderIsNotSelected() {
+    return (
+      this.registerForm.controls.gender.invalid &&
+      !this.registerForm.controls.gender.touched
+    );
   }
 
-  createAccount(){
-    console.log(this.registerForm.valid && !this.confermPasswordDoesNotMatchPassword);
-    if(this.registerForm.valid && !this.confermPasswordDoesNotMatchPassword)
-    {
+  get userId() {
+    return (
+      'user-' +
+      this.registerForm.controls.name.value
+        ?.trim()
+        .toLocaleLowerCase()
+        .replaceAll(/[\s\t]+/g, '-')
+    );
+  }
+  get userName() {
+    return this.registerForm.controls.name.value;
+  }
+  get email() {
+    return this.registerForm.controls.email.value;
+  }
+  get address() {
+    return this.registerForm.controls.address.value;
+  }
+  get gender() {
+    return this.registerForm.controls.gender.value;
+  }
+
+  get confermPasswordDoesNotMatchPassword() {
+    return (
+      this.registerForm.controls.password.value !==
+      this.registerForm.controls.confirmPassword.value
+    );
+  }
+
+  createAccount() {
+    console.log(
+      this.registerForm.valid && !this.confermPasswordDoesNotMatchPassword
+    );
+    if (this.registerForm.valid && !this.confermPasswordDoesNotMatchPassword) {
       let account: User = {
-        "id": this.userId,
-        "userType": "user",
-        "userName": this.userName,
-        "email": this.email,
-        "gender": this.gender,
-        "address": this.address,
-        "password":  this.registerForm.controls.password.value,
-        "profilePicture": this.profilePicture,
-        "orders": []
+        id: this.userId,
+        userType: 'user',
+        userName: this.userName,
+        email: this.email,
+        gender: this.gender,
+        address: this.address,
+        password: this.registerForm.controls.password.value,
+        profilePicture: this.profilePicture,
+        orders: [],
+        carts: [],
       };
       this.UService.AddUser(account).subscribe(
-          response => {
-            this.router.navigate(["/login"]);
-            console.log("Account created");
-          },
-          error => {
-            console.error(error);
-          }
-        );
+        (response) => {
+          this.router.navigate(['/login']);
+          console.log('Account created');
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
     }
   }
 }
