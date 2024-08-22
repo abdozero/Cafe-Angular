@@ -16,7 +16,7 @@
                         @if(user.userType == "user")
                         {
                             <li class="nav-item btn avatar">
-                                <a class="nav-link d-inline-block" routerLink="/profile" data-bs-dismiss="offcanvas"><img src="Images/profile-picture.jpg" width="36" height="36"/></a>
+                                <a class="nav-link d-inline-block" routerLink="/profile" data-bs-dismiss="offcanvas"><img [src]="user.profilePicture" width="36" height="36"/></a>
                             </li>
                             <li class="nav-item d-inline">
                                 <a class="nav-link d-inline-block" routerLinkActive="active" routerLink="/profile" data-bs-dismiss="offcanvas">{{user.userName}}</a>
@@ -78,7 +78,7 @@
                                 <a class="nav-link" routerLinkActive="active" routerLink="/profile" data-bs-dismiss="offcanvas">{{user.userName}}</a>
                             </li>
                             <li class="nav-item btn avatar d-none d-lg-block">
-                                <a class="nav-link d-inline" routerLink="/profile" data-bs-dismiss="offcanvas"><img src="Images/profile-picture.jpg" width="36" height="36"/></a>
+                                <a class="nav-link d-inline" routerLink="/profile" data-bs-dismiss="offcanvas"><img [src]="user.profilePicture" width="36" height="36"/></a>
                             </li>
                             <li class="nav-item btn cart d-none d-lg-block">
                                 <a class="nav-link d-inline" routerLinkActive="active" routerLink="/cart" data-bs-dismiss="offcanvas"><i class="fa fa-shopping-cart"></i></a>
