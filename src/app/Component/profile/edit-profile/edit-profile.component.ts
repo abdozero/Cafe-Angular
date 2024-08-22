@@ -22,6 +22,7 @@ export class EditProfileComponent implements OnInit{
     gender: '',
     address: '',
     orders: [],
+    cart: []
   };
   userForm = new FormGroup({
     profilePicture: new FormControl(""),
