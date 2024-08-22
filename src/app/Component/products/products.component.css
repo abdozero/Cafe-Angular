@@ -1,0 +1,123 @@
+/* src/app/components/products/products.component.css */
+
+/* Style for the search bar */
+.search-bar {
+  margin: 20px auto;
+  max-width: 600px;
+  padding: 10px;
+  text-align: center;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #9a5b69;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+}
+
+.search-bar input::placeholder {
+  color: #9a5b69;
+  opacity: 0.7;
+}
+
+/* Style for the products section */
+.products {
+  padding: 20px;
+  background-color: #f9f3f2; /* Light background for contrast */
+}
+
+.products h2 {
+  text-align: center;
+  color: #9a5b69;
+  margin-bottom: 20px;
+}
+
+.products .product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Style for each product card */
+.product-card {
+  background-color: #fff;
+  border: 2px solid #9a5b69;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  width: 250px;
+  text-align: center;
+  padding: 15px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  border-bottom: 2px solid #9a5b69;
+}
+
+.product-card h3 {
+  color: #9a5b69;
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+.product-card p {
+  color: #333;
+  margin: 5px 0;
+}
+
+.product-card button {
+  background-color: #9a5b69;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.product-card button:hover {
+  background-color: #8a4d59; /* Slightly darker shade on hover */
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+.but {
+  background: linear-gradient(135deg, #c88b98, #9e7c7c);
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+.hed {
+  text-align: center;
+  color: #eb7c94; /* Soft pink color for the text */
+  margin-bottom: 30px; /* Increased space below the heading */
+  font-size: 2.5rem; /* Larger font size for emphasis */
+  font-weight: 700; /* Bold font weight for stronger visual impact */
+  letter-spacing: 1px; /* Slightly increased letter spacing */
+  text-transform: uppercase; /* Uppercase text for emphasis */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow for a 3D effect */
+  font-family: "Arial", sans-serif; /* Clean and modern font */
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.5)
+  ); /* Subtle background gradient */
+  padding: 10px; /* Padding around the text for spacing */
+  border-radius: 8px; /* Rounded corners for a softer look */
+  display: inline-block; /* Ensures the background and padding fit the text */
+}

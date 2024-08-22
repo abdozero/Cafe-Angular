@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": "mohammed-adel",
+      "id": "user-mohammed-adel",
       "profilePicture": "Images/profile-picture.jpg",
       "userType": "user",
       "userName": "Mohammed Adel",
@@ -27,16 +27,66 @@
               "quantity": 4
             }
           ],
-          "total": 38
+          "total": 38,
+          "status": "Accepted"
         }
-      ]
+      ],
+      "cart": []
     },
     {
-      "id": "mohammed-adel-admin",
+      "id": "user-mohammed-adel-admin",
       "userType": "admin",
       "userName": "Mohammed Adel Admin",
       "email": "mohammedadeladmin@gmail.com",
       "password": "1234"
+    },
+    {
+      "id": "user-aliaa-ahmed",
+      "userType": "user",
+      "userName": "Aliaa Ahmed",
+      "email": "alyaaahmed612@gmail.com",
+      "gender": "Female",
+      "address": "jjj",
+      "password": "12345",
+      "profilePicture": "Images/profile-picture.jpg",
+      "orders": [],
+      "cart": []
+    },
+    {
+      "id": "user-kk-aa",
+      "userType": "user",
+      "userName": "kk aa",
+      "email": "alyaaahmed612612@gmail.com",
+      "gender": "Female",
+      "address": "ss",
+      "password": "12",
+      "profilePicture": "Images/profile-picture.jpg",
+      "orders": [],
+      "cart": []
+    },
+    {
+      "id": "user-mm",
+      "userType": "user",
+      "userName": "mm",
+      "email": "alyaaahmed612612@gmail.com",
+      "gender": "Female",
+      "address": "ss",
+      "password": "123",
+      "profilePicture": "Images/profile-picture.jpg",
+      "orders": [],
+      "cart": []
+    },
+    {
+      "id": "user-kk",
+      "userType": "user",
+      "userName": "kk",
+      "email": "alyaaahmed612612@gmail.com",
+      "gender": "Female",
+      "address": "ss",
+      "password": "11",
+      "profilePicture": "Images/profile-picture.jpg",
+      "orders": [],
+      "cart": []
     }
   ]
 }

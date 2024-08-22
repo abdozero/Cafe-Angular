@@ -1,0 +1,40 @@
+
+.form, .username, .password {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px; /* Add padding inside the container */
+  border: 1px solid #dfc2cc; /* Border color using 300 variant */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  background-color: #f5eef0; /* Light background color using 100 variant */
+  text-align: center; /* Center-align text */
+}
+
+.main{
+  min-height: 71vh;
+}
+h4 {
+  color: #613a41;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+}
+p {
+  color: #9a5b69;
+  font-size: 1.1em;
+  margin-bottom: 20px;
+}
+
+input[type="button"] {
+  /* background-color: #b87c8d;
+  color: #f5eef0; */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+input[type="button"]:hover {
+  /* background-color: #9a5b69; */
+}
