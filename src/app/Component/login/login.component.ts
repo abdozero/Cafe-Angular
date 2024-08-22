@@ -30,6 +30,13 @@ export class LoginComponent {
         this.loginForm.controls.username.value,
         this.loginForm.controls.password.value
       )
-      .subscribe((error) => console.log(error));
+      .subscribe({
+        next: (result) => {
+          if("error" in result){
+            console.log('Login error: ', result);
+          }
+        }
+      }
+    );
   }
 }
