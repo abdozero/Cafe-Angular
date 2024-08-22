@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { UserService } from '../../../Services/user.service';
+import { HttpClientModule } from '@angular/common/http';
+import { User } from '../../../model/user.model';
 
 @Component({
   selector: 'app-orders-history',
@@ -8,32 +11,24 @@ import { Component } from '@angular/core';
   styleUrl: './orders-history.component.css'
 })
 export class OrdersHistoryComponent {
-  constructor(){this.fillOrder();}
+  constructor( private userService: UserService, private myHttp: HttpClientModule ) {}
   status: string[] = ["Pending", "Accepted", "Rejected"];
   orders: any = [];
-  fillOrder(){
-    for(let i = 1; i < 100; i++)
-      this.orders.push(
-      {
-        id:`${i}`,
-        datetime:`order date${i}`,
-        products:
-        [
-          {
-            "id": `${i}`,
-            "name": `Product${i}`,
-            "price": i*10,
-            "quantity": i
-          },
-          {
-            "id": `${i+1}`,
-            "name": `Product${i+1}`,
-            "price": (i+1)*10,
-            "quantity": i+1
-          }
-        ],
-        total: i*i*10 + (i+1)*(i+1)*10,
-        status: this.status[i%3]
-      })
+  user: User = {
+    id: '',
+    userType: 'none',
+    profilePicture: '',
+    userName: '',
+    email: '',
+    gender: '',
+    address: '',
+    orders: [],
+    cart: [],
+  };
+  ngOnInit() {
+    this.userService.sendUser$.subscribe((user: User) => {
+      this.user = user;
+      delete this.user.password;
+    });
   }
 }

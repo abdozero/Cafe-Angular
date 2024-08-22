@@ -1,14 +1,18 @@
 <div class="main alert align-items-stretch">
     <h3>History</h3>
     <div id="orders" class="orders list-group">
-      @for(order of orders; track order.id)
+      @if(user.orders.length === 0)
+      {
+        <div>Orders list is empty</div>
+      }
+      @for(order of user.orders; track order.id)
       {
         <div class="order list-group-item list-group-item-action">
           <div class="row order-header" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse'+order.id">
             <div class="col-6">
-              <p>Order ID: {{order.id}}</p>
-              <p>Order Date: {{order.datetime}}</p>
-              <p>Status:
+              <p><span class="font-weight-bold">Order ID: </span>{{order.id}}</p>
+              <p><span class="font-weight-bold">Order Date: </span><br/>{{order.datetime}}</p>
+              <p><span class="font-weight-bold">Status: </span>
                 @if(order.status == "Pending") {<span style="color: #444444;">{{order.status}}</span>}
                 @else if(order.status == "Accepted") {<span style="color: #50C429;">{{order.status}}</span>}
                 @else if(order.status == "Rejected") {<span style="color: #FF0000;">{{order.status}}</span>}

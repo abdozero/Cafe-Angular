@@ -27,7 +27,8 @@
               "quantity": 4
             }
           ],
-          "total": 38
+          "total": 38,
+          "status": "Accepted"
         }
       ],
       "cart": []
