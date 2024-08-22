@@ -49,3 +49,7 @@
 .product-card h3 {
   color: var(--copper-rose-700);
 }
+
+.category-card img {
+  max-width: 100%;
+}
