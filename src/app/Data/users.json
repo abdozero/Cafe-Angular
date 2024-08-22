@@ -30,7 +30,7 @@
           "total": 38
         }
       ],
-      "carts": []
+      "cart": []
     },
     {
       "id": "user-mohammed-adel-admin",
@@ -49,7 +49,7 @@
       "password": "12345",
       "profilePicture": "Images/profile-picture.jpg",
       "orders": [],
-      "carts": []
+      "cart": []
     },
     {
       "id": "user-kk-aa",
@@ -61,7 +61,7 @@
       "password": "12",
       "profilePicture": "Images/profile-picture.jpg",
       "orders": [],
-      "carts": []
+      "cart": []
     },
     {
       "id": "user-mm",
@@ -72,7 +72,8 @@
       "address": "ss",
       "password": "123",
       "profilePicture": "Images/profile-picture.jpg",
-      "orders": []
+      "orders": [],
+      "cart": []
     },
     {
       "id": "user-kk",
@@ -84,7 +85,7 @@
       "password": "11",
       "profilePicture": "Images/profile-picture.jpg",
       "orders": [],
-      "carts": []
+      "cart": []
     }
   ]
 }
