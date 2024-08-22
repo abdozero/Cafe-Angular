@@ -51,6 +51,10 @@
                   <div class="input-group mt-4">
                     <span class="input-group-text col-4" id="basic-addon1">Address</span>
                     <input formControlName="address" type="text" class="form-control" required>
+                    @if(addressIsNotEntered)
+                    {
+                      <span class="input-group-text col-1"><i class="fa-solid fa-triangle-exclamation"></i></span>
+                    }
                   </div>
                 </div>
                 <div class="register carousel-item">

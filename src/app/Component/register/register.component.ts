@@ -114,6 +114,9 @@ export class RegisterComponent {
       !this.registerForm.controls.gender.touched
     );
   }
+  get addressIsNotEntered() {
+    return this.registerForm.controls.address.invalid;
+  }
 
   get userId() {
     return (
