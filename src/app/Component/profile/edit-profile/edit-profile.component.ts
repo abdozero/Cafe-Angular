@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../Services/user.service';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { User } from '../../../model/user.model';
 
 @Component({
   selector: 'app-edit-profile',
@@ -10,17 +11,42 @@ import { HttpClientModule } from '@angular/common/http';
   templateUrl: './edit-profile.component.html',
   styleUrl: './edit-profile.component.css'
 })
-export class EditProfileComponent {
+export class EditProfileComponent implements OnInit{
   genders = ["Male", "Female"];
-
-  profilePicture: string | ArrayBuffer | null = "Images/profile-picture.jpg";
+  user: User = {
+    id: '',
+    userType: 'none',
+    profilePicture: '',
+    userName: '',
+    email: '',
+    gender: '',
+    address: '',
+    orders: [],
+  };
+  userForm = new FormGroup({
+    profilePicture: new FormControl(""),
+    email: new FormControl(this.user.email, Validators.email),
+    password: new FormControl("", Validators.required),
+    newPassword: new FormControl(""),
+    confirmNewPassword: new FormControl(""),
+    gender: new FormControl(this.user.gender),
+    address: new FormControl(this.user.address)
+  });
   tempProfilePicture: string | ArrayBuffer | null = "Images/profile-picture.jpg";
-      ;
-  userId = "mohammed-adel";
-  userName = "Mohammed Adel";
-  email: string | null = "mohammedadel@gmail.com";
-  gender: string | null = "Male";
-  address: string | null = "Somewhere St.";
+
+  constructor(private userService: UserService){
+  }
+
+  ngOnInit() {
+    this.userService.sendUser$.subscribe((user: User) => {
+      this.user = user;
+      delete this.user.password;
+      this.userForm.setControl("email", new FormControl(this.user.email, Validators.email))
+      this.userForm.setControl("gender", new FormControl(this.user.gender))
+      this.userForm.setControl("address", new FormControl(this.user.address))
+      this.tempProfilePicture = this.user.profilePicture;
+    });
+  }
 
   onFileSelected(event: Event): void {
     const file = (event.target as HTMLInputElement)?.files?.[0];
@@ -38,46 +64,37 @@ export class EditProfileComponent {
   }
 
   saveDone: boolean | null = null;
-  constructor(public UService: UserService){}
 
-  userForm = new FormGroup({
-    profilePicture: new FormControl(""),
-    email: new FormControl(this.email, Validators.email),
-    password: new FormControl("", Validators.required),
-    newPassword: new FormControl(""),
-    confirmNewPassword: new FormControl(""),
-    gender: new FormControl(this.gender),
-    address: new FormControl(this.address)
-  });
-  get emailIsNotValid(){return !this.userForm.controls.email.valid;}
+
+  get emailIsNotValid(){return !this.userForm.controls["email"].valid;}
   get confermNewPasswordDoesNotMatchNewPassword(){
-    return this.userForm.controls.newPassword.value !== this.userForm.controls.confirmNewPassword.value;
+    return this.userForm.controls["newPassword"].value !== this.userForm.controls["confirmNewPassword"].value;
   }
 
   save(password: string | null){
-    if(this.userForm.valid && this.confermNewPasswordDoesNotMatchNewPassword)
+    if(this.userForm.valid && !this.confermNewPasswordDoesNotMatchNewPassword)
     {
       let update: any = {
         "profilePicture": this.tempProfilePicture,
-        "email": this.userForm.controls.email.value,
-        "gender": this.userForm.controls.gender.value,
-        "address": this.userForm.controls.address.value
+        "email": this.userForm.controls["email"].value,
+        "gender": this.userForm.controls["gender"].value,
+        "address": this.userForm.controls["address"].value
       };
-      if(this.userForm.controls.newPassword.value !=="")
+      if(this.userForm.controls["newPassword"].value !=="")
       {
-        update["password"] = this.userForm.controls.newPassword.value;
+        update["password"] = this.userForm.controls["newPassword"].value;
       }
-      this.UService.EditUserById(this.userId, password, update).subscribe(
+      this.userService.EditUserById(this.user.id, password, update).subscribe(
           response => {
             let res: any = response;
             if("error" in res) this.saveDone = false;
             else
             {
               this.saveDone = true;
-              this.profilePicture = this.tempProfilePicture,
-              this.email = this.userForm.controls.email.value;
-              this.gender = this.userForm.controls.gender.value;
-              this.address = this.userForm.controls.address.value;
+              this.user.profilePicture = this.tempProfilePicture,
+              this.user.email = this.userForm.controls["email"].value;
+              this.user.gender = this.userForm.controls["gender"].value;
+              this.user.address = this.userForm.controls["address"].value;
             }
           },
           error => {
@@ -90,19 +107,19 @@ export class EditProfileComponent {
   reset()
   {
     this.userForm.patchValue({
-      email: this.email,
+      email: this.user.email,
       password: "",
       newPassword: "",
       confirmNewPassword: "",
-      gender: this.gender,
-      address: this.address
+      gender: this.user.gender,
+      address: this.user.address
     })
-    this.tempProfilePicture = this.profilePicture;
+    this.tempProfilePicture = this.user.profilePicture;
   }
 
   removeProfilePicture()
   {
-    this.profilePicture = "Images/profile-picture.jpg";
+    this.tempProfilePicture = "Images/profile-picture.jpg";
   }
 }
 
