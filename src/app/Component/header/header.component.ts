@@ -1,9 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { UserService } from '../../Services/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { User } from '../../model/user.model';
+import { CommonVariablesService } from '../../Services/common-variables.service';
 
 @Component({
   selector: 'app-header',
@@ -24,10 +25,11 @@ export class HeaderComponent {
     orders: [],
     cart: [],
   };
-  @Input() BrandName: string = '';
+  BrandName: string = '';
 
   constructor(
     private userService: UserService,
+    private commonVariables: CommonVariablesService,
     private myHttp: HttpClientModule
   ) {}
 
@@ -35,6 +37,10 @@ export class HeaderComponent {
     this.userService.sendUser$.subscribe((user: User) => {
       this.user = user;
       delete this.user.password;
+    });
+
+    this.commonVariables.brandName$.subscribe((brandName: string)=> {
+      this.BrandName = brandName;
     });
   }
 

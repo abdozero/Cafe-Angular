@@ -92,6 +92,9 @@ export class EditProfileComponent implements OnInit{
             else
             {
               this.saveDone = true;
+              setTimeout(() => {
+                this.saveDone = null;
+              }, 5000);
               this.user.profilePicture = this.tempProfilePicture,
               this.user.email = this.userForm.controls["email"].value;
               this.user.gender = this.userForm.controls["gender"].value;

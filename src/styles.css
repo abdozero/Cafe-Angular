@@ -69,3 +69,13 @@
 .btn.btn-rose-taupe:hover{
   color: var(--color-1);
 }
+
+.brand-name{
+  font-size: smaller;
+  font-weight: bolder;
+  font-family: "Lucida Handwriting", "Segoe Script", cursive;
+}
+.brand-name::after{
+  content: " ";
+  letter-spacing: 0.2rem;
+}
