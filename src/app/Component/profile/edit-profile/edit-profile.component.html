@@ -68,35 +68,7 @@
     <div class="btns mt-3">
       <button class="btn btn-outline-rose-taupe col-6" (click)="reset()">Reset</button>
       <button type="submit" class="btn btn-rose-taupe col-6" (click)="save(userForm.controls['password'].value)">Save</button>
-      <button class="btn btn-danger mt-3" data-bs-toggle="modal" data-bs-target="#deleteAccount">
-        Delete Account
-      </button>
-      <div class="modal fade" id="deleteAccount" tabindex="-1" #deleteModal>
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Delete Account</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body text-start">
-              <p>Are you sure you want to delete your account??</p>
-              <p>Confirm delete by writing <q class="text-danger">{{deleteSign}}</q>, keep in mind the leter cases.</p>
-              <div>
-                <input type="text" class="form-control" [placeholder]="'write: ' + deleteSign" formControlName="deleteSign"/>
-                <input type="text" class="form-control" placeholder="Password" formControlName="deletePassword"/>
-                @if(wrongPassword)
-                {
-                  <p class="text-danger text-start">Wrong Password!!</p>
-                }
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-danger" (click)="deleteAccount(deletePassword)" [disabled]="!deleteConfirmed">Delete</button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <app-delete-account-modal></app-delete-account-modal>
     </div>
     @if(saveDone === true)
     {

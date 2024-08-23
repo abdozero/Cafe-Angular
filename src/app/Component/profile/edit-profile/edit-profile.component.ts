@@ -1,21 +1,20 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../Services/user.service';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { User } from '../../../model/user.model';
 import { CommonVariablesService } from '../../../Services/common-variables.service';
 import { Router } from '@angular/router';
-
-declare var bootstrap: any;
+import { DeleteAccountModalComponent } from './delete-account-modal/delete-account-modal.component';
 
 @Component({
   selector: 'app-edit-profile',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, HttpClientModule],
+  imports: [FormsModule, ReactiveFormsModule, HttpClientModule, DeleteAccountModalComponent],
   templateUrl: './edit-profile.component.html',
   styleUrl: './edit-profile.component.css'
 })
-export class EditProfileComponent implements OnInit, AfterViewInit{
+export class EditProfileComponent implements OnInit{
 
   constructor(
     private userService: UserService,
@@ -47,8 +46,6 @@ export class EditProfileComponent implements OnInit, AfterViewInit{
   });
   tempProfilePicture: string | ArrayBuffer | null = "Images/profile-picture.jpg";
 
-  @ViewChild('deleteModal') modal!: ElementRef;
-
   ngOnInit() {
     this.commonVariables.user$.subscribe((user: User) => {
       this.user = user;
@@ -60,9 +57,6 @@ export class EditProfileComponent implements OnInit, AfterViewInit{
     });
   }
 
-  ngAfterViewInit(): void {
-
-  }
   onFileSelected(event: Event): void {
     const file = (event.target as HTMLInputElement)?.files?.[0];
 
@@ -134,49 +128,6 @@ export class EditProfileComponent implements OnInit, AfterViewInit{
       address: this.user.address
     })
     this.tempProfilePicture = this.user.profilePicture;
-  }
-
-  wrongPassword = false;
-  deleteSign = "I want to delete my account";
-  get deleteConfirmed(){
-    return this.deleteSign === this.userForm.controls.deleteSign.value
-  }
-  get deletePassword(){
-    return this.userForm.controls.deletePassword.value;
-  }
-  deleteAccount(password: string | null){
-    if(this.deleteConfirmed)
-    {
-      this.userService.DeleteUserById(this.user.id, password).subscribe(
-        response =>{
-          if("error" in response)
-          {
-            this.wrongPassword = true;
-            setTimeout(() => {
-              this.wrongPassword = false;
-            }, 5000);
-          }
-          else{
-            const modalElement = this.modal.nativeElement;
-            const bootstrapModal = bootstrap.Modal.getInstance(modalElement);
-            bootstrapModal.hide();
-            this.commonVariables.setUser({
-              id: '',
-              userType: 'none',
-              profilePicture: '',
-              userName: '',
-              email: '',
-              gender: '',
-              address: '',
-              orders: [],
-              cart: [],
-            });
-            this.userService.Signout();
-            this.router.navigate(["/login"]);
-          }
-        },
-      );
-    }
   }
 }
 
