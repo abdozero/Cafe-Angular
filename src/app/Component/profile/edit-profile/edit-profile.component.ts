@@ -3,6 +3,7 @@ import { UserService } from '../../../Services/user.service';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { User } from '../../../model/user.model';
+import { CommonVariablesService } from '../../../Services/common-variables.service';
 
 @Component({
   selector: 'app-edit-profile',
@@ -12,6 +13,9 @@ import { User } from '../../../model/user.model';
   styleUrl: './edit-profile.component.css'
 })
 export class EditProfileComponent implements OnInit{
+
+  constructor(private userService: UserService, private commonVariables: CommonVariablesService){}
+
   genders = ["Male", "Female"];
   user: User = {
     id: '',
@@ -35,11 +39,9 @@ export class EditProfileComponent implements OnInit{
   });
   tempProfilePicture: string | ArrayBuffer | null = "Images/profile-picture.jpg";
 
-  constructor(private userService: UserService){
-  }
 
   ngOnInit() {
-    this.userService.sendUser$.subscribe((user: User) => {
+    this.commonVariables.user$.subscribe((user: User) => {
       this.user = user;
       delete this.user.password;
       this.userForm.setControl("email", new FormControl(this.user.email, Validators.email))

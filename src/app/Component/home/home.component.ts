@@ -4,7 +4,7 @@ import { ProductService } from '../../Services/product.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { User } from '../../model/user.model';
-import { UserService } from '../../Services/user.service';
+import { CommonVariablesService } from '../../Services/common-variables.service';
 
 
 @Component({
@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
   };
   constructor(public productService: ProductService,
     public router: Router,
-    private userService: UserService) { }
+    private commonVariables: CommonVariablesService) { }
 
   navigateToCategory(category: string) {
     if(this.user.userType === "none"){
@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit {
         console.error('Error fetching products:', error);
       }
     });
-    this.userService.sendUser$.subscribe((user: User) => {
+    this.commonVariables.user$.subscribe((user: User) => {
       this.user = user;
       delete this.user.password;
     });

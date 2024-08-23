@@ -34,7 +34,7 @@ export class HeaderComponent {
   ) {}
 
   ngOnInit() {
-    this.userService.sendUser$.subscribe((user: User) => {
+    this.commonVariables.user$.subscribe((user: User) => {
       this.user = user;
       delete this.user.password;
     });
