@@ -100,4 +100,16 @@ export class UserService {
       })
     );
   }
+
+  DeleteUserById(id: string, password: string | null): Observable<any>{
+    return this.VerifyPassword(id, password).pipe(
+      switchMap((isVerified) => {
+        if (isVerified) {
+          return this.myHttp.delete(this.DB_URL + '/' + id);
+        } else {
+          return of({ error: 'Password verification failed' });
+        }
+      })
+    );
+  }
 }

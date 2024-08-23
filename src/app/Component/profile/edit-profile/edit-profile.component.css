@@ -73,3 +73,8 @@
   border-top-right-radius: 0;
   z-index: -1;
 }
+
+q{
+  font-weight: bold;
+  user-select: none;
+}
