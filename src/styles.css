@@ -55,7 +55,7 @@
 }
 
 .btn.btn-rose-taupe {
-  --bs-btn-color: var(--color-2);
+  --bs-btn-color: white;
   --bs-btn-bg: var(--color-8);
   --bs-btn-border-color: var(--color-8);
   --bs-btn-hover-bg: var(--color-9);
