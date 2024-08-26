@@ -8,7 +8,7 @@
         class="card bg-white rounded text-center p-3"
         (click)="navigateToCategory(category.name)"
       >
-        <img class="img-fluid" [src]="category.pic" alt="{{ category.name }}" />
+        <img class="img-fluid d-none d-sm-inline" [src]="category.pic" alt="{{ category.name }}" />
         <h3 class="m-2">{{ category.name }}</h3>
       </div>
     </div>
