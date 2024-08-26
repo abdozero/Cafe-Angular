@@ -15,6 +15,7 @@ import { NoneAuthService } from './Services/none-auth.service';
 
 export const routes: Routes = [
   { path: "", component: HomeComponent },
+  { path: "home", component: HomeComponent },
   { path: "products", component: ProductsComponent, canActivate:[UserAuthService] },
   { path: "admin-products", component: AdminProductsComponent, canActivate: [AdminAuthService] },
   { path: "admin-orders", component: AdminOrdersComponent, canActivate: [AdminAuthService] },
