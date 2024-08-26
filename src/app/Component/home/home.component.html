@@ -1,29 +1,28 @@
-<div class="home-container bg-light">
-  <h1 class="text-primary">Welcome to Our Store</h1>
-
-  <div class="categories">
-    <h2>Categories</h2>
-    <div class="category-list row">
+<div class="main">
+  <h1 class="text-center p-3">Welcome to Our Store</h1>
+  <div class="categories pt-3">
+    <h2 class="text-center m-3 fw-bold">Categories</h2>
+    <div class="category-list container d-flex flex-wrap justify-content-center pb-3">
       <div
         *ngFor="let category of categories"
-        class="category-card col-lg-3 col-md-6"
+        class="card bg-white rounded text-center p-3"
         (click)="navigateToCategory(category.name)"
       >
-        <img [src]="category.pic" alt="{{ category.name }}" />
-        <h3>{{ category.name }}</h3>
+        <img class="img-fluid" [src]="category.pic" alt="{{ category.name }}" />
+        <h3 class="m-2">{{ category.name }}</h3>
       </div>
     </div>
   </div>
-  <div class="products">
-    <h2>Featured Products</h2>
-    <div class="product-list">
-      <div *ngFor="let product of Products" class="product-card border-copper-rose-200 shadow-copper-rose-300">
-        <img [src]="product.image" alt="{{ product.title }}" />
-        <h3 class="text-copper-rose-700">{{ product.title }}</h3>
-        <p>{{ product.details }}</p>
-        <p>Price: ${{ product.price }}</p>
-        <button (click)="addToCart(product)">Add to Cart</button>
+  <div class="products pt-3">
+    <h2 class="text-center m-3 fw-bold">Products</h2>
+    <div class="product-list container d-flex flex-wrap justify-content-center pb-3">
+      <div
+        *ngFor="let product of Products"
+        class="card bg-white rounded text-center p-3"
+      >
+        <img class="img-fluid" [src]="product.image" alt="{{ product.title }}" />
+        <h3 class="m-2">{{ product.title }}</h3>
+        <p class="m-1">{{ product.details }}</p>
       </div>
     </div>
-  </div>
 </div>

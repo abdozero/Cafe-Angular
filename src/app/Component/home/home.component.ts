@@ -17,9 +17,9 @@ import { CommonVariablesService } from '../../Services/common-variables.service'
 export class HomeComponent implements OnInit {
   Products: any[] = [];
   categories = [
-    { name: 'Drinks', pic: 'Products/cafelatte.PNG' },
+    { name: 'Drinks', pic: 'Products/coffee cup.jpg' },
     { name: 'Breakfast', pic: 'Products/1.jpeg' },
-    { name: 'Lunch', pic: 'Products/chicken.PNG' },
+    { name: 'Lunch', pic: 'Products/3.jpeg' },
     { name: 'Dinner', pic: 'Products/meatproduct.PNG' }
   ];
 
