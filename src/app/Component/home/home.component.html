@@ -23,6 +23,11 @@
         <img class="img-fluid" [src]="product.image" alt="{{ product.title }}" />
         <h3 class="m-2">{{ product.title }}</h3>
         <p class="m-1">{{ product.details }}</p>
+        @if(user.userType !== "none")
+        {
+          <p class="m-1">Price: ${{ product.price }}</p>
+          <button class="btn btn-rose-taupe" (click)="addToCart(product)">Add to Cart</button>
+        }
       </div>
     </div>
 </div>

@@ -1,9 +1,9 @@
 h1{
-  color: var(--color-1);
+  color: white;
   background-color: var(--color-7);
 }
 
-.products { background-color: var(--color-1); }
+.products { background-color: var(--color-2); }
 .products h2, .categories h2 { color: var(--color-7); }
 .product-list, .category-list { gap: 1rem; }
 
