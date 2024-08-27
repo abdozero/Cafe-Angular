@@ -7,6 +7,9 @@ import { FormsModule } from '@angular/forms';
 import { Product } from '../../model/product.model'; // Adjust path accordingly
 import { CartService } from '../../Services/cart.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { UserService } from '../../Services/user.service';
+import { User } from '../../model/user.model';
+import { CommonVariablesService } from '../../Services/common-variables.service';
 
 @Component({
   selector: 'app-products',
@@ -21,26 +24,45 @@ export class ProductsComponent implements OnInit {
   Products: Product[] = [];
   filteredProducts: Product[] = [];
   category: string = '';
-
+  userid: string | null = null;
+  user: User = {
+    id: '',
+    userType: 'none',
+    profilePicture: '',
+    userName: '',
+    email: '',
+    gender: '',
+    address: '',
+    orders: [],
+    cart: [],
+  };
   constructor(
+    private cartService: CartService,
+    private userService: UserService,
+
+    public commonVariables: CommonVariablesService,
     public prodserve: ProductService,
-    public cartService: CartService,
+
     public router: Router,
     public route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+    this.commonVariables.user$.subscribe((user: User) => {
+      this.user = user;
+      delete this.user.password;
+    });
     this.prodserve.getProducts().subscribe({
       next: (data: Product[]) => {
         this.Products = data;
-        this.route.queryParams.subscribe(params => {
+        this.route.queryParams.subscribe((params) => {
           this.category = params['category'] || '';
           this.filterProducts();
         });
       },
       error: (error) => {
         console.error('Error fetching products:', error);
-      }
+      },
     });
   }
 
@@ -49,17 +71,19 @@ export class ProductsComponent implements OnInit {
 
     // Filter by category
     if (this.category) {
-      filtered = filtered.filter(product =>
-        product.category &&
-        product.category.toLowerCase() === this.category.toLowerCase()
+      filtered = filtered.filter(
+        (product) =>
+          product.category &&
+          product.category.toLowerCase() === this.category.toLowerCase()
       );
     }
 
     // Filter by search term
     if (this.searchTerm) {
-      filtered = filtered.filter(product =>
-        product.title &&
-        product.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+      filtered = filtered.filter(
+        (product) =>
+          product.title &&
+          product.title.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
     }
 
@@ -67,11 +91,15 @@ export class ProductsComponent implements OnInit {
   }
 
   addToCart(product: Product) {
-    this.cartService.addToCart(product);
-    alert(`${product.title} added to cart!`);
+    // this.cartService.addToCart(product);
+    this.user.cart.push(product);
+    this.cartService.updatecart(this.user.id, { cart: this.user.cart });
   }
 
   viewCart() {
     this.router.navigate(['/cart']);
+  }
+  detail() {
+    this.router.navigate(['/detail']);
   }
 }

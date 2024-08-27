@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of, switchMap, throwError } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { User } from '../model/user.model';
 import { CommonVariablesService } from './common-variables.service';
 
@@ -11,8 +12,12 @@ export class UserService {
   DB_URL = 'http://localhost:3002/users';
   private loggedIn = false;
   private userType = 'none';
-
-  constructor(private myHttp: HttpClient, private commonVariables: CommonVariablesService) {}
+  private currentUsernameSubject = new BehaviorSubject<string | null>(null);
+  currentUsername$ = this.currentUsernameSubject.asObservable();
+  constructor(
+    private myHttp: HttpClient,
+    private commonVariables: CommonVariablesService
+  ) {}
 
   CheckUserExist(id: string): Observable<boolean> {
     return this.myHttp.get(this.DB_URL + '/' + id).pipe(
@@ -50,6 +55,7 @@ export class UserService {
   Signout() {
     this.loggedIn = false;
     this.userType = 'none';
+    this.currentUsernameSubject.next(null);
   }
 
   IsAuthenticated() {
@@ -60,6 +66,18 @@ export class UserService {
     return this.userType;
   }
 
+  private sendUser = new BehaviorSubject<User>({
+    id: '',
+    userType: 'none',
+    profilePicture: '',
+    userName: '',
+    email: '',
+    gender: '',
+    address: '',
+    orders: [],
+    cart: [],
+  });
+  sendUser$ = this.sendUser.asObservable();
   GetUserById(
     id: string,
     password: string | null
@@ -70,6 +88,8 @@ export class UserService {
           const user = this.myHttp.get<User>(this.DB_URL + '/' + id);
           user.subscribe((user: User) => {
             this.userType = user.userType;
+            this.sendUser.next(user);
+            this.currentUsernameSubject.next(user.id);
             this.commonVariables.setUser(user);
           });
           this.loggedIn = true;
@@ -101,7 +121,7 @@ export class UserService {
     );
   }
 
-  DeleteUserById(id: string, password: string | null): Observable<any>{
+  DeleteUserById(id: string, password: string | null): Observable<any> {
     return this.VerifyPassword(id, password).pipe(
       switchMap((isVerified) => {
         if (isVerified) {
