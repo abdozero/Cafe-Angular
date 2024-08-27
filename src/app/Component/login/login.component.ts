@@ -7,6 +7,7 @@ import {
   FormsModule,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ import {
 export class LoginComponent {
   constructor(
     private userService: UserService,
-    private http: HttpClientModule
+    private http: HttpClientModule,
+    private router: Router
   ) {}
   loginForm = new FormGroup({
     username: new FormControl(''),
@@ -34,6 +36,12 @@ export class LoginComponent {
         next: (result) => {
           if("error" in result){
             console.log('Login error: ', result);
+          }
+          else if(result.userType === "user"){
+            this.router.navigate(['/profile'])
+          }
+          else if(result.userType === "admin"){
+            this.router.navigate(['/home'])
           }
         }
       }
