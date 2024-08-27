@@ -1,6 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, map, Observable, of, switchMap, throwError } from 'rxjs';
+import {
+  BehaviorSubject,
+  catchError,
+  map,
+  Observable,
+  of,
+  switchMap,
+  throwError,
+} from 'rxjs';
 import { User } from '../model/user.model';
 
 @Injectable({
@@ -10,7 +18,8 @@ export class UserService {
   DB_URL = 'http://localhost:3002/users';
   private loggedIn = false;
   private userType = 'none';
-
+  private currentUsernameSubject = new BehaviorSubject<string | null>(null);
+  currentUsername$ = this.currentUsernameSubject.asObservable();
   constructor(public myHttp: HttpClient) {}
 
   CheckUserExist(id: string): Observable<boolean> {
@@ -49,6 +58,7 @@ export class UserService {
   Signout() {
     this.loggedIn = false;
     this.userType = 'none';
+    this.currentUsernameSubject.next(null);
   }
 
   IsAuthenticated() {
@@ -68,7 +78,7 @@ export class UserService {
     gender: '',
     address: '',
     orders: [],
-    cart: []
+    cart: [],
   });
   sendUser$ = this.sendUser.asObservable();
   GetUserById(
@@ -82,6 +92,7 @@ export class UserService {
           user.subscribe((user: User) => {
             this.userType = user.userType;
             this.sendUser.next(user);
+            this.currentUsernameSubject.next(user.id);
           });
           this.loggedIn = true;
           return user;

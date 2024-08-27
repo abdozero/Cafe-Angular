@@ -4,11 +4,19 @@ import { RouterOutlet } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './Services/user.service';
 import { User } from './model/user.model';
+import { ProductsComponent } from './Component/products/products.component';
+import { DetailsComponent } from './Component/details/details.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, FooterComponent],
+  imports: [
+    RouterOutlet,
+    HeaderComponent,
+    FooterComponent,
+    ProductsComponent,
+    DetailsComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
