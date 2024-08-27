@@ -1,16 +1,8 @@
-<!-- <div class="home-container bg-light">
-  <h1 class="text-primary">Welcome to Our Store</h1>
-  <div class="promotion bg-copper-rose-100">
-    <h2>Current Promotions</h2>
-  </div>
-
-   Search Bar -->
-<!-- src/app/components/products/products.component.html -->
-
 <div class="search-bar">
   <input
     type="text"
     [(ngModel)]="searchTerm"
+    (ngModelChange)="filterProducts()"
     placeholder="Search products by title"
   />
 </div>
@@ -28,9 +20,10 @@
   </button>
 
   <div class="product-list">
-    <!-- View Cart button -->
-
-    <div *ngFor="let product of filteredProducts()" class="product-card">
+    <div
+      *ngFor="let product of filteredProducts"
+      class="product-card border-copper-rose-200 shadow-copper-rose-300"
+    >
       <img [src]="product.image" alt="{{ product.title }}" />
       <h3>{{ product.title }}</h3>
       <p>{{ product.details }}</p>

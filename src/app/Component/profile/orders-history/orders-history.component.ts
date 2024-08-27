@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { UserService } from '../../../Services/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { User } from '../../../model/user.model';
+import { CommonVariablesService } from '../../../Services/common-variables.service';
 
 @Component({
   selector: 'app-orders-history',
@@ -11,7 +11,7 @@ import { User } from '../../../model/user.model';
   styleUrl: './orders-history.component.css'
 })
 export class OrdersHistoryComponent {
-  constructor( private userService: UserService, private myHttp: HttpClientModule ) {}
+  constructor( private commonVariables: CommonVariablesService, private myHttp: HttpClientModule ) {}
   status: string[] = ["Pending", "Accepted", "Rejected"];
   orders: any = [];
   user: User = {
@@ -26,7 +26,7 @@ export class OrdersHistoryComponent {
     cart: [],
   };
   ngOnInit() {
-    this.userService.sendUser$.subscribe((user: User) => {
+    this.commonVariables.user$.subscribe((user: User) => {
       this.user = user;
       delete this.user.password;
     });

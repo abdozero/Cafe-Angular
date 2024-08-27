@@ -68,10 +68,11 @@
     <div class="btns mt-3">
       <button class="btn btn-outline-rose-taupe col-6" (click)="reset()">Reset</button>
       <button type="submit" class="btn btn-rose-taupe col-6" (click)="save(userForm.controls['password'].value)">Save</button>
+      <app-delete-account-modal></app-delete-account-modal>
     </div>
     @if(saveDone === true)
     {
-      <div class="text-success text-start">Done!!</div>
+      <div class="alert alert-success text-start done">Done!!</div>
     }
     @else if(saveDone === false)
     {

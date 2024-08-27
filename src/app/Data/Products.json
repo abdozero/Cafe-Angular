@@ -1,6 +1,7 @@
 {
   "Products": [
     {
+      "category": "Breakfast",
       "id": "1",
       "name": "adding",
       "title": "meal salad",
@@ -9,6 +10,7 @@
       "details": "adds."
     },
     {
+      "category": "Lunch",
       "id": "2",
       "name": "meal ",
       "title": "meal meat",
@@ -17,6 +19,7 @@
       "details": "meat meal."
     },
     {
+      "category": "Lunch",
       "id": "3",
       "name": "meal meatrice",
       "title": "Product 3",
@@ -25,6 +28,7 @@
       "details": " meat-rice."
     },
     {
+      "category": "Drinks",
       "id": "4",
       "name": "cappuccino-coffe",
       "title": "cappuccino-coffe",
@@ -33,6 +37,7 @@
       "details": "cappuccino-coffe."
     },
     {
+      "category": "Drinks",
       "id": "5",
       "name": "cafelatte-coffe",
       "title": "Product 5",
@@ -41,6 +46,7 @@
       "details": "Details about product 5."
     },
     {
+      "category": "Drinks",
       "id": "6",
       "name": "espressocoffe-coffe",
       "title": "Product 6",
@@ -49,6 +55,7 @@
       "details": "espressocoffe."
     },
     {
+      "category": "Dinner",
       "id": "7",
       "name": "meatproduct",
       "title": "Product 7",
@@ -57,6 +64,7 @@
       "details": "Details about product 1."
     },
     {
+      "category": "Drinks",
       "id": "8",
       "name": "italyancoffe ",
       "title": "Product 8",
@@ -65,6 +73,7 @@
       "details": "italyancoffe."
     },
     {
+      "category": "Lunch",
       "id": "9",
       "name": "chicken",
       "title": "Product 9",
@@ -73,6 +82,7 @@
       "details": "cooked chicken."
     },
     {
+      "category": "Lunch",
       "id": "9",
       "name": "friedchicken",
       "title": "Product 9",

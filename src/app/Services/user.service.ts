@@ -1,15 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {
-  BehaviorSubject,
-  catchError,
-  map,
-  Observable,
-  of,
-  switchMap,
-  throwError,
-} from 'rxjs';
+import { catchError, map, Observable, of, switchMap, throwError } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { User } from '../model/user.model';
+import { CommonVariablesService } from './common-variables.service';
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +14,10 @@ export class UserService {
   private userType = 'none';
   private currentUsernameSubject = new BehaviorSubject<string | null>(null);
   currentUsername$ = this.currentUsernameSubject.asObservable();
-  constructor(public myHttp: HttpClient) {}
+  constructor(
+    private myHttp: HttpClient,
+    private commonVariables: CommonVariablesService
+  ) {}
 
   CheckUserExist(id: string): Observable<boolean> {
     return this.myHttp.get(this.DB_URL + '/' + id).pipe(
@@ -93,6 +90,7 @@ export class UserService {
             this.userType = user.userType;
             this.sendUser.next(user);
             this.currentUsernameSubject.next(user.id);
+            this.commonVariables.setUser(user);
           });
           this.loggedIn = true;
           return user;
@@ -116,6 +114,18 @@ export class UserService {
       switchMap((isVerified) => {
         if (isVerified) {
           return this.myHttp.patch(this.DB_URL + '/' + id, update);
+        } else {
+          return of({ error: 'Password verification failed' });
+        }
+      })
+    );
+  }
+
+  DeleteUserById(id: string, password: string | null): Observable<any> {
+    return this.VerifyPassword(id, password).pipe(
+      switchMap((isVerified) => {
+        if (isVerified) {
+          return this.myHttp.delete(this.DB_URL + '/' + id);
         } else {
           return of({ error: 'Password verification failed' });
         }

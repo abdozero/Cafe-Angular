@@ -16,6 +16,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 export const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   {
     path: 'products',
     component: ProductsComponent,
@@ -46,5 +47,4 @@ export const routes: Routes = [
   { path: 'cart', component: CartComponent, canActivate: [UserAuthService] },
   { path: 'error', component: ErrorComponent },
   { path: '**', component: ErrorComponent },
-  { path: 'details', component: DetailsComponent },
 ];

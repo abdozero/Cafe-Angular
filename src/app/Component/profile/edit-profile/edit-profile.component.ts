@@ -3,15 +3,24 @@ import { UserService } from '../../../Services/user.service';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { User } from '../../../model/user.model';
+import { CommonVariablesService } from '../../../Services/common-variables.service';
+import { Router } from '@angular/router';
+import { DeleteAccountModalComponent } from './delete-account-modal/delete-account-modal.component';
 
 @Component({
   selector: 'app-edit-profile',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, HttpClientModule],
+  imports: [FormsModule, ReactiveFormsModule, HttpClientModule, DeleteAccountModalComponent],
   templateUrl: './edit-profile.component.html',
   styleUrl: './edit-profile.component.css'
 })
 export class EditProfileComponent implements OnInit{
+
+  constructor(
+    private userService: UserService,
+    private commonVariables: CommonVariablesService,
+    public router: Router){}
+
   genders = ["Male", "Female"];
   user: User = {
     id: '',
@@ -31,15 +40,14 @@ export class EditProfileComponent implements OnInit{
     newPassword: new FormControl(""),
     confirmNewPassword: new FormControl(""),
     gender: new FormControl(this.user.gender),
-    address: new FormControl(this.user.address)
+    address: new FormControl(this.user.address),
+    deleteSign: new FormControl(""),
+    deletePassword: new FormControl("")
   });
   tempProfilePicture: string | ArrayBuffer | null = "Images/profile-picture.jpg";
 
-  constructor(private userService: UserService){
-  }
-
   ngOnInit() {
-    this.userService.sendUser$.subscribe((user: User) => {
+    this.commonVariables.user$.subscribe((user: User) => {
       this.user = user;
       delete this.user.password;
       this.userForm.setControl("email", new FormControl(this.user.email, Validators.email))
@@ -63,15 +71,17 @@ export class EditProfileComponent implements OnInit{
       console.error('File Error');
     }
   }
-
-  saveDone: boolean | null = null;
-
+  removeProfilePicture()
+  {
+    this.tempProfilePicture = "Images/profile-picture.jpg";
+  }
 
   get emailIsNotValid(){return !this.userForm.controls["email"].valid;}
   get confermNewPasswordDoesNotMatchNewPassword(){
     return this.userForm.controls["newPassword"].value !== this.userForm.controls["confirmNewPassword"].value;
   }
 
+  saveDone: boolean | null = null;
   save(password: string | null){
     if(this.userForm.valid && !this.confermNewPasswordDoesNotMatchNewPassword)
     {
@@ -86,25 +96,27 @@ export class EditProfileComponent implements OnInit{
         update["password"] = this.userForm.controls["newPassword"].value;
       }
       this.userService.EditUserById(this.user.id, password, update).subscribe(
-          response => {
-            let res: any = response;
-            if("error" in res) this.saveDone = false;
-            else
-            {
-              this.saveDone = true;
-              this.user.profilePicture = this.tempProfilePicture,
-              this.user.email = this.userForm.controls["email"].value;
-              this.user.gender = this.userForm.controls["gender"].value;
-              this.user.address = this.userForm.controls["address"].value;
-            }
-          },
-          error => {
-            console.error(error);
+        response => {
+          let res: any = response;
+          if("error" in res) this.saveDone = false;
+          else
+          {
+            this.saveDone = true;
+            setTimeout(() => {
+              this.saveDone = null;
+            }, 5000);
+            this.user.profilePicture = this.tempProfilePicture,
+            this.user.email = this.userForm.controls["email"].value;
+            this.user.gender = this.userForm.controls["gender"].value;
+            this.user.address = this.userForm.controls["address"].value;
           }
-        );
+        },
+        error => {
+          console.error(error);
+        }
+      );
     }
   }
-
   reset()
   {
     this.userForm.patchValue({
@@ -116,11 +128,6 @@ export class EditProfileComponent implements OnInit{
       address: this.user.address
     })
     this.tempProfilePicture = this.user.profilePicture;
-  }
-
-  removeProfilePicture()
-  {
-    this.tempProfilePicture = "Images/profile-picture.jpg";
   }
 }
 
