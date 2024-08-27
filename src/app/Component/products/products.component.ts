@@ -6,9 +6,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Product } from '../../model/product.model'; // Adjust path accordingly
 import { CartService } from '../../Services/cart.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../Services/user.service';
-import { DetailsComponent } from '../details/details.component';
+import { User } from '../../model/user.model';
+import { CommonVariablesService } from '../../Services/common-variables.service';
+
 @Component({
   selector: 'app-products',
   standalone: true,
@@ -20,50 +22,84 @@ import { DetailsComponent } from '../details/details.component';
 export class ProductsComponent implements OnInit {
   searchTerm: string = '';
   Products: Product[] = [];
+  filteredProducts: Product[] = [];
+  category: string = '';
   userid: string | null = null;
-
+  user: User = {
+    id: '',
+    userType: 'none',
+    profilePicture: '',
+    userName: '',
+    email: '',
+    gender: '',
+    address: '',
+    orders: [],
+    cart: [],
+  };
   constructor(
+    private cartService: CartService,
     private userService: UserService,
+
+    public commonVariables: CommonVariablesService,
     public prodserve: ProductService,
-    public cartService: CartService,
-    public router: Router // Inject Router
+
+    public router: Router,
+    public route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    // Fetch products
+    this.commonVariables.user$.subscribe((user: User) => {
+      this.user = user;
+      delete this.user.password;
+    });
     this.prodserve.getProducts().subscribe({
       next: (data: Product[]) => {
         this.Products = data;
+        this.route.queryParams.subscribe((params) => {
+          this.category = params['category'] || '';
+          this.filterProducts();
+        });
       },
       error: (error) => {
         console.error('Error fetching products:', error);
       },
     });
-
-    // Subscribe to username changes
-    this.userService.currentUsername$.subscribe((username) => {
-      this.userid = username;
-      console.log(this.userid);
-    });
   }
 
-  filteredProducts() {
-    if (!this.searchTerm) {
-      return this.Products;
+  filterProducts() {
+    let filtered = this.Products;
+
+    // Filter by category
+    if (this.category) {
+      filtered = filtered.filter(
+        (product) =>
+          product.category &&
+          product.category.toLowerCase() === this.category.toLowerCase()
+      );
     }
-    return this.Products.filter((product) =>
-      product.name.toLowerCase().includes(this.searchTerm.toLowerCase())
-    );
+
+    // Filter by search term
+    if (this.searchTerm) {
+      filtered = filtered.filter(
+        (product) =>
+          product.title &&
+          product.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    }
+
+    this.filteredProducts = filtered;
   }
 
   addToCart(product: Product) {
-    this.cartService.addToCart(product);
+    // this.cartService.addToCart(product);
+    this.user.cart.push(product);
+    this.cartService.updatecart(this.user.id, { cart: this.user.cart });
   }
 
   viewCart() {
-    this.router.navigate(['/cart']); // Navigate to cart route
+    this.router.navigate(['/cart']);
   }
-  viewProductDetail() {
-    this.router.navigate(['/details']);
+  detail() {
+    this.router.navigate(['/detail']);
   }
 }

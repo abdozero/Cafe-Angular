@@ -8,7 +8,7 @@ export interface User {
   gender: string | null;
   address: string | null;
   orders: Order[];
-  cart: Product[];
+  cart: any[];
 }
 
 interface Order {
