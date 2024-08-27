@@ -24,12 +24,24 @@ export class LoginComponent {
     username: new FormControl(''),
     password: new FormControl(''),
   });
+
   login() {
-    this.userService
-      .Login(
-        this.loginForm.controls.username.value,
-        this.loginForm.controls.password.value
-      )
-      .subscribe((error) => console.log(error));
+    const username = this.loginForm.controls.username.value;
+    const password = this.loginForm.controls.password.value;
+
+    this.userService.Login(username, password).subscribe({
+      next: (result) => {
+        if (result && !(result as any).error) {
+          // Login successful
+          console.log('Login successful');
+        } else {
+          // Handle login error
+          console.error('Login failed');
+        }
+      },
+      error: (err) => {
+        console.error('Error occurred:', err);
+      },
+    });
   }
 }
