@@ -1,0 +1,26 @@
+{
+  "orders":
+  [
+    {
+      "id": "3519",
+      "userId": "user-mohammed-adel",
+      "datetime": "2024-02-22 16:31:56",
+      "products": [
+        {
+          "id": "235",
+          "name": "Product1",
+          "price": 5,
+          "quantity": 2
+        },
+        {
+          "id": "756",
+          "name": "Product2",
+          "price": 7,
+          "quantity": 4
+        }
+      ],
+      "total": 38,
+      "status": "Accepted"
+    }
+  ]
+}
