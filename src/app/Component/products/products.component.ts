@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { ProductService } from '../../Services/product.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Product } from '../../model/product.model'; // Adjust path accordingly
 import { CartService } from '../../Services/cart.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { UserService } from '../../Services/user.service';
 import { User } from '../../model/user.model';
 import { CommonVariablesService } from '../../Services/common-variables.service';
 
@@ -38,7 +36,6 @@ export class ProductsComponent implements OnInit {
   };
   constructor(
     private cartService: CartService,
-    private userService: UserService,
 
     public commonVariables: CommonVariablesService,
     public prodserve: ProductService,
