@@ -1,7 +1,6 @@
 import { HomeComponent } from './Component/home/home.component';
 import { ProductsComponent } from './Component/products/products.component';
 import { AdminProductsComponent } from './Component/admin-products/admin-products.component';
-import { AdminOrdersComponent } from './Component/admin-orders/admin-orders.component';
 import { AboutComponent } from './Component/about/about.component';
 import { LoginComponent } from './Component/login/login.component';
 import { RegisterComponent } from './Component/register/register.component';
@@ -13,6 +12,7 @@ import { AdminAuthService } from './Services/admin-auth.service';
 import { NoneAuthService } from './Services/none-auth.service';
 import { Routes } from '@angular/router';
 import { DetailsComponent } from './Component/details/details.component';
+import { OrdersComponent } from './Component/orders/orders.component';
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
@@ -28,8 +28,8 @@ export const routes: Routes = [
     canActivate: [AdminAuthService],
   },
   {
-    path: 'admin-orders',
-    component: AdminOrdersComponent,
+    path: 'orders',
+    component: OrdersComponent,
     canActivate: [AdminAuthService],
   },
   { path: 'about', component: AboutComponent },
