@@ -14,12 +14,12 @@ export interface User {
 interface Order {
   id: string;
   datetime: string;
-  products: Product[];
+  products: OrderProduct[];
   total: number;
   status: string;
 }
 
-interface Product {
+interface OrderProduct {
   id: string;
   name: string;
   price: number;
