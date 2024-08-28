@@ -11,9 +11,8 @@ import { ErrorComponent } from './Component/error/error.component';
 import { UserAuthService } from './Services/user-auth.service';
 import { AdminAuthService } from './Services/admin-auth.service';
 import { NoneAuthService } from './Services/none-auth.service';
+import { Routes } from '@angular/router';
 import { DetailsComponent } from './Component/details/details.component';
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
@@ -22,6 +21,7 @@ export const routes: Routes = [
     component: ProductsComponent,
     canActivate: [UserAuthService],
   },
+  {path: 'detail/:id', component: DetailsComponent},
   {
     path: 'admin-products',
     component: AdminProductsComponent,
