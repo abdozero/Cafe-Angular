@@ -19,7 +19,6 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   constructor(
     private userService: UserService,
-    private http: HttpClientModule,
     private router: Router
   ) {}
   loginForm = new FormGroup({
