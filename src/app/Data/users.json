@@ -9,28 +9,6 @@
       "password": "1234",
       "gender": "Male",
       "address": "Somewhere St.",
-      "orders": [
-        {
-          "id": "3519",
-          "datetime": "2024-02-22 16:31:56",
-          "products": [
-            {
-              "id": "235",
-              "name": "Product1",
-              "price": 5,
-              "quantity": 2
-            },
-            {
-              "id": "756",
-              "name": "Product2",
-              "price": 7,
-              "quantity": 4
-            }
-          ],
-          "total": 38,
-          "status": "Accepted"
-        }
-      ],
       "cart": []
     },
     {
@@ -49,7 +27,6 @@
       "address": "jjj",
       "password": "12345",
       "profilePicture": "Images/profile-picture.jpg",
-      "orders": [],
       "cart": []
     },
     {
@@ -61,7 +38,6 @@
       "address": "ss",
       "password": "12",
       "profilePicture": "Images/profile-picture.jpg",
-      "orders": [],
       "cart": []
     },
     {
@@ -73,7 +49,6 @@
       "address": "ss",
       "password": "123",
       "profilePicture": "Images/profile-picture.jpg",
-      "orders": [],
       "cart": []
     },
     {
@@ -85,7 +60,6 @@
       "address": "ss",
       "password": "11",
       "profilePicture": "Images/profile-picture.jpg",
-      "orders": [],
       "cart": []
     }
   ]

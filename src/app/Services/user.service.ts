@@ -74,7 +74,6 @@ export class UserService {
     email: '',
     gender: '',
     address: '',
-    orders: [],
     cart: [],
   });
   sendUser$ = this.sendUser.asObservable();
