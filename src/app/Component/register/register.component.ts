@@ -161,7 +161,6 @@ export class RegisterComponent {
         address: this.address,
         password: this.registerForm.controls.password.value,
         profilePicture: this.profilePicture,
-        orders: [],
         cart: [],
       };
       this.UService.AddUser(account).subscribe(

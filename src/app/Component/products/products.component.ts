@@ -31,7 +31,6 @@ export class ProductsComponent implements OnInit {
     email: '',
     gender: '',
     address: '',
-    orders: [],
     cart: [],
   };
   constructor(

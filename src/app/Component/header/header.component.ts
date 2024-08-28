@@ -22,7 +22,6 @@ export class HeaderComponent {
     email: '',
     gender: '',
     address: '',
-    orders: [],
     cart: [],
   };
   BrandName: string = '';
@@ -53,7 +52,6 @@ export class HeaderComponent {
       email: '',
       gender: '',
       address: '',
-      orders: [],
       cart: [],
     };
     this.userService.Signout();

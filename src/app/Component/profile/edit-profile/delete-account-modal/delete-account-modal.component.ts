@@ -31,7 +31,6 @@ export class DeleteAccountModalComponent implements OnInit {
     email: '',
     gender: '',
     address: '',
-    orders: [],
     cart: []
   };
   ngOnInit() {
@@ -82,7 +81,6 @@ export class DeleteAccountModalComponent implements OnInit {
               email: '',
               gender: '',
               address: '',
-              orders: [],
               cart: [],
             });
             this.userService.Signout();

@@ -31,7 +31,6 @@ export class HomeComponent implements OnInit {
     email: '',
     gender: '',
     address: '',
-    orders: [],
     cart: [],
   };
   constructor(public productService: ProductService,

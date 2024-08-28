@@ -20,7 +20,6 @@ export class CommonVariablesService {
     email: '',
     gender: '',
     address: '',
-    orders: [],
     cart: []
   });
   user$ = this.user.asObservable();

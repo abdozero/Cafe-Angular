@@ -30,7 +30,6 @@ export class EditProfileComponent implements OnInit{
     email: '',
     gender: '',
     address: '',
-    orders: [],
     cart: []
   };
   userForm = new FormGroup({
