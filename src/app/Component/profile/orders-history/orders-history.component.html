@@ -1,11 +1,11 @@
 <div class="main alert align-items-stretch">
     <h3>History</h3>
     <div id="orders" class="orders list-group">
-      @if(user.orders.length === 0)
+      @if(orders.length === 0)
       {
         <div>Orders list is empty</div>
       }
-      @for(order of user.orders; track order.id)
+      @for(order of orders; track order.id)
       {
         <div class="order list-group-item list-group-item-action">
           <div class="row order-header" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse'+order.id">
@@ -48,43 +48,4 @@
           </div>
         </div>
       }
-
-    <!-- <div class="orders list-group">
-      @for(order of orders; track order.id)
-      {
-        <a href="#" class="order list-group-item list-group-item-action">
-          <div class="row">
-            <div class="col-6">
-              <p>Order ID: {{order.id}}</p>
-              <p>Order Date: {{order.datetime}}</p>
-            </div>
-            <div class="col-6">
-              <p>Total</p>
-              <p class="h1 fw-bold">${{order.total}}</p>
-            </div>
-          </div>
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              @for(product of order.products; track product.id)
-              {
-                <tr>
-                  <td>{{product.name}}</td>
-                  <td>${{product.price}}</td>
-                  <td>{{product.quantity}}</td>
-                  <td>${{product.price * product.quantity}}</td>
-                </tr>
-              }
-            </tbody>
-          </table>
-        </a>
-      }
-    </div> -->
 </div>
