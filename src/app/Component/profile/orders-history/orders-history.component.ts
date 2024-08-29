@@ -15,7 +15,6 @@ export class OrdersHistoryComponent {
   constructor(
     private commonVariables: CommonVariablesService,
     private ordersService: OrderService ) {}
-  status: string[] = ["Pending", "Accepted", "Rejected"];
   orders: any = [];
   user: User = {
     id: '',
