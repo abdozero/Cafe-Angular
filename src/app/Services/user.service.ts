@@ -49,7 +49,7 @@ export class UserService {
         ?.toLowerCase()
         .trim()
         .replace(/[\s\t]+/g, '-');
-    return this.GetUserById(id, password);
+    return this.GetUserByIdWithPassword(id, password);
   }
 
   Signout() {
@@ -77,14 +77,14 @@ export class UserService {
     cart: [],
   });
   sendUser$ = this.sendUser.asObservable();
-  GetUserById(
+  GetUserByIdWithPassword(
     id: string,
     password: string | null
   ): Observable<User | { error: string; password?: string | null }> {
     return this.VerifyPassword(id, password).pipe(
       switchMap((isVerified) => {
         if (isVerified) {
-          const user = this.myHttp.get<User>(this.DB_URL + '/' + id);
+          const user = this.GetUserById(id);
           user.subscribe((user: User) => {
             this.userType = user.userType;
             this.sendUser.next(user);
@@ -102,6 +102,10 @@ export class UserService {
         return of({ error: 'An error occurred', password: '' });
       })
     );
+  }
+
+  GetUserById(id: string){
+    return this.myHttp.get<User>(this.DB_URL + '/' + id);
   }
 
   EditUserById(
