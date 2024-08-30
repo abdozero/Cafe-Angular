@@ -41,4 +41,17 @@ export class OrdersHistoryComponent {
       }
     )
   }
+
+  cancelOrder(event: Event, orderId: string)
+  {
+    event.stopPropagation();
+    this.ordersService.ChangeStatus(orderId, "Canceled").subscribe({
+      next: ()=>{
+        this.orders.filter((order: Order)=> order.id === orderId)[0].status = "Canceled";
+      },
+      error: (error)=>{
+        console.log(error);
+      }
+    })
+  }
 }
