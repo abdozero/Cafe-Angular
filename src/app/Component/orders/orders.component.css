@@ -1,0 +1,21 @@
+.main{
+  min-height: 71vh;
+}
+
+h1 {
+  color: var(--color-10);
+  font-weight: bold;
+}
+
+header {
+  position: sticky;
+  top: 3.65rem;
+  z-index: 1020;
+}
+
+.orders{background-color: var(--color-2);}
+.order span{ font-weight: bold;}
+.order:hover{background-color: var(--color-1);}
+.order-header:hover{cursor: pointer;}
+img{border: 1px solid var(--color-9);}
+.h1{font-size: calc(2.375rem + 1.5vw)}
