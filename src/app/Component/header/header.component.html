@@ -36,11 +36,13 @@
                         <li class="nav-item active">
                             <a class="nav-link" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" routerLink="/" data-bs-dismiss="offcanvas">Home</a>
                         </li>
-
-                        @if(user.userType == "none")
+                        @if(user.userType == "admin")
                         {
                             <li class="nav-item">
-                                <a class="nav-link" routerLink="/login" data-bs-dismiss="offcanvas">Products</a>
+                                <a class="nav-link" routerLinkActive="active" routerLink="/admin-products" data-bs-dismiss="offcanvas">Products</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" routerLinkActive="active" routerLink="/orders" data-bs-dismiss="offcanvas">Orders</a>
                             </li>
                         }
                         @else if(user.userType == "user")
@@ -49,13 +51,10 @@
                                 <a class="nav-link" routerLinkActive="active" routerLink="/products" data-bs-dismiss="offcanvas">Products</a>
                             </li>
                         }
-                        @if(user.userType == "admin")
+                        @else
                         {
                             <li class="nav-item">
-                                <a class="nav-link" routerLinkActive="active" routerLink="/admin-products" data-bs-dismiss="offcanvas">Products</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" routerLinkActive="active" routerLink="/orders" data-bs-dismiss="offcanvas">Orders</a>
+                                <a class="nav-link" routerLink="/login" data-bs-dismiss="offcanvas">Products</a>
                             </li>
                         }
                         <li class="nav-item">
