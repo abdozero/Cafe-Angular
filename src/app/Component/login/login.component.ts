@@ -41,7 +41,7 @@ export class LoginComponent {
             this.router.navigate(['/profile'])
           }
           else if(result.userType === "admin"){
-            this.router.navigate(['/home'])
+            this.router.navigate(['/orders'])
           }
         }
       }
