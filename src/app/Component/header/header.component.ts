@@ -29,7 +29,6 @@ export class HeaderComponent {
   constructor(
     private userService: UserService,
     private commonVariables: CommonVariablesService,
-    private myHttp: HttpClientModule
   ) {}
 
   ngOnInit() {
