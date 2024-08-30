@@ -19,6 +19,10 @@ export class UserService {
     private commonVariables: CommonVariablesService
   ) {}
 
+  GetAllUsers():Observable<User[]>{
+    return this.myHttp.get<User[]>(this.DB_URL);
+  }
+
   CheckUserExist(id: string): Observable<boolean> {
     return this.myHttp.get(this.DB_URL + '/' + id).pipe(
       map(() => true),
