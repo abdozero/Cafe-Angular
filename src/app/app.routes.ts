@@ -13,6 +13,9 @@ import { NoneAuthService } from './Services/Auth/none-auth.service';
 import { Routes } from '@angular/router';
 import { DetailsComponent } from './Component/details/details.component';
 import { OrdersComponent } from './Component/orders/orders.component';
+import { PrivacyPolicyComponent } from './Component/privacy-policy/privacy-policy.component';
+import { TermsOfServiceComponent } from './Component/terms-of-service/terms-of-service.component';
+import { QAndAComponent } from './Component/q-and-a/q-and-a.component';
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
@@ -45,6 +48,9 @@ export const routes: Routes = [
     canActivate: [UserAuthService],
   },
   { path: 'cart', component: CartComponent, canActivate: [UserAuthService] },
+  { path: 'privacy-policy', component: PrivacyPolicyComponent},
+  { path: 'terms-of-service', component: TermsOfServiceComponent},
+  { path: 'q-and-a', component: QAndAComponent},
   { path: 'error', component: ErrorComponent },
   { path: '**', component: ErrorComponent },
 ];

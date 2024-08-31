@@ -3,16 +3,27 @@
         <div class="row">
           <div class=" offset-md-2 col-md-4">
             <ul class="list-unstyled text-center">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Products</a></li>
-              <li><a href="#">About Us</a></li>
+              <li><a routerLink="/home" (click)="scrollTop()">Home</a></li>
+              @if(user.userType === "user")
+              {
+                <li><a routerLink="/products" (click)="scrollTop()">Products</a></li>
+              }
+              @else if(user.userType === "admin")
+              {
+                <li><a routerLink="/admin-products" (click)="scrollTop()">Products</a></li>
+              }
+              @else
+              {
+                <li><a routerLink="/login">Products</a></li>
+              }
+              <li><a routerLink="/about" (click)="scrollTop()">About Us</a></li>
             </ul>
           </div>
           <div class="col-md-4">
             <ul class="list-unstyled list-inline text-center">
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms of Service</a></li>
-              <li><a href="#">FAQs</a></li>
+              <li><a routerLink="/privacy-policy" (click)="scrollTop()">Privacy Policy</a></li>
+              <li><a routerLink="/terms-of-service" (click)="scrollTop()">Terms of Service</a></li>
+              <li><a routerLink="/q-and-a" (click)="scrollTop()">FAQs</a></li>
             </ul>
           </div>
         </div>
