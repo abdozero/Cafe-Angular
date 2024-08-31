@@ -18,7 +18,7 @@
     <div class="product-list container d-flex flex-wrap justify-content-center pb-3">
       <div
         *ngFor="let product of Products"
-        class="card rounded text-center"
+        class="card rounded text-center" (click)="detail(product.id)"
       >
         <div class="img-container p-3">
           <p class="fw-bold text-center best-sales">Most Sales</p>
@@ -30,7 +30,7 @@
           @if(user.userType !== "none")
           {
             <p class="m-1">Price: ${{ product.price }}</p>
-            <button class="btn btn-rose-taupe" (click)="addToCart(product)">Add to Cart</button>
+            <button class="btn btn-rose-taupe" (click)="addToCart($event, product)">Add to Cart</button>
           }
         </div>
       </div>

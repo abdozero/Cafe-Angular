@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { User } from '../../model/user.model';
 import { CommonVariablesService } from '../../Services/common-variables.service';
+import { CartService } from '../../Services/cart.service';
 
 
 @Component({
@@ -35,7 +36,8 @@ export class HomeComponent implements OnInit {
   };
   constructor(public productService: ProductService,
     public router: Router,
-    private commonVariables: CommonVariablesService) { }
+    private commonVariables: CommonVariablesService,
+    private cartService: CartService) { }
 
   navigateToCategory(category: string) {
     if(this.user.userType === "none"){
@@ -60,8 +62,13 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  addToCart(product: any) {
-    // Implement addToCart functionality
-    alert(`${product.title} added to cart!`);
+  addToCart(event: Event, product: any) {
+    event.stopPropagation();
+    this.user.cart.push(product);
+    this.cartService.updatecart(this.user.id, { cart: this.user.cart });
+  }
+
+  detail(id: string) {
+    this.router.navigate(['/detail/'+id]);
   }
 }
