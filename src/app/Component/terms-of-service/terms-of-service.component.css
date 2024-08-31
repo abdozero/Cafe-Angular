@@ -1,0 +1,11 @@
+.container { color: var(--color-9);}
+
+h1 {
+  color: var(--color-9);
+  font-weight: bold;
+  margin: 2rem;
+}
+
+li::marker{ font-size: 1.5rem;}
+.background{ padding: 2rem; margin-bottom: 0;}
+.background:nth-of-type(even){background-color: var(--color-2); }
