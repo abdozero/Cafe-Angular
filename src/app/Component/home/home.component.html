@@ -1,17 +1,38 @@
-<div class="home-container bg-light">
-  <h1 class="text-primary">Welcome to Our Store</h1>
-  <div class="promotion bg-copper-rose-100">
-    <h2>Current Promotions</h2>
-  </div>
-  <div class="products">
-    <h2>Featured Products</h2>
-    <div class="product-list">
-      <div *ngFor="let product of Products" class="product-card border-copper-rose-200 shadow-copper-rose-300">
-        <img [src]="product.image" alt="{{product.title}}" />
-        <h3 class="text-copper-rose-700">{{product.title}}</h3>
-        <p>{{product.details}}</p>
-        <p>Price: ${{product.price}}</p>
+<div class="main">
+  <h1 class="text-center p-3">Welcome to Our Store</h1>
+  <div class="categories pt-3">
+    <h2 class="text-center m-3 fw-bold">Categories</h2>
+    <div class="category-list container d-flex flex-wrap justify-content-center pb-3">
+      <div
+        *ngFor="let category of categories"
+        class="card bg-white rounded text-center p-3"
+        (click)="navigateToCategory(category.name)"
+      >
+        <img class="img-fluid d-none d-sm-inline" [src]="category.pic" alt="{{ category.name }}" />
+        <h3 class="m-2">{{ category.name }}</h3>
       </div>
     </div>
   </div>
+  <div class="products pt-3">
+    <h2 class="text-center m-3 fw-bold">Most Sales Products</h2>
+    <div class="product-list container d-flex flex-wrap justify-content-center pb-3">
+      <div
+        *ngFor="let product of Products"
+        class="card rounded text-center" (click)="detail(product.id)"
+      >
+        <div class="img-container p-3">
+          <p class="fw-bold text-center best-sales">Most Sales</p>
+          <img class="img-fluid rounded" [src]="product.image" alt="{{ product.title }}" />
+        </div>
+        <div class="pb-3 bg-white rounded mt-3">
+          <h3 class="m-2">{{ product.title }}</h3>
+          <p class="m-1">{{ product.details }}</p>
+          @if(user.userType !== "none")
+          {
+            <p class="m-1">Price: ${{ product.price }}</p>
+            <button class="btn btn-rose-taupe" (click)="addToCart($event, product)">Add to Cart</button>
+          }
+        </div>
+      </div>
+    </div>
 </div>

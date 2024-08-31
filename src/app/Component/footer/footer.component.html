@@ -1,30 +1,63 @@
 <div class="main">
     <div class="container">
         <div class="row">
-          <div class="col-md-4">
-            <h3 class="text-center">Contact Us</h3>
-            <ul class="list-unstyled list-inline text-center contact-us">
-              <li class="list-inline-item"><a href="#"><i class="fa fa-phone-square"></i></a></li>
-              <li class="list-inline-item"><a href="#"><i class="fa-brands fa-square-facebook"></i></a></li>
-              <li class="list-inline-item"><a href="#"><i class="fa-brands fa-square-x-twitter"></i></a></li>
-              <li class="list-inline-item"><a href="#"><i class="fa-brands fa-square-instagram"></i></a></li>
-            </ul>
-          </div>
-          <div class="col-md-4">
+          <div class=" offset-md-2 col-md-4">
             <ul class="list-unstyled text-center">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Products</a></li>
-              <li><a href="#">About Us</a></li>
+              <li><a routerLink="/home" (click)="scrollTop()">Home</a></li>
+              @if(user.userType === "user")
+              {
+                <li><a routerLink="/products" (click)="scrollTop()">Products</a></li>
+              }
+              @else if(user.userType === "admin")
+              {
+                <li><a routerLink="/admin-products" (click)="scrollTop()">Products</a></li>
+              }
+              @else
+              {
+                <li><a routerLink="/login">Products</a></li>
+              }
+              <li><a routerLink="/about" (click)="scrollTop()">About Us</a></li>
             </ul>
           </div>
           <div class="col-md-4">
             <ul class="list-unstyled list-inline text-center">
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms of Service</a></li>
-              <li><a href="#">FAQs</a></li>
+              <li><a routerLink="/privacy-policy" (click)="scrollTop()">Privacy Policy</a></li>
+              <li><a routerLink="/terms-of-service" (click)="scrollTop()">Terms of Service</a></li>
+              <li><a routerLink="/q-and-a" (click)="scrollTop()">FAQs</a></li>
             </ul>
           </div>
         </div>
-        <p class="text-center">{{BrandName}} &copy; 2024 All Rights Reserved</p>
+        <p class="text-center"><span class="brand-name">{{BrandName}}</span> &copy; 2024 All Rights Reserved</p>
     </div>
 </div>
+
+<!-- <div class="main">
+  <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h3 class="text-center">Contact Us</h3>
+          <ul class="list-unstyled list-inline text-center contact-us">
+            <li class="list-inline-item"><a href="#"><i class="fa fa-phone-square"></i></a></li>
+            <li class="list-inline-item"><a href="#"><i class="fa-brands fa-square-facebook"></i></a></li>
+            <li class="list-inline-item"><a href="#"><i class="fa-brands fa-square-x-twitter"></i></a></li>
+            <li class="list-inline-item"><a href="#"><i class="fa-brands fa-square-instagram"></i></a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <ul class="list-unstyled text-center">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">About Us</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <ul class="list-unstyled list-inline text-center">
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">FAQs</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="text-center"><span class="brand-name">{{BrandName}}</span> &copy; 2024 All Rights Reserved</p>
+  </div>
+</div> -->

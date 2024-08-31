@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../../model/product.model';
 import { CartService } from '../../Services/cart.service';
 import { CommonModule } from '@angular/common';
-
+import { User } from '../../model/user.model';
+import { CommonVariablesService } from '../../Services/common-variables.service';
+import { Order } from '../../model/order.model';
 @Component({
   selector: 'app-cart',
   standalone: true,
@@ -11,13 +12,30 @@ import { CommonModule } from '@angular/common';
   styleUrl: './cart.component.css',
 })
 export class CartComponent implements OnInit {
-  cartItems: Product[] = [];
-
-  constructor(private cartService: CartService) {}
+  userid: string | null = null;
+  user: User = {
+    id: '',
+    userType: 'none',
+    profilePicture: '',
+    userName: '',
+    email: '',
+    gender: '',
+    address: '',
+    cart: [],
+  };
+  constructor(
+    public commonVariables: CommonVariablesService,
+    private cartService: CartService
+  ) {}
 
   ngOnInit(): void {
-    this.cartService.cart$.subscribe((items) => {
-      this.cartItems = items;
+    this.commonVariables.user$.subscribe((user: User) => {
+      this.user = user;
+      delete this.user.password;
     });
+  }
+
+  makeorder(order: Order){
+    this.cartService.MakeOrder(order);
   }
 }

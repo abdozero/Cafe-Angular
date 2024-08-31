@@ -1,19 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonVariablesService } from '../../Services/common-variables.service';
 
 @Component({
-  selector: 'app-about',
+  selector: 'app-q-and-a',
   standalone: true,
   imports: [],
-  templateUrl: './about.component.html',
-  styleUrl: './about.component.css'
+  templateUrl: './q-and-a.component.html',
+  styleUrl: './q-and-a.component.css'
 })
-export class AboutComponent implements OnInit {
-  BrandName: string = "";
+export class QAndAComponent {
   constructor(private commonVariables: CommonVariablesService){}
   ngOnInit() {
     this.commonVariables.brandName$.subscribe((brandName: string)=> {
       this.BrandName = brandName;
     });
   }
+
+  BrandName: string = '';
 }

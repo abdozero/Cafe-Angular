@@ -1,13 +1,43 @@
-import { Component, Input } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { CommonVariablesService } from '../../Services/common-variables.service';
+import { User } from '../../model/user.model';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [FormsModule],
+  imports: [RouterModule],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.css'
 })
-export class FooterComponent {
-  @Input() BrandName: string = "Brand Name";
+export class FooterComponent implements OnInit {
+
+  constructor(private commonVariables: CommonVariablesService){}
+  ngOnInit() {
+    this.commonVariables.user$.subscribe((user: User) => {
+      this.user = user;
+      delete this.user.password;
+    });
+
+    this.commonVariables.brandName$.subscribe((brandName: string)=> {
+      this.BrandName = brandName;
+    });
+  }
+
+  BrandName: string = "Brand Name";
+  user: User = {
+    id: '',
+    userType: 'none',
+    profilePicture: '',
+    userName: '',
+    email: '',
+    gender: '',
+    address: '',
+    cart: [],
+  };
+
+  scrollTop()
+  {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }

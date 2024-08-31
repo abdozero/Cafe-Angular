@@ -49,3 +49,32 @@
   border-color: var(--color-11);
   background-color: var(--color-11);
 }
+
+@keyframes fade-up
+{
+  0%
+  {
+    opacity: 1;
+  }
+  100%
+  {
+    opacity: 0;
+    display: none;
+    margin-top: -10px;
+  }
+}
+
+.done{
+  animation-name: fade-up ;
+  animation-duration: 1s;
+  animation-delay: 3s;
+  animation-fill-mode: forwards;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  z-index: -1;
+}
+
+q{
+  font-weight: bold;
+  user-select: none;
+}

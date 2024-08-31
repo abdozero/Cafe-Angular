@@ -1,5 +1,6 @@
 <div class="main just d-flex align-items-center">
   <div class="container form">
+    <h1 class="text-start">Login</h1>
     <form [formGroup]="loginForm">
       <div class="form-group username">
         <label for="username">username:</label>
@@ -20,8 +21,13 @@
 
       </div>
 
-              <!-- <h4>Login</h4> -->
-      <input class=" btn btn-rose-taupe" type="button" value="Login" (click)="login()">
+      <!-- <h4>Login</h4> -->
+      <input
+        class="btn btn-rose-taupe"
+        type="button"
+        value="Login"
+        (click)="login()"
+      />
     </form>
     <div *ngIf="errorMessage" class="error-message">
       {{ errorMessage }}

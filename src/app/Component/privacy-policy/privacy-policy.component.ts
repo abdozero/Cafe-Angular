@@ -2,18 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { CommonVariablesService } from '../../Services/common-variables.service';
 
 @Component({
-  selector: 'app-about',
+  selector: 'app-privacy-policy',
   standalone: true,
   imports: [],
-  templateUrl: './about.component.html',
-  styleUrl: './about.component.css'
+  templateUrl: './privacy-policy.component.html',
+  styleUrl: './privacy-policy.component.css'
 })
-export class AboutComponent implements OnInit {
-  BrandName: string = "";
+export class PrivacyPolicyComponent implements OnInit{
+
   constructor(private commonVariables: CommonVariablesService){}
   ngOnInit() {
     this.commonVariables.brandName$.subscribe((brandName: string)=> {
       this.BrandName = brandName;
     });
   }
+
+  BrandName: string = '';
 }

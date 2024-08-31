@@ -10,7 +10,7 @@
     </div>
     <div class="input-group mt-3">
       <span class="input-group-text col-6">User Name</span>
-      <input type="text" class="form-control" value="{{userName}}" readonly>
+      <input type="text" class="form-control" value="{{user.userName}}" readonly>
     </div>
     <div class="input-group mt-3">
       <span class="input-group-text col-6">Email</span>
@@ -27,12 +27,12 @@
     <div class="input-group mt-3">
       <span class="input-group-text col-6">Old Password</span>
       <input formControlName="password" type="password" class="form-control"/>
-      @if(userForm.controls.password.value == "")
+      @if(userForm.controls["password"].value == "")
       {
         <span class="input-group-text col-1"><i class="fa-solid fa-triangle-exclamation"></i></span>
       }
     </div>
-    @if(userForm.controls.password.value == "")
+    @if(userForm.controls["password"].value == "")
     {
       <div class="text-danger text-start">Enter The Password!!</div>
     }
@@ -67,11 +67,12 @@
     </div>
     <div class="btns mt-3">
       <button class="btn btn-outline-rose-taupe col-6" (click)="reset()">Reset</button>
-      <button type="submit" class="btn btn-rose-taupe col-6" (click)="save(userForm.controls.password.value)">Save</button>
+      <button type="submit" class="btn btn-rose-taupe col-6" (click)="save(userForm.controls['password'].value)">Save</button>
+      <app-delete-account-modal></app-delete-account-modal>
     </div>
     @if(saveDone === true)
     {
-      <div class="text-success text-start">Done!!</div>
+      <div class="alert alert-success text-start done">Done!!</div>
     }
     @else if(saveDone === false)
     {
@@ -79,4 +80,3 @@
     }
   </form>
 </div>
-

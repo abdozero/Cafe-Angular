@@ -16,10 +16,12 @@
 }
 
 .btn-outline-rose-taupe:hover{
-  border-color: var(--color-11);
-  background-color: var(--color-11);
+  border-color: var(--color-10);
+  background-color: var(--color-9);
 }
 .btn-outline-rose-taupe:hover .nav-link{color: var(--color-3);}
+.btn-rose-taupe .nav-link{color: white;}
+.btn-rose-taupe:hover .nav-link{color: var(--color-3);}
 
 @media (min-width: 992px) {
     .btn-outline-rose-taupe, .btn-rose-taupe{

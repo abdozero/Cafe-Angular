@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { User } from '../../../model/user.model';
+import { CommonVariablesService } from '../../../Services/common-variables.service';
+import { OrderService } from '../../../Services/order.service';
+import { Order } from '../../../model/order.model';
 
 @Component({
   selector: 'app-orders-history',
@@ -8,32 +12,46 @@ import { Component } from '@angular/core';
   styleUrl: './orders-history.component.css'
 })
 export class OrdersHistoryComponent {
-  constructor(){this.fillOrder();}
-  status: string[] = ["Pending", "Accepted", "Rejected"];
+  constructor(
+    private commonVariables: CommonVariablesService,
+    private ordersService: OrderService ) {}
   orders: any = [];
-  fillOrder(){
-    for(let i = 1; i < 100; i++)
-      this.orders.push(
+  user: User = {
+    id: '',
+    userType: 'none',
+    profilePicture: '',
+    userName: '',
+    email: '',
+    gender: '',
+    address: '',
+    cart: [],
+  };
+  ngOnInit() {
+    this.commonVariables.user$.subscribe(
+      (user: User) => {
+        this.user = user;
+        delete this.user.password;
+      }
+    );
+    this.ordersService.GetOreders(this.user.id).subscribe(
       {
-        id:`${i}`,
-        datetime:`order date${i}`,
-        products:
-        [
-          {
-            "id": `${i}`,
-            "name": `Product${i}`,
-            "price": i*10,
-            "quantity": i
-          },
-          {
-            "id": `${i+1}`,
-            "name": `Product${i+1}`,
-            "price": (i+1)*10,
-            "quantity": i+1
-          }
-        ],
-        total: i*i*10 + (i+1)*(i+1)*10,
-        status: this.status[i%3]
-      })
+        next: (orders: Order[])=>{
+          this.orders = orders;
+        }
+      }
+    )
+  }
+
+  cancelOrder(event: Event, orderId: string)
+  {
+    event.stopPropagation();
+    this.ordersService.ChangeStatus(orderId, "Canceled").subscribe({
+      next: ()=>{
+        this.orders.filter((order: Order)=> order.id === orderId)[0].status = "Canceled";
+      },
+      error: (error)=>{
+        console.log(error);
+      }
+    })
   }
 }
