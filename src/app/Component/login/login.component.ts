@@ -10,14 +10,26 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
+
 export class LoginComponent {
   constructor(private userService: UserService, private http: HttpClientModule){}
   loginForm= new FormGroup({
     username:new FormControl(""),
     password: new FormControl("")
   })
+  errorMessage: string | null = null;
   login(){
-    this.userService.Login(this.loginForm.controls.username.value, this.loginForm.controls.password.value).subscribe(error=>console.log(error));
-  }
+    this.userService.Login(this.loginForm.controls.username.value, this.loginForm.controls.password.value)
+
+    .subscribe({
+      next: (response) => {
+        console.log('Login successful', response);
+      },
+      error: (error) => {
+        this.errorMessage = error;
+      }
+    })
+
+}
 }
 

@@ -35,6 +35,7 @@ input[type="button"] {
   transition: background-color 0.3s ease;
 }
 
-input[type="button"]:hover {
-  /* background-color: #9a5b69; */
+.error-message {
+  color: red;
+  margin-top: 10px;
 }
