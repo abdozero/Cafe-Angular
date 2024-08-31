@@ -37,7 +37,8 @@ export class LoginComponent {
       .subscribe({
         next: (result) => {
           if("error" in result){
-            console.log('Login error: ', result);
+            this.errorMessage = result.error;
+
           }
           else if(result.userType === "user"){
             this.router.navigate(['/profile'])
@@ -45,9 +46,6 @@ export class LoginComponent {
           else if(result.userType === "admin"){
             this.router.navigate(['/orders'])
           }
-        },
-        error: (error) => {
-          this.errorMessage = error;
         }
       }
     );
