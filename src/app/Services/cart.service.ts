@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, switchMap } from 'rxjs';
 import { Product } from '../model/product.model'; // Adjust path if needed
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Order } from '../model/order.model';
 
 @Injectable({
   providedIn: 'root',
@@ -24,5 +25,9 @@ export class CartService {
   }
   updatecart(id: string, update: { cart: any[] }): Observable<any> {
     return this.myHttp.patch(this.DB_URL + '/' + id, update);
+  }
+
+  MakeOrder(order: Order){
+    return this.myHttp.post(this.DB_URL, order);
   }
 }

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { UserService } from '../../Services/user.service';
 import { User } from '../../model/user.model';
 import { CommonVariablesService } from '../../Services/common-variables.service';
+import { Order } from '../../model/order.model';
 @Component({
   selector: 'app-cart',
   standalone: true,
@@ -24,7 +25,8 @@ export class CartComponent implements OnInit {
     cart: [],
   };
   constructor(
-    public commonVariables: CommonVariablesService
+    public commonVariables: CommonVariablesService,
+    private cartService: CartService
   ) {}
 
   ngOnInit(): void {
@@ -32,5 +34,9 @@ export class CartComponent implements OnInit {
       this.user = user;
       delete this.user.password;
     });
+  }
+
+  makeorder(order: Order){
+    this.cartService.MakeOrder(order);
   }
 }
