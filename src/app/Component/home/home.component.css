@@ -13,9 +13,32 @@ h1{
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   width: 250px;
   transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+.img-container { background-color: var(--color-7);}
+
+@keyframes best-sales{
+  0%{background-position: 0% 0%;}
+  100%{background-position: 100% 0%;}
 }
 
-.card img { border-bottom: 2px solid var(--color-7); }
+.card .best-sales {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 2rem;
+  color: transparent;
+  background-clip: text;
+  background-image: linear-gradient(to right, var(--color-7), var(--color-7), var(--color-2), var(--color-7), var(--color-7));
+  background-size: 400% 400%;
+  animation-name: best-sales;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: 2s;
+  animation-delay: 0;
+}
+
+.product-list .card img{
+  height: 150px;
+}
 
 .card h3 {
   color: var(--color-7);
