@@ -16,7 +16,9 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
+
 export class LoginComponent {
+
   constructor(
     private userService: UserService,
     private router: Router
@@ -25,7 +27,7 @@ export class LoginComponent {
     username: new FormControl(''),
     password: new FormControl(''),
   });
-
+  errorMessage: string | null = null;
   login() {
     this.userService
       .Login(
@@ -35,7 +37,8 @@ export class LoginComponent {
       .subscribe({
         next: (result) => {
           if("error" in result){
-            console.log('Login error: ', result);
+            this.errorMessage = result.error;
+
           }
           else if(result.userType === "user"){
             this.router.navigate(['/profile'])

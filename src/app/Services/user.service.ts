@@ -93,7 +93,7 @@ export class UserService {
           this.loggedIn = true;
           return user;
         } else {
-          return of({ error: 'Password verification failed', password: '' });
+          return of({ error: 'Wrong username or password', password: '' });
         }
       }),
       catchError((err) => {
