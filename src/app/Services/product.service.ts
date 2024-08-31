@@ -27,7 +27,7 @@ import { Product } from '../model/product.model'; // Adjust path accordingly
   providedIn: 'root',
 })
 export class ProductService {
-  private apiUrl = 'http://localhost:3001/Products';
+  private apiUrl = 'http://localhost:3003/Products';
 
   constructor(private http: HttpClient) {}
 

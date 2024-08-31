@@ -3,13 +3,12 @@ import { BehaviorSubject } from 'rxjs';
 import { User } from '../model/user.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CommonVariablesService {
+  constructor() {}
 
-  constructor() { }
-
-  private brandName = new BehaviorSubject<string>("Café Delight");
+  private brandName = new BehaviorSubject<string>('Café Delight');
   brandName$ = this.brandName.asObservable();
 
   private user = new BehaviorSubject<User>({
@@ -20,10 +19,11 @@ export class CommonVariablesService {
     email: '',
     gender: '',
     address: '',
-    cart: []
+    cart: [],
+    order: [],
   });
   user$ = this.user.asObservable();
-  setUser(user: User){
+  setUser(user: User) {
     this.user.next(user);
   }
 }
