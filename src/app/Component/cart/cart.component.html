@@ -3,8 +3,10 @@
 <!-- <div *ngIf="cartItems.length === 0">Your cart is empty.</div> -->
 <ul *ngIf="user.cart.length > 0">
   <li *ngFor="let item of user.cart">
+    <img [src]="item.image" alt="{{ item.title }}" />
     <h3>{{ item.title }}</h3>
     <p>{{ item.details }}</p>
+    <button (click)="makeorder(item)">make</button>
     <!-- <p>Price: {{ item.price | currency }}</p> -->
   </li>
 </ul>
