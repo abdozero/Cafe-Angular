@@ -61,6 +61,17 @@
       "password": "11",
       "profilePicture": "Images/profile-picture.jpg",
       "cart": []
+    },
+    {
+      "id": "user-hager-swilam",
+      "userType": "user",
+      "userName": "hager swilam",
+      "email": "hagerswilam@gmail.com",
+      "gender": "Female",
+      "address": "47 abdelrhamn street",
+      "password": "3574",
+      "profilePicture": "Images/profile-picture.jpg",
+      "cart": []
     }
   ]
 }
