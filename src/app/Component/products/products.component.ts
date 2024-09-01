@@ -95,7 +95,7 @@ export class ProductsComponent implements OnInit {
   viewCart() {
     this.router.navigate(['/cart']);
   }
-  detail(id: string) {
+  detail(id: string | null) {
     this.router.navigate(['/detail/'+id]);
   }
 }
