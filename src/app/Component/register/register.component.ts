@@ -148,9 +148,6 @@ export class RegisterComponent {
   }
 
   createAccount() {
-    console.log(
-      this.registerForm.valid && !this.confermPasswordDoesNotMatchPassword
-    );
     if (this.registerForm.valid && !this.confermPasswordDoesNotMatchPassword) {
       let account: User = {
         id: this.userId,
