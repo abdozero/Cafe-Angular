@@ -7,7 +7,7 @@
       "title": "meal salad",
       "image": "/Products/1.jpeg",
       "price": 29.99,
-      "details": "adds."
+      "details": "adds. and salad"
     },
     {
       "category": "Lunch",
@@ -21,11 +21,11 @@
     {
       "category": "Lunch",
       "id": "3",
-      "name": "meal meatrice",
-      "title": "Product 3",
+      "name": "meal meat with rice",
+      "title": "meat",
       "image": "/Products/3.jpeg",
       "price": 49.99,
-      "details": " meat-rice."
+      "details": "  meat with rice."
     },
     {
       "category": "Drinks",
@@ -40,16 +40,16 @@
       "category": "Drinks",
       "id": "5",
       "name": "cafelatte-coffe",
-      "title": "Product 5",
+      "title": "Drinks",
       "image": "Products/cafelatte.PNG",
       "price": 30.99,
-      "details": "Details about product 5."
+      "details": "cafelatte-coffe."
     },
     {
       "category": "Drinks",
       "id": "6",
       "name": "espressocoffe-coffe",
-      "title": "Product 6",
+      "title": "Drinks",
       "image": "Products/espressocoffe.PNG",
       "price": 49.99,
       "details": "espressocoffe."
@@ -57,26 +57,26 @@
     {
       "category": "Dinner",
       "id": "7",
-      "name": "meatproduct",
-      "title": "Product 7",
+      "name": "meat meal",
+      "title": "Dinner",
       "image": "Products/meatproduct.PNG",
       "price": 29.99,
-      "details": "Details about product 1."
+      "details": "meat meal."
     },
     {
       "category": "Drinks",
       "id": "8",
       "name": "italyancoffe ",
-      "title": "Product 8",
+      "title": "Drinks",
       "image": "Products/italyancoffe.PNG",
       "price": 39.99,
-      "details": "italyancoffe."
+      "details": "italyan coffe."
     },
     {
       "category": "Lunch",
       "id": "9",
       "name": "chicken",
-      "title": "Product 9",
+      "title": "Lunch",
       "image": "Products/chicken.PNG",
       "price": 49.99,
       "details": "cooked chicken."
@@ -85,7 +85,7 @@
       "category": "Lunch",
       "id": "9",
       "name": "friedchicken",
-      "title": "Product 9",
+      "title": "Lunch",
       "image": "Products/friedchicken.PNG",
       "price": 49.99,
       "details": "friedchicken."

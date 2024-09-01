@@ -6,7 +6,9 @@
     <img [src]="item.image" alt="{{ item.title }}" />
     <h3>{{ item.title }}</h3>
     <p>{{ item.details }}</p>
-    <button (click)="makeorder(item)">make</button>
+    <button (click)="addorder(item)">make order</button>
+    <button (click)="deletefromcart(item)">deletefromcart</button>
     <!-- <p>Price: {{ item.price | currency }}</p> -->
   </li>
+  <button (click)="vieworders()">view my orders</button>
 </ul>

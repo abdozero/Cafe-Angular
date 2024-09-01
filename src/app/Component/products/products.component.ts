@@ -32,6 +32,7 @@ export class ProductsComponent implements OnInit {
     gender: '',
     address: '',
     cart: [],
+    order: [],
   };
   constructor(
     private cartService: CartService,
@@ -78,8 +79,8 @@ export class ProductsComponent implements OnInit {
     if (this.searchTerm) {
       filtered = filtered.filter(
         (product) =>
-          product.title &&
-          product.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+          product.details &&
+          product.details.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
     }
 
@@ -90,21 +91,6 @@ export class ProductsComponent implements OnInit {
     // this.cartService.addToCart(product);
     this.user.cart.push(product);
     this.cartService.updatecart(this.user.id, { cart: this.user.cart });
-  }
-  deleteCart(product: Product) {
-    // Find the index of the product to remove
-    const productIndex = this.user.cart.findIndex((p) => p.id === product.id);
-
-    // If the product is found in the cart
-    if (productIndex !== -1) {
-      // Remove the product from the cart array
-      this.user.cart.splice(productIndex, 1);
-
-      // Update the cart in the backend
-      this.cartService.updatecart(this.user.id, { cart: this.user.cart });
-    } else {
-      console.warn('Product not found in cart');
-    }
   }
 
   viewCart() {

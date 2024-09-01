@@ -8,23 +8,22 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [RouterModule],
   templateUrl: './footer.component.html',
-  styleUrl: './footer.component.css'
+  styleUrl: './footer.component.css',
 })
 export class FooterComponent implements OnInit {
-
-  constructor(private commonVariables: CommonVariablesService){}
+  constructor(private commonVariables: CommonVariablesService) {}
   ngOnInit() {
     this.commonVariables.user$.subscribe((user: User) => {
       this.user = user;
       delete this.user.password;
     });
 
-    this.commonVariables.brandName$.subscribe((brandName: string)=> {
+    this.commonVariables.brandName$.subscribe((brandName: string) => {
       this.BrandName = brandName;
     });
   }
 
-  BrandName: string = "Brand Name";
+  BrandName: string = 'Brand Name';
   user: User = {
     id: '',
     userType: 'none',
@@ -34,10 +33,10 @@ export class FooterComponent implements OnInit {
     gender: '',
     address: '',
     cart: [],
+    order: [],
   };
 
-  scrollTop()
-  {
+  scrollTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }

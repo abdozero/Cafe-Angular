@@ -1,0 +1,38 @@
+/* product-detail.component.css */
+
+.product-detail {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.product-image {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.product-info {
+  margin-bottom: 20px;
+}
+
+.product-info p {
+  font-size: 1.2em;
+  line-height: 1.5;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1em;
+  margin: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ddd;
+}

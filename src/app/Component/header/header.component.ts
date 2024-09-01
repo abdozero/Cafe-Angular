@@ -23,12 +23,13 @@ export class HeaderComponent {
     gender: '',
     address: '',
     cart: [],
+    order: [],
   };
   BrandName: string = '';
 
   constructor(
     private userService: UserService,
-    private commonVariables: CommonVariablesService,
+    private commonVariables: CommonVariablesService
   ) {}
 
   ngOnInit() {
@@ -37,7 +38,7 @@ export class HeaderComponent {
       delete this.user.password;
     });
 
-    this.commonVariables.brandName$.subscribe((brandName: string)=> {
+    this.commonVariables.brandName$.subscribe((brandName: string) => {
       this.BrandName = brandName;
     });
   }
@@ -52,6 +53,7 @@ export class HeaderComponent {
       gender: '',
       address: '',
       cart: [],
+      order: [],
     };
     this.userService.Signout();
   }
