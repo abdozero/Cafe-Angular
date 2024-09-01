@@ -17,7 +17,7 @@ export class UserService {
     private commonVariables: CommonVariablesService
   ) {}
 
-  GetAllUsers():Observable<User[]>{
+  GetAllUsers(): Observable<User[]> {
     return this.myHttp.get<User[]>(this.DB_URL);
   }
 
@@ -65,7 +65,8 @@ export class UserService {
       gender: '',
       address: '',
       cart: [],
-    })
+      order: [],
+    });
     this.userType = 'none';
   }
 
@@ -77,7 +78,18 @@ export class UserService {
     return this.userType;
   }
 
-
+  private sendUser = new BehaviorSubject<User>({
+    id: '',
+    userType: 'none',
+    profilePicture: '',
+    userName: '',
+    email: '',
+    gender: '',
+    address: '',
+    cart: [],
+    order: [],
+  });
+  sendUser$ = this.sendUser.asObservable();
   GetUserByIdWithPassword(
     id: string,
     password: string | null
@@ -103,7 +115,7 @@ export class UserService {
     );
   }
 
-  GetUserById(id: string){
+  GetUserById(id: string) {
     return this.myHttp.get<User>(this.DB_URL + '/' + id);
   }
 

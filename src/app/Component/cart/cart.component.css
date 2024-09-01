@@ -1,0 +1,50 @@
+/* cart.component.css */
+h2 {
+  color: #9a5b69;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  border: 1px solid #9a5b69;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+img {
+  max-width: 100px;
+  margin-right: 15px;
+  border-radius: 5px;
+}
+
+h3 {
+  color: #9a5b69;
+  margin: 0;
+}
+
+p {
+  margin: 5px 0;
+}
+
+button {
+  background-color: #9a5b69;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #8a4c59;
+}

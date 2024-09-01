@@ -8,4 +8,5 @@ export interface User {
   gender: string | null;
   address: string | null;
   cart: any[];
+  order: any[];
 }

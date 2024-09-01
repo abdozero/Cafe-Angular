@@ -9,12 +9,13 @@ import { Order } from '../../../model/order.model';
   standalone: true,
   imports: [],
   templateUrl: './orders-history.component.html',
-  styleUrl: './orders-history.component.css'
+  styleUrl: './orders-history.component.css',
 })
 export class OrdersHistoryComponent {
   constructor(
     private commonVariables: CommonVariablesService,
-    private ordersService: OrderService ) {}
+    private ordersService: OrderService
+  ) {}
   orders: any = [];
   user: User = {
     id: '',
@@ -25,33 +26,30 @@ export class OrdersHistoryComponent {
     gender: '',
     address: '',
     cart: [],
+    order: [],
   };
   ngOnInit() {
-    this.commonVariables.user$.subscribe(
-      (user: User) => {
-        this.user = user;
-        delete this.user.password;
-      }
-    );
-    this.ordersService.GetOreders(this.user.id).subscribe(
-      {
-        next: (orders: Order[])=>{
-          this.orders = orders;
-        }
-      }
-    )
+    this.commonVariables.user$.subscribe((user: User) => {
+      this.user = user;
+      delete this.user.password;
+    });
+    this.ordersService.GetOreders(this.user.id).subscribe({
+      next: (orders: Order[]) => {
+        this.orders = orders;
+      },
+    });
   }
 
-  cancelOrder(event: Event, orderId: string)
-  {
+  cancelOrder(event: Event, orderId: string) {
     event.stopPropagation();
-    this.ordersService.ChangeStatus(orderId, "Canceled").subscribe({
-      next: ()=>{
-        this.orders.filter((order: Order)=> order.id === orderId)[0].status = "Canceled";
+    this.ordersService.ChangeStatus(orderId, 'Canceled').subscribe({
+      next: () => {
+        this.orders.filter((order: Order) => order.id === orderId)[0].status =
+          'Canceled';
       },
-      error: (error)=>{
+      error: (error) => {
         console.log(error);
-      }
-    })
+      },
+    });
   }
 }

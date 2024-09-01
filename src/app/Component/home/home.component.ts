@@ -7,13 +7,12 @@ import { User } from '../../model/user.model';
 import { CommonVariablesService } from '../../Services/common-variables.service';
 import { CartService } from '../../Services/cart.service';
 
-
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [HttpClientModule, CommonModule],
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
   Products: any[] = [];
@@ -21,7 +20,7 @@ export class HomeComponent implements OnInit {
     { name: 'Drinks', pic: 'Products/coffee cup.jpg' },
     { name: 'Breakfast', pic: 'Products/1.jpeg' },
     { name: 'Lunch', pic: 'Products/3.jpeg' },
-    { name: 'Dinner', pic: 'Products/meatproduct.PNG' }
+    { name: 'Dinner', pic: 'Products/meatproduct.PNG' },
   ];
 
   user: User = {
@@ -33,19 +32,22 @@ export class HomeComponent implements OnInit {
     gender: '',
     address: '',
     cart: [],
+    order: [],
   };
-  constructor(public productService: ProductService,
+  constructor(
+    public productService: ProductService,
     public router: Router,
     private commonVariables: CommonVariablesService,
-    private cartService: CartService) { }
+    private cartService: CartService
+  ) {}
 
   navigateToCategory(category: string) {
-    if(this.user.userType === "none"){
+    if (this.user.userType === 'none') {
       this.router.navigate(['/login']);
     } else {
-    this.router.navigate(['/products'], { queryParams: { category } });
+      this.router.navigate(['/products'], { queryParams: { category } });
+    }
   }
-}
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe({
@@ -54,7 +56,7 @@ export class HomeComponent implements OnInit {
       },
       error: (error) => {
         console.error('Error fetching products:', error);
-      }
+      },
     });
     this.commonVariables.user$.subscribe((user: User) => {
       this.user = user;
@@ -69,6 +71,6 @@ export class HomeComponent implements OnInit {
   }
 
   detail(id: string) {
-    this.router.navigate(['/detail/'+id]);
+    this.router.navigate(['/detail/' + id]);
   }
 }

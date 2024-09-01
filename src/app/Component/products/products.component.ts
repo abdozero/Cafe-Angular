@@ -32,6 +32,7 @@ export class ProductsComponent implements OnInit {
     gender: '',
     address: '',
     cart: [],
+    order: [],
   };
   constructor(
     private cartService: CartService,
@@ -78,8 +79,8 @@ export class ProductsComponent implements OnInit {
     if (this.searchTerm) {
       filtered = filtered.filter(
         (product) =>
-          product.title &&
-          product.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+          product.details &&
+          product.details.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
     }
 

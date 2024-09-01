@@ -1,1 +1,23 @@
-<p>details works!</p>
+<!-- product-detail.component.html -->
+
+<div *ngIf="product">
+  <div class="product-detail">
+    <h1>{{ product?.title }}</h1>
+    <img
+      [src]="product?.image"
+      alt="{{ product?.title }}"
+      class="product-image"
+    />
+    <div class="product-info">
+      <p><strong>Category:</strong> {{ product?.category }}</p>
+      <p><strong>Description:</strong> {{ product?.details }}</p>
+      <p><strong>Price:</strong> ${{ product?.price }}</p>
+      <p><strong>Available Stock</strong> {{ product.stock }}</p>
+    </div>
+    <button (click)="addToCart(product)">Add to Cart</button>
+    <button (click)="goBack()">Back to Products</button>
+  </div>
+</div>
+<div *ngIf="!product">
+  <p>Loading product details...</p>
+</div>

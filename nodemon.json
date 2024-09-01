@@ -1,0 +1,5 @@
+{
+  "watch": ["db.json"],
+  "ext": "json",
+  "exec": "json-server --watch Products.json --port 3001"
+}
