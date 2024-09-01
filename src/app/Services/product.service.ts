@@ -35,7 +35,19 @@ export class ProductService {
     return this.http.get<Product[]>(this.apiUrl);
   }
 
-  getprodid(id: number): Observable<Product> {
+  getprodid(id: string | null): Observable<Product> {
     return this.http.get<Product>(`${this.apiUrl}/${id}`);
+  }
+
+  addProduct(product: Product): Observable<Product> {
+    return this.http.post<Product>(this.apiUrl, product);
+  }
+
+  deleteProduct(id: string | null): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
+  updateProduct(product: Product): Observable<Product> {
+    return this.http.put<Product>(`${this.apiUrl}/${product.id}`, product);
   }
 }
