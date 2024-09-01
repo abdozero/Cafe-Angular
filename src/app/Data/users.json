@@ -28,7 +28,44 @@
       "address": "jjj",
       "password": "12345",
       "profilePicture": "Images/profile-picture.jpg",
-      "cart": [],
+      "cart": [
+        {
+          "category": "Breakfast",
+          "id": "1",
+          "name": "adding",
+          "title": "meal salad",
+          "image": "/Products/1.jpeg",
+          "price": 29.99,
+          "details": "adds. and salad"
+        },
+        {
+          "category": "Lunch",
+          "id": "3",
+          "name": "meal meat with rice",
+          "title": "meat",
+          "image": "/Products/3.jpeg",
+          "price": 49.99,
+          "details": "  meat with rice."
+        },
+        {
+          "category": "Lunch",
+          "id": "2",
+          "name": "meal ",
+          "title": "meal meat",
+          "image": "/Products/2.jpeg",
+          "price": 39.99,
+          "details": "meat meal."
+        },
+        {
+          "category": "Breakfast",
+          "id": "1",
+          "name": "adding",
+          "title": "meal salad",
+          "image": "/Products/1.jpeg",
+          "price": 29.99,
+          "details": "adds. and salad"
+        }
+      ],
       "order": []
     },
     {

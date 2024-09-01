@@ -88,15 +88,30 @@ export class ProductsComponent implements OnInit {
   }
 
   addToCart(product: Product) {
-    // this.cartService.addToCart(product);
-    this.user.cart.push(product);
-    this.cartService.updatecart(this.user.id, { cart: this.user.cart });
+    if (this.user.id) {
+      // Add the product to the user's cart
+      this.user.cart.push(product);
+
+      // Update the cart on the server
+      this.cartService
+        .updateCart(this.user.id, { cart: this.user.cart })
+        .subscribe({
+          next: (response) => {
+            console.log('Cart updated successfully:', response);
+          },
+          error: (error) => {
+            console.error('Error updating cart:', error);
+          },
+        });
+    } else {
+      console.error('No user ID found.');
+    }
   }
 
   viewCart() {
     this.router.navigate(['/cart']);
   }
   detail(id: string | null) {
-    this.router.navigate(['/detail/'+id]);
+    this.router.navigate(['/detail/' + id]);
   }
 }

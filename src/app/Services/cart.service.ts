@@ -27,7 +27,10 @@ export class CartService {
     return this.myHttp.patch(this.DB_URL + '/' + id, update);
   }
 
-  MakeOrder(order: Order){
+  MakeOrder(order: Order) {
     return this.myHttp.post(this.DB_URL, order);
+  }
+  updateCart(userId: string, cartData: any): Observable<any> {
+    return this.myHttp.patch(`${this.DB_URL}/${userId}`, cartData);
   }
 }

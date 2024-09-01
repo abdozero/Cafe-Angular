@@ -5,7 +5,11 @@
   padding: 10px;
   text-align: center;
 }
-
+.head {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333; /* Or any color you prefer */
+}
 .search-bar input {
   width: 100%;
   padding: 10px;
@@ -90,8 +94,8 @@
 
 /* Style for each product card */
 .product-card {
-  background-color: #995a5a; /* Darker background color */
-  border: 2px solid #af7473; /* Updated border color */
+  background-color: #f3e1e1; /* Darker background color */
+  border: 2px solid #4a2f2e; /* Updated border color */
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Slightly stronger shadow */
   overflow: hidden;
@@ -119,7 +123,7 @@
 }
 
 .product-card button {
-  background-color: #c17e7c; /* Updated button background */
+  background-color: #975858; /* Updated button background */
   color: #fff;
   border: none;
   padding: 10px 15px;

@@ -2,7 +2,7 @@ export interface Order {
   id: string;
   userId: string;
   datetime: string;
-  products: OrderProduct[];
+  products: Order[];
   total: number;
   status: string;
 }

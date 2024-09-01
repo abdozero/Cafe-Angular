@@ -48,6 +48,9 @@ export class OrderrComponent implements OnInit {
       delete this.user.password;
     });
   }
+  goBack(): void {
+    this.router.navigate(['/products']);
+  }
   cancelorder(product: Product) {
     // Find the index of the product to remove
     const productIndex = this.user.order.findIndex((p) => p.id === product.id);

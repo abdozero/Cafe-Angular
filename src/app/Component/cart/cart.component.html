@@ -1,14 +1,35 @@
 <!-- src/app/components/cart/cart.component.html -->
-<h2>Shopping Cart</h2>
-<!-- <div *ngIf="cartItems.length === 0">Your cart is empty.</div> -->
-<ul *ngIf="user.cart.length > 0">
-  <li *ngFor="let item of user.cart">
-    <img [src]="item.image" alt="{{ item.title }}" />
-    <h3>{{ item.title }}</h3>
-    <p>{{ item.details }}</p>
-    <button (click)="addorder(item)">make order</button>
-    <button (click)="deletefromcart(item)">deletefromcart</button>
-    <!-- <p>Price: {{ item.price | currency }}</p> -->
+<h2 class="cart-title">Shopping Cart</h2>
+
+<div class="cart-actions">
+  <button (click)="vieworders()" class="btn btn-primary">View My Orders</button>
+  <button (click)="goBack()" class="btn btn-secondary">Back to Products</button>
+</div>
+
+<div *ngIf="user.cart.length === 0" class="empty-cart-message">
+  Your cart is empty.
+</div>
+
+<ul *ngIf="user.cart.length > 0" class="cart-items-list">
+  <li *ngFor="let item of user.cart" class="cart-item">
+    <img [src]="item.image" alt="{{ item.title }}" class="cart-item-image" />
+    <div class="cart-item-details">
+      <h3 class="cart-item-title">{{ item.title }}</h3>
+      <p class="cart-item-description">{{ item.details }}</p>
+      <p class="cart-item-price">{{ item.price | currency }}</p>
+
+      <div class="cart-item-actions">
+        <button (click)="deletefromcart(item)" class="btn btn-danger">
+          Delete
+        </button>
+        <button (click)="makeorder(item)" class="btn btn-success">
+          Make Order
+        </button>
+      </div>
+    </div>
   </li>
-  <button (click)="vieworders()">view my orders</button>
 </ul>
+
+<button (click)="addorder()" class="btn btn-primary order-all-button">
+  Order All Cart
+</button>
