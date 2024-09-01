@@ -1,6 +1,5 @@
 import { HomeComponent } from './Component/home/home.component';
 import { ProductsComponent } from './Component/products/products.component';
-import { AdminProductsComponent } from './Component/admin-products/admin-products.component';
 import { AboutComponent } from './Component/about/about.component';
 import { LoginComponent } from './Component/login/login.component';
 import { RegisterComponent } from './Component/register/register.component';
@@ -17,6 +16,7 @@ import { PrivacyPolicyComponent } from './Component/privacy-policy/privacy-polic
 import { TermsOfServiceComponent } from './Component/terms-of-service/terms-of-service.component';
 import { QAndAComponent } from './Component/q-and-a/q-and-a.component';
 import { OrderrComponent } from './Component/orderr/orderr.component';
+import { AdminProductsComponent } from './Component/product-admin/product-admin.component';
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
