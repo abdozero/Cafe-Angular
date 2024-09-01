@@ -1,0 +1,110 @@
+<div class="main pb-3">
+  <div class="container">
+    <h1 class="text-center">Product Administration</h1>
+
+    <h2>Products</h2>
+
+    <table *ngIf="products.length > 0" class="table table-light table-striped table-hover products-table rounded-3">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Name</th>
+          <th>Category</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Image</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{ product.id }}</td>
+          <td>{{ product.title }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.category }}</td>
+          <td>{{ product.details }}</td>
+          <td>{{ product.price }}</td>
+          <td><img [src]="product.image" alt="{{ product.name }}" height="50"></td>
+          <td>
+            <button (click)="editProduct(product)" class="btn btn-secondary d-inline-block mr-3">Edit</button>
+            <pre class="d-inline"> </pre>
+            <button (click)="deleteProduct(product.id)" class="btn btn-danger d-inline-block">Delete</button>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="8">
+            <button (click)="displayAdd()" class="btn btn-rose-taupe form-control">Add New Product</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="new-product" *ngIf="displayed">
+      <h2>Add New Product</h2>
+      <form [formGroup]="newProductForm">
+        <label for="category">Category:</label><br>
+        <select class="form-control" name="category-select" id="category-select" formControlName="category" required>
+          <option value="Drinks">Drinks</option>
+          <option value="Breakfast">Breakfast</option>
+          <option value="Lunch">Lunch</option>
+          <option value="Dinner">Dinner</option>
+        </select>
+
+        <label for="title">Title:</label><br>
+        <input class="form-control" type="text" id="title" formControlName="title" name="title" required>
+
+        <label for="name">Name:</label><br>
+        <input class="form-control" type="text" id="name" formControlName="name" name="name" required>
+
+        <label for="description">Description:</label><br>
+        <textarea class="form-control" id="description" formControlName="details" name="description" required></textarea>
+
+        <label for="price">Price:</label><br>
+        <input class="form-control" type="number" id="price" formControlName="price" name="price" required>
+
+        <label for="imageUrl">Image URL:</label><br>
+        <input class="form-control" type="file" accept="" id="imageUrl" accept="image/jpeg" formControlName="image" name="imageUrl" (change)="onNewImageSelected($event)" required>
+        <br>
+
+        <button type="submit" (click)="addProduct()" class="btn btn-success">Add Product</button><pre class="d-inline"> </pre>
+        <button type="button" (click)="cancelEdit()" class="btn btn-primary">Cancel</button>
+      </form>
+    </div>
+
+    <div *ngIf="editProductId !== ''" class="edit-product">
+      <h2>Edit Product</h2>
+      <form [formGroup]="editProductForm">
+        <label for="category">Category:</label>
+        <select class="form-control" name="category-select" id="category-select" formControlName="category" required>
+          <option value="Drinks">Drinks</option>
+          <option value="Breakfast">Breakfast</option>
+          <option value="Lunch">Lunch</option>
+          <option value="Dinner">Dinner</option>
+        </select>
+
+        <label for="title">Title:</label><br>
+        <input class="form-control" type="text" id="title" formControlName="title" name="title" required>
+
+        <label for="name">Name:</label><br>
+        <input class="form-control" type="text" id="name" formControlName="name" name="name" required>
+
+        <label for="description">Description:</label><br>
+        <textarea class="form-control" id="description" formControlName="details" name="description" required></textarea>
+
+        <label for="price">Price:</label><br>
+        <input class="form-control" type="number" id="price" formControlName="price" name="price" required>
+
+        <label for="image">Image:</label><br>
+        <input class="form-control" type="file" accept="" id="imageUrl" accept="image/jpeg" formControlName="image" name="imageUrl" (change)="onEditImageSelected($event)" required>
+        <br>
+
+
+          <button type="submit" (click)="updateProduct()"class="btn btn-success">Save Changes</button><pre class="d-inline"> </pre>
+          <button type="button" (click)="cancelEdit()" class="btn btn-primary">Cancel</button>
+      </form>
+    </div>
+
+  </div>
+</div>
+

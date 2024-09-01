@@ -1,0 +1,28 @@
+.main{
+    background-color: #f5eef0;
+}
+.products-table{
+    border-radius: 50px;
+    border: 1px solid var(--color-6);
+    align-items: center;
+}
+th, td{
+    padding-left: 5px;
+}
+.new-product, .edit-product{
+    align-content: center;
+    margin-left: 35%;
+    margin-right: 40%;
+    padding: 10px;
+    border: 2px solid black;
+    width: 30%;
+}
+.product-list {
+    border: 2px solid black; align-items: center;
+    margin-left: 1%;
+    
+}
+.table-light{
+    --bs-table-hover-bg: var(--color-4);
+    --bs-table-striped-bg: var(--color-2);
+}
