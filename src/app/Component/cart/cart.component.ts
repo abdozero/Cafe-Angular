@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../Services/cart.service';
 import { CommonModule } from '@angular/common';
-import { UserService } from '../../Services/user.service';
 import { User } from '../../model/user.model';
 import { CommonVariablesService } from '../../Services/common-variables.service';
 import { Order } from '../../model/order.model';

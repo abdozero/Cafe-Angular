@@ -12,8 +12,6 @@ export class UserService {
   DB_URL = 'http://localhost:3002/users';
   private loggedIn = false;
   private userType = 'none';
-  private currentUsernameSubject = new BehaviorSubject<string | null>(null);
-  currentUsername$ = this.currentUsernameSubject.asObservable();
   constructor(
     private myHttp: HttpClient,
     private commonVariables: CommonVariablesService
@@ -58,8 +56,18 @@ export class UserService {
 
   Signout() {
     this.loggedIn = false;
+    this.commonVariables.setUser({
+      id: '',
+      userType: 'none',
+      profilePicture: '',
+      userName: '',
+      email: '',
+      gender: '',
+      address: '',
+      cart: [],
+      order: [],
+    });
     this.userType = 'none';
-    this.currentUsernameSubject.next(null);
   }
 
   IsAuthenticated() {
@@ -92,14 +100,12 @@ export class UserService {
           const user = this.GetUserById(id);
           user.subscribe((user: User) => {
             this.userType = user.userType;
-            this.sendUser.next(user);
-            this.currentUsernameSubject.next(user.id);
             this.commonVariables.setUser(user);
           });
           this.loggedIn = true;
           return user;
         } else {
-          return of({ error: 'Password verification failed', password: '' });
+          return of({ error: 'Wrong username or password', password: '' });
         }
       }),
       catchError((err) => {
