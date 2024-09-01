@@ -53,6 +53,6 @@ export class DetailsComponent implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate(['/']);
+    this.router.navigate(['/products']);
   }
 }
