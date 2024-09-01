@@ -24,13 +24,13 @@
           <p class="fw-bold text-center best-sales">Most Sales</p>
           <img class="img-fluid rounded" [src]="product.image" alt="{{ product.title }}" />
         </div>
-        <div class="pb-3 bg-white rounded mt-3">
+        <div class="p-3 pt-0 bg-white rounded mt-3">
           <h3 class="m-2">{{ product.title }}</h3>
           <p class="m-1">{{ product.details }}</p>
           @if(user.userType !== "none")
           {
             <p class="m-1">Price: ${{ product.price }}</p>
-            <button class="btn btn-rose-taupe" (click)="addToCart($event, product)">Add to Cart</button>
+            <button class="btn btn-rose-taupe form-control" (click)="addToCart($event, product)">Add to Cart</button>
           }
         </div>
       </div>
